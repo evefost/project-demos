@@ -13,7 +13,7 @@
 
     <!-- 配置自动扫描的包 -->
 
-    <context:component-scan base-package="com.xie.java.controller"></context:component-scan>
+    <context:component-scan base-package="com.xie.java.menu.controller"></context:component-scan>
 
     <!-- 配置视图解析器 如何把handler 方法返回值解析为实际的物理视图 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -28,7 +28,7 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-    <bean id="config" class="com.xie.java.constant.AppConfig"/>
+    <bean id="config" class="com.xie.java.menu.constant.AppConfig"/>
     <import resource="classpath*:spring/*.xml"/>
 
 </beans>

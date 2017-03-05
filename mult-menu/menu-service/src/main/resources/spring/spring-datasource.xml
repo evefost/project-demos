@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans [
+        <!ELEMENT beans (bean)*>
+        <!ATTLIST beans
+                xmlns:xsi CDATA #REQUIRED
+                xmlns CDATA #REQUIRED
+                xsi:schemaLocation CDATA #REQUIRED>
+        <!ELEMENT bean (property)*>
+        <!ATTLIST bean
+                class CDATA #REQUIRED
+                destroy-method CDATA #IMPLIED
+                id CDATA #IMPLIED>
+        <!ELEMENT property (bean)*>
+        <!ATTLIST property
+                name CDATA #REQUIRED
+                ref CDATA #IMPLIED
+                value CDATA #IMPLIED>
+        ]>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
@@ -15,7 +32,7 @@
     <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:/mybatis-config.xml"/>
-        <property name="typeAliasesPackage" value="com.xie.java.entity"/>
+        <property name="typeAliasesPackage" value="com.xie.java.menu.entity"/>
         <property name="mapperLocations" value="classpath*:mapper/**/*Mapper.xml"/>
         <property name="plugins">
             <!-- 分页插件配置 -->
@@ -28,7 +45,7 @@
 
     <!-- 加载 mapper.xml 接口 配置文件 -->
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.xie.java.dao"/>
+        <property name="basePackage" value="com.xie.java.menu.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 

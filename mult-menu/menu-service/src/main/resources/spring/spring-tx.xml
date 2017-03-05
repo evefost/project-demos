@@ -10,8 +10,8 @@
     <!-- 打开Spring的Annotation支持 -->
     <context:annotation-config/>
     <!-- 扫描 service -->
-    <context:component-scan base-package="com.xie.java.service.*"/>
-    <context:component-scan base-package="com.xie.java.dao.*"/>
+    <context:component-scan base-package="com.xie.java.menu.service.*"/>
+    <context:component-scan base-package="com.xie.java.menu.dao.*"/>
 
 
 </beans>

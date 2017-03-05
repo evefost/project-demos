@@ -8,16 +8,30 @@
         <outputRelativeToContentRoot value="true" />
         <module name="menu-api" />
         <module name="menu-service" />
+        <module name="menu-service (1)" />
         <module name="menu-web" />
+        <module name="menu-web (1)" />
+        <module name="standar-project" />
+        <module name="standard-api" />
+        <module name="standard-service" />
+        <module name="standard-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="menu-api" target="1.5" />
+      <module name="menu-api (1)" target="1.5" />
       <module name="menu-service" target="1.5" />
+      <module name="menu-service (1)" target="1.5" />
       <module name="menu-web" target="1.8" />
+      <module name="menu-web (1)" target="1.8" />
       <module name="mult-memu" target="1.5" />
       <module name="mult-menu" target="1.5" />
       <module name="project-demos" target="1.5" />
+      <module name="standar-project" target="1.5" />
+      <module name="standard-api" target="1.5" />
+      <module name="standard-project" target="1.5" />
+      <module name="standard-service" target="1.5" />
+      <module name="standard-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

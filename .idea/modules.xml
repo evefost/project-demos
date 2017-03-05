@@ -7,6 +7,10 @@
       <module fileurl="file://$PROJECT_DIR$/mult-menu/menu-web/menu-web.iml" filepath="$PROJECT_DIR$/mult-menu/menu-web/menu-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/mult-menu/mult-menu.iml" filepath="$PROJECT_DIR$/mult-menu/mult-menu.iml" />
       <module fileurl="file://$PROJECT_DIR$/project-demos.iml" filepath="$PROJECT_DIR$/project-demos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/standard-project/standard-api/standard-api.iml" filepath="$PROJECT_DIR$/standard-project/standard-api/standard-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/standard-project/standard-project.iml" filepath="$PROJECT_DIR$/standard-project/standard-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/standard-project/standard-service/standard-service.iml" filepath="$PROJECT_DIR$/standard-project/standard-service/standard-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/standard-project/standard-web/standard-web.iml" filepath="$PROJECT_DIR$/standard-project/standard-web/standard-web.iml" />
     </modules>
   </component>
 </project>
