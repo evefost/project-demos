@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="menu-web:war">
+    <output-path>$PROJECT_DIR$/mult-menu/menu-web/target</output-path>
+    <root id="archive" name="menu-web-dev-debug.war">
+      <element id="artifact" artifact-name="menu-web:war exploded" />
+    </root>
+  </artifact>
+</component>

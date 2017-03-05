@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.xie.java</groupId>
+    <artifactId>project-demos</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>mult-menu</module>
+    </modules>
+
+    <properties>
+        <project.version>1.0.0</project.version>
+        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
+        <org.slf4j-version>1.7.12</org.slf4j-version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.11</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>4.3.4.RELEASE</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${org.springframework.version}</version>
+                <exclusions>
+                    <!-- Exclude Commons Logging in favor of SLF4j -->
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.1.15</version>
+            </dependency>
+            <!--log4j日志依懒-->
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>1.1.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.21</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>1.7.21</version>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.17</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${org.slf4j-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${org.slf4j-version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>2.4.3</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.4.3</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!--多环境打包配置-->
+    <profiles>
+        <profile>
+            <id>dev_debug</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <package.environment>env/dev</package.environment>
+                <package.mode>env/debug</package.mode>
+                <package.name_suff>dev-debug</package.name_suff>
+            </properties>
+        </profile>
+        <profile>
+            <id>dev_release</id>
+
+            <properties>
+                <package.environment>env/dev</package.environment>
+                <package.mode>env/release</package.mode>
+                <package.name_suff>dev-release</package.name_suff>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>test_debug</id>
+            <properties>
+                <package.environment>env/test</package.environment>
+                <package.mode>env/debug</package.mode>
+                <package.name_suff>test-debug</package.name_suff>
+            </properties>
+        </profile>
+        <profile>
+            <id>test_release</id>
+            <properties>
+                <package.environment>env/test</package.environment>
+                <package.mode>env/release</package.mode>
+                <package.name_suff>test-release</package.name_suff>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>prd_debug</id>
+            <properties>
+                <package.environment>env/prd</package.environment>
+                <package.mode>env/debug</package.mode>
+                <package.name_suff>prd-debug</package.name_suff>
+            </properties>
+        </profile>
+        <profile>
+            <id>prd_release</id>
+            <properties>
+                <package.environment>env/prd</package.environment>
+                <package.mode>env/release</package.mode>
+                <package.name_suff>prd-release</package.name_suff>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
+
+
+</project>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mult-menu/menu-api/menu-api.iml" filepath="$PROJECT_DIR$/mult-menu/menu-api/menu-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mult-menu/menu-service/menu-service.iml" filepath="$PROJECT_DIR$/mult-menu/menu-service/menu-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mult-menu/menu-web/menu-web.iml" filepath="$PROJECT_DIR$/mult-menu/menu-web/menu-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mult-menu/mult-menu.iml" filepath="$PROJECT_DIR$/mult-menu/mult-menu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-demos.iml" filepath="$PROJECT_DIR$/project-demos.iml" />
+    </modules>
+  </component>
+</project>
