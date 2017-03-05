@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xie.java.menu.dao.MenuMapper">
+
+    <resultMap id="menuMap" type="com.xie.java.menu.entity.Menu">
+        <result column="menu_name" property="menuName"/>
+        <result column="parent_id" property="parentId"/>
+    </resultMap>
+    <select id="selectMenuList" resultMap="menuMap">
+        SELECT * FROM menu
+
+        <if test="parentId != null">
+            WHERE parent_id=#{parentId}
+        </if>
+        <if test="parentId == null">
+            WHERE parent_id is null
+        </if>
+    </select>
+
+</mapper>

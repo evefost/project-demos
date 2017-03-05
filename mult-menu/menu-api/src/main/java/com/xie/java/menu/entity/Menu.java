@@ -9,25 +9,24 @@ import com.baomidou.mybatisplus.annotations.TableName;
 public class Menu {
 
     @TableId(value = "id", type = IdType.AUTO)
-    private int id;
+    private Integer id;
 
-    @TableField(value = "menu_name")
+    @TableField("menu_name")
     private String menuName;
 
-    @TableField(value = "url")
+
     private String url;
 
-    @TableField(value = "icon")
     private String icon;
 
-    @TableField(value = "name")
+    @TableField(value = "parent_id")
     private int parentId;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -55,11 +54,11 @@ public class Menu {
         this.icon = icon;
     }
 
-    public int getParentId() {
+    public Integer getParentId() {
         return parentId;
     }
 
-    public void setParentId(int parentId) {
+    public void setParentId(Integer parentId) {
         this.parentId = parentId;
     }
 }

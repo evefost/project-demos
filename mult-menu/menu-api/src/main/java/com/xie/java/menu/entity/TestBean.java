@@ -14,7 +14,7 @@ public class TestBean {
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
 
-    @TableField(value = "name")
+    @TableField("name")
     private String name;
 
     public Integer getId() {

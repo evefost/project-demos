@@ -11,13 +11,14 @@
     <modules>
         <module>mult-menu</module>
         <module>standard-project</module>
+        <module>common-util</module>
     </modules>
 
     <properties>
         <project.version>1.0.0</project.version>
         <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
         <org.slf4j-version>1.7.12</org.slf4j-version>
-        <com.baomidouj-version>1.3.4</com.baomidouj-version>
+        <mybatis-plus.version>1.5</mybatis-plus.version>
     </properties>
 
     <dependencyManagement>
@@ -102,7 +103,7 @@
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus</artifactId>
-                <version>${com.baomidouj-version}</version>
+                <version>${mybatis-plus.version}</version>
             </dependency>
         </dependencies>
 

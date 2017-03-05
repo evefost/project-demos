@@ -37,7 +37,7 @@ public class TestServiceImpl extends SuperServiceImpl<TestMapper, TestBean> impl
 
     public String getEnviroment() {
         //TestBean t =  testDao.getNameById(1);
-        TestBean t = selectById(1l);
+        TestBean t = getNameById(2);
         String env = appConfig.getPackageEnviroment() + "==" + t.getName();
         return env;
     }

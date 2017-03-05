@@ -1,0 +1,91 @@
+@CHARSET "UTF-8";
+/*导入自定义字体*/
+@font-face {font-family: "iconfont";
+  src: url('font/iconfont.eot?t=1476963997'); /* IE9*/
+  src: url('font/iconfont.eot?t=1476963997#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('font/iconfont.woff?t=1476963997') format('woff'), /* chrome, firefox */
+  url('font/iconfont.ttf?t=1476963997') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('font/iconfont.svg?t=1476963997#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+#menu{
+	width:95%;
+	height:98%;
+	background-color:#009688;
+	margin:auto;
+	margin-top:10px;
+}
+#menu p.logo{
+	width:100%;
+	height:68px;
+	margin:0;
+	text-align:center;
+	border-bottom:1px solid #00BCD4;
+	background-position:center;
+	background-repeat:no-repeat;
+}
+#menu ul{
+	padding:0;
+	margin:0;
+}
+#menu ul.list{
+	list-style:none;
+	color:#fff;
+	font-family:'Microsoft Yahei';
+	font-size:14px;
+}
+#menu ul.list li.item{
+	border-bottom: 1px solid #00BCD4;
+    border-top: 1px solid #5b5b5b;
+	cursor:pointer;
+}
+#menu ul.list li.item a{
+	height:45px;
+	line-height:45px;
+	text-indent:20px;
+	display:block;
+	text-decoration:none;
+	color:#fff;
+}
+#menu ul.list li.item a b{
+	font-weight:normal;
+	margin-right:10px;
+	font-size:16px;
+}
+#menu ul.list li.item ul.submenu{
+	list-style:none;
+	background-color:#005d55;
+	margin:0px;
+	padding:0px;
+}
+#menu ul.list li.item ul.submenu li{
+	border-top:1px solid #044a53;
+	font-size:12px;
+}
+#menu ul.list li.item ul.submenu li a{
+	height:36px;
+	line-height:36px;
+}
+#menu ul.list li.item ul.submenu li:hover{
+	background-color:#044a53;
+}
+#menu ul.list li.item ul.submenu li a{
+	text-indent:50px;
+}
+#menu ul.list li.item ul.submenu ul.submenu li{
+	background-color:#0a8a6f;
+}
+#menu ul.list li.item ul.submenu ul.submenu li:hover{
+	background-color:#2ca7e0;
+}
+#menu ul.list li.item ul.submenu ul.submenu li a{
+	text-indent:80px;
+}

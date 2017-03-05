@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="common-util" />
         <module name="menu-api" />
         <module name="menu-service" />
         <module name="menu-service (1)" />
@@ -18,6 +19,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="common-util" target="1.5" />
       <module name="menu-api" target="1.5" />
       <module name="menu-api (1)" target="1.5" />
       <module name="menu-service" target="1.5" />
