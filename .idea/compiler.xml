@@ -24,7 +24,7 @@
       <module name="menu-api (1)" target="1.5" />
       <module name="menu-service" target="1.5" />
       <module name="menu-service (1)" target="1.5" />
-      <module name="menu-web" target="1.8" />
+      <module name="menu-web" target="1.7" />
       <module name="menu-web (1)" target="1.8" />
       <module name="mult-memu" target="1.5" />
       <module name="mult-menu" target="1.5" />
@@ -33,7 +33,7 @@
       <module name="standard-api" target="1.5" />
       <module name="standard-project" target="1.5" />
       <module name="standard-service" target="1.5" />
-      <module name="standard-web" target="1.8" />
+      <module name="standard-web" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
