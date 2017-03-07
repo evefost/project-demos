@@ -3,7 +3,7 @@ package com.xie.java.common.response;
 /**
  * Created by xieyang on 17/3/5.
  */
-public enum ResponeEnum {
+public enum ResponseEnum {
 
     ERROR(-1, "失败"),
     SUCCESS(0, "成功"),
@@ -14,6 +14,11 @@ public enum ResponeEnum {
 
     private Integer code;
     private String message;
+
+    ResponseEnum(Integer code, String message) {
+        this.code = code;
+        this.message = message;
+    }
 
     public Integer getCode() {
         return code;
@@ -28,11 +33,6 @@ public enum ResponeEnum {
     }
 
     public void setMessage(String message) {
-        this.message = message;
-    }
-
-    ResponeEnum(Integer code, String message) {
-        this.code = code;
         this.message = message;
     }
 

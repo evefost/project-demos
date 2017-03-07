@@ -5,7 +5,7 @@ package com.xie.java.common.response;
  *
  * @param <T>
  */
-public class ResponeDataVo <T> {
+public class ResponseDataVo<T> {
 
     private T data;
 
@@ -13,48 +13,49 @@ public class ResponeDataVo <T> {
 
     private String message;
 
-    private ResponeDataVo(T data, Integer code) {
+    private ResponseDataVo(T data, Integer code) {
         this(data, code, null);
     }
 
-    private ResponeDataVo(T data, Integer code, String message) {
+    private ResponseDataVo(T data, Integer code, String message) {
         this.data = data;
         this.code = code;
         this.message = message;
     }
-    public static <T> ResponeDataVo success() {
+
+    public static <T> ResponseDataVo success() {
         return success(null);
     }
 
-    public static <T> ResponeDataVo success(T data) {
-        return success(data,ResponeEnum.SUCCESS.getMessage());
+    public static <T> ResponseDataVo success(T data) {
+        return success(data, ResponseEnum.SUCCESS.getMessage());
     }
 
-    public static <T> ResponeDataVo success(T data, String message) {
-        ResponeDataVo responeDataVo = new ResponeDataVo(data, ResponeEnum.SUCCESS.getCode(), message);
+    public static <T> ResponseDataVo success(T data, String message) {
+        ResponseDataVo responeDataVo = new ResponseDataVo(data, ResponseEnum.SUCCESS.getCode(), message);
         return responeDataVo;
     }
 
 
-    public static <T> ResponeDataVo error(String message) {
+    public static <T> ResponseDataVo error(String message) {
         return error(null,message);
     }
 
 
-    public static <T> ResponeDataVo error(ResponeEnum code) {
+    public static <T> ResponseDataVo error(ResponseEnum code) {
         return error(code.getCode(),code.getMessage());
     }
 
-    public static <T> ResponeDataVo error(T data,ResponeEnum code) {
+    public static <T> ResponseDataVo error(T data, ResponseEnum code) {
         return error(data,code.getCode(),code.getMessage());
     }
 
-    private static <T> ResponeDataVo error(Integer code,String message) {
+    private static <T> ResponseDataVo error(Integer code, String message) {
         return error(null,code,message);
     }
 
-    private static <T> ResponeDataVo error(T data, Integer code, String message) {
-        ResponeDataVo responeDataVo = new ResponeDataVo(data, code, message);
+    private static <T> ResponseDataVo error(T data, Integer code, String message) {
+        ResponseDataVo responeDataVo = new ResponseDataVo(data, code, message);
         return responeDataVo;
     }
 

@@ -1,9 +1,7 @@
 package com.xie.java.menu.controller;
 
 
-
-import com.xie.java.common.response.ResponeDataVo;
-import com.xie.java.common.response.ResponeEnum;
+import com.xie.java.common.response.ResponseDataVo;
 import com.xie.java.menu.entity.Menu;
 import com.xie.java.menu.service.MenuService;
 import org.slf4j.Logger;
@@ -27,18 +25,18 @@ public class MenuController {
 
     @RequestMapping(value = "selectMenuList", method = RequestMethod.GET)
     @ResponseBody
-    public ResponeDataVo selectMenuList(Integer parentId) {
+    public ResponseDataVo selectMenuList(Integer parentId) {
         List<Menu> menus = menuService.selectMenuList(parentId);
-        return  ResponeDataVo.success(menus);
+        return ResponseDataVo.success(menus);
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     @ResponseBody
-    public ResponeDataVo add() {
+    public ResponseDataVo add() {
         Menu menu = new Menu();
         menu.setMenuName("测试item");
         menuService.add(menu);
-        return  ResponeDataVo.success();
+        return ResponseDataVo.success();
     }
 
 
