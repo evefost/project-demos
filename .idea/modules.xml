@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/common-util/common-util.iml" filepath="$PROJECT_DIR$/common-util/common-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common-util/common-util.iml" filepath="$PROJECT_DIR$/common-util/common-util.iml" />
       <module fileurl="file://$PROJECT_DIR$/mult-menu/menu-api/menu-api.iml" filepath="$PROJECT_DIR$/mult-menu/menu-api/menu-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/mult-menu/menu-service/menu-service.iml" filepath="$PROJECT_DIR$/mult-menu/menu-service/menu-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/mult-menu/menu-web/menu-web.iml" filepath="$PROJECT_DIR$/mult-menu/menu-web/menu-web.iml" />
@@ -10,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/project-demos.iml" filepath="$PROJECT_DIR$/project-demos.iml" />
       <module fileurl="file://$PROJECT_DIR$/standard-project/standard-api/standard-api.iml" filepath="$PROJECT_DIR$/standard-project/standard-api/standard-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/standard-project/standard-project.iml" filepath="$PROJECT_DIR$/standard-project/standard-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/standard-project/standard-service/standard-service.iml" filepath="$PROJECT_DIR$/standard-project/standard-service/standard-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/standard-project/standard-service/standard-service.iml" filepath="$PROJECT_DIR$/standard-project/standard-service/standard-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/standard-project/standard-web/standard-web.iml" filepath="$PROJECT_DIR$/standard-project/standard-web/standard-web.iml" />
     </modules>
