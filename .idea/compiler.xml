@@ -13,6 +13,7 @@
         <module name="menu-web" />
         <module name="menu-web (1)" />
         <module name="standar-project" />
+        <module name="standard-api" />
         <module name="standard-web" />
       </profile>
     </annotationProcessing>
