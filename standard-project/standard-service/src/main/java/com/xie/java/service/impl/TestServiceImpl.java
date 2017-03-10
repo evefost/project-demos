@@ -1,9 +1,9 @@
 package com.xie.java.service.impl;
 
 import com.baomidou.framework.service.impl.SuperServiceImpl;
+import com.xie.java.constant.AppConfig;
 import com.xie.java.dao.TestMapper;
 import com.xie.java.entity.TestBean;
-import com.xie.java.constant.AppConfig;
 import com.xie.java.service.TestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

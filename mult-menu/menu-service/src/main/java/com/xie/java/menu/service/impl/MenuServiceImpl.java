@@ -2,9 +2,7 @@ package com.xie.java.menu.service.impl;
 
 import com.baomidou.framework.service.impl.SuperServiceImpl;
 import com.xie.java.menu.dao.MenuMapper;
-import com.xie.java.menu.dao.TestMapper;
 import com.xie.java.menu.entity.Menu;
-import com.xie.java.menu.entity.TestBean;
 import com.xie.java.menu.service.MenuService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
