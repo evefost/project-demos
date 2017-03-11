@@ -28,6 +28,14 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+    <!--Swagger  -->
+    <!--com.xmsrs.hengyun.api替换为SwaggerConfig在的包路径-->
+    <context:component-scan base-package="com.xie.config"/>
+    <!--class 替换为你项目中SwaggerConfig的实际路径-->
+    <bean class="com.xie.config.SwaggerConfig"/>
+    <!-- Swagger资源重定向(仅作为后台使用不提供静态资源) -->
+    <mvc:resources location="classpath:/META-INF/resources/" mapping="swagger-ui.html"/>
+    <mvc:resources location="classpath:/META-INF/resources/webjars/" mapping="/webjars/**"/>
 
 
 </beans>

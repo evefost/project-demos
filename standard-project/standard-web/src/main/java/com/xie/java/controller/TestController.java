@@ -3,6 +3,8 @@ package com.xie.java.controller;
 
 import com.xie.java.entity.TestBean;
 import com.xie.java.service.TestService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
+@Api("dsdsdsdsd")
 @Controller
 @RequestMapping("/api/test")
 public class TestController {
@@ -33,6 +36,7 @@ public class TestController {
 
     @RequestMapping(value = "getEnviroment", method = RequestMethod.GET)
     @ResponseBody
+    @ApiOperation(value="接口说明(测试)",httpMethod="GET",notes="在没有会话、没有签名的情况下，进入方法体")
     public String queryCurrentEnviroment() {
         String enviroment = testService.getEnviroment();
         logger.info("evn:{}", enviroment);
