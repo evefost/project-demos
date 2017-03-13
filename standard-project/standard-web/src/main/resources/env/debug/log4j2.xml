@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration status="OFF">
+<configuration status="debug">
     <Properties>
-        <property name="log.path">logs</property>
+        <property name="log.path">${sys:catalina.home}/logs/${artifactId}</property>
     </Properties>
     <appenders>
         <Console name="ConsoleAppender" target="SYSTEM_OUT">
