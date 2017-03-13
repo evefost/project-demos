@@ -6,4 +6,5 @@
 
     <bean id="config" class="com.xie.java.constant.AppConfig"/>
     <import resource="classpath*:spring/*.xml"/>
+
 </beans>

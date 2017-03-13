@@ -11,9 +11,14 @@ public final class AppConfig {
     @Value("${package_enviroment}")
     private String packageEnviroment;
 
+    @Value("${white_list}")
+    private String whileList;
 
     public String getPackageEnviroment() {
         return packageEnviroment;
     }
 
+    public String getWhileList() {
+        return whileList;
+    }
 }

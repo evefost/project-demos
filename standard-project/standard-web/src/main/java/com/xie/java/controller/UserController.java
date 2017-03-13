@@ -1,32 +1,41 @@
 package com.xie.java.controller;
 
+import com.xie.java.common.response.ResponseDataVo;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/users") // 通过这里配置使下面的映射都在/users下，可去除
-public class UserController {  
-  
+@RequestMapping(value = "/user") // 通过这里配置使下面的映射都在/users下，可去除
+public class UserController {
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @ApiOperation(value = "获取用户列表", notes = "")
-    @RequestMapping(value = { "" }, method = RequestMethod.GET)
-    public String  getUserList() {
+    @RequestMapping(value = {"login"}, method = RequestMethod.GET)
+    public ResponseDataVo login(String username, String password) {
+
+        logger.debug("login:{} {}",username,password);
+        return ResponseDataVo.success();
+    }
+
+    @ApiOperation(value = "获取用户列表", notes = "")
+    @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
+    public String getUserList() {
         return "";
-    }  
-  
+    }
 
-  
 
-  
-    @ApiOperation(value = "删除用户", notes = "根据url的id来指定删除对象")  
-    @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long")  
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)  
+    @ApiOperation(value = "删除用户", notes = "根据url的id来指定删除对象")
+    @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public String deleteUser(@PathVariable Long id) {
         return "success";
-    }  
-  
+    }
+
 }  

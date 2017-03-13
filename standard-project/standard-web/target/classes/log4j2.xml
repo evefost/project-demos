@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration status="OFF">
+<configuration status="debug">
     <Properties>
-        <property name="log.path">logs</property>
+        <property name="log.path">${sys:catalina.home}/logs/standard-web</property>
     </Properties>
     <appenders>
         <Console name="ConsoleAppender" target="SYSTEM_OUT">
@@ -17,7 +17,7 @@
     <loggers>
 
 
-        <logger name="com.xie.java" level="debug" additivity="false">
+        <logger name="com.xie" level="debug" additivity="false">
             <appender-ref ref="ConsoleAppender"/>
             <appender-ref ref="FileAppender"/>
         </logger>

@@ -6,6 +6,7 @@
         <property name="locations">
             <list>
                 <value>classpath:properties/*.properties</value>
+                <value>classpath:*.properties</value>
             </list>
         </property>
     </bean>

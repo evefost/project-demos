@@ -29,7 +29,7 @@ public class TestController {
 
         logger.debug("cdebug");
         logger.info("cinfo");
-        logger.error("cerror");
+        logger.error("cerror{}","aaa=============");
         return testService.getVersion();
     }
 
