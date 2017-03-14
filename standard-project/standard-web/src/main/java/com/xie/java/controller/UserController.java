@@ -34,8 +34,9 @@ public class UserController {
     @ApiOperation(value = "删除用户", notes = "根据url的id来指定删除对象")
     @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String deleteUser(@PathVariable Long id) {
-        return "success";
+    public ResponseDataVo deleteUser(@PathVariable Long id) {
+        logger.info("删除用户id:" + id);
+        return ResponseDataVo.success();
     }
 
 }  
