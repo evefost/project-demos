@@ -27,13 +27,13 @@ import java.util.List;
 public class TestServiceImplTest {
 
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
-
     @Autowired
     TestService testService;
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Before
     public void before() throws Exception {
+
     }
 
     @After
@@ -68,7 +68,7 @@ public class TestServiceImplTest {
     @Test
     public void selectTestPage() throws Exception {
         Page<TestBean> page  = new Page<TestBean>(0,5);
-        Page<TestBean> testBeanPage = testService.selectTestPage(page, 1);
+        Page<TestBean> testBeanPage = testService.selectTestPage(page, 0);
         logger.debug(""+testBeanPage);
 
     }

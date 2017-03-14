@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/mult-menu/menu-service/menu-service.iml" filepath="$PROJECT_DIR$/mult-menu/menu-service/menu-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/mult-menu/menu-web/menu-web.iml" filepath="$PROJECT_DIR$/mult-menu/menu-web/menu-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/mult-menu/mult-menu.iml" filepath="$PROJECT_DIR$/mult-menu/mult-menu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis-code-generator/mybatis-code-generator.iml" filepath="$PROJECT_DIR$/mybatis-code-generator/mybatis-code-generator.iml" />
       <module fileurl="file://$PROJECT_DIR$/project-demos.iml" filepath="$PROJECT_DIR$/project-demos.iml" />
       <module fileurl="file://$PROJECT_DIR$/standard-project/standard-api/standard-api.iml" filepath="$PROJECT_DIR$/standard-project/standard-api/standard-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/standard-project/standard-project.iml" filepath="$PROJECT_DIR$/standard-project/standard-project.iml" />

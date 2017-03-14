@@ -12,6 +12,7 @@
         <module>mult-menu</module>
         <module>standard-project</module>
         <module>common-util</module>
+        <module>mybatis-code-generator</module>
     </modules>
 
     <properties>
