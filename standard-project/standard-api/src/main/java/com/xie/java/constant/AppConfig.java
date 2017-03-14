@@ -14,6 +14,17 @@ public final class AppConfig {
     @Value("${white_list}")
     private String whileList;
 
+    @Value("${config_debug}")
+    private Boolean configDebug;
+
+    public Boolean getConfigDebug() {
+        return configDebug;
+    }
+
+    public void setConfigDebug(Boolean configDebug) {
+        this.configDebug = configDebug;
+    }
+
     public String getPackageEnviroment() {
         return packageEnviroment;
     }

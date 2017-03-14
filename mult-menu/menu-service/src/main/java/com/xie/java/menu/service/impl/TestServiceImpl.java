@@ -1,6 +1,5 @@
 package com.xie.java.menu.service.impl;
 
-import com.baomidou.framework.service.impl.SuperServiceImpl;
 import com.xie.java.menu.constant.AppConfig;
 import com.xie.java.menu.dao.TestMapper;
 import com.xie.java.menu.entity.TestBean;
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Service;
  * Created by chargerlink on 2016/11/25.
  */
 @Service("testService")
-public class TestServiceImpl extends SuperServiceImpl<TestMapper, TestBean> implements TestService {
+public class TestServiceImpl implements TestService {
     private static final Logger logger = LoggerFactory.getLogger(TestServiceImpl.class);
 
     @Autowired

@@ -7,12 +7,12 @@ import com.xie.java.constant.AppConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,6 +26,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     public static String USER_TOKEN = "token";
+    final String[] filterFiles = new String[]{
+            ".html", ".jsp", ".js", ".jpg", ".png", ".css", ".git", ".proto", ".json", ".map",".xml"
+    };
+
 
 
     @Autowired
@@ -36,9 +40,17 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
+
+        logger.debug("is Debug mode:" + appConfig.getConfigDebug());
         String pathInfo = request.getPathInfo();
         String requestURI = request.getRequestURI();
-        if(requestURI == null ){
+        logger.debug("loggin incepter:" + pathInfo);
+        logger.debug("loggin incepter:" + requestURI);
+
+        if(appConfig.getConfigDebug()){
+            return true;
+        }
+        if (requestURI == null) {
             return true;
         }
         if (isInWileList(requestURI) || isStaticResouce(requestURI) || isLogin(request, response)) {
@@ -57,11 +69,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             String res = JSONObject.toJSONString(ResponseDataVo.error(ResponseEnum.TOKEN_ERR));
             response.setCharacterEncoding("UTF-8");
             response.setHeader("Content-Type", "text/html; charset=UTF-8");
+            PrintWriter writer = null;
             try {
-                response.getWriter().println(res);
+                writer = response.getWriter();
+                writer.println(res);
             } catch (IOException e) {
                 logger.error("login eer:{}", e.getMessage());
-
+                writer.close();
             }
             return false;
         } else {
@@ -75,9 +89,15 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
     private boolean isStaticResouce(String path) {
 
-        if(path.startsWith("static")){
+        if (path.startsWith("static")) {
             return true;
         }
+        for(String sufix: filterFiles){
+            if(path.endsWith(sufix)){
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -93,7 +113,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     private void loadWhileList() {
 
         String[] split = appConfig.getWhileList().split(",");
-        for(String s:split){
+        for (String s : split) {
             whileListSet.add(s);
         }
     }

@@ -1,10 +1,9 @@
 package com.xie.java.entity;
 
-import com.baomidou.mybatisplus.annotations.IdType;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
-
+import com.baomidou.mybatisplus.enums.IdType;
 /**
  * Created by xieyang on 16/11/27.
  */
@@ -16,6 +15,17 @@ public class TestBean {
 
     @TableField(value = "name")
     private String name;
+
+    @TableField(value = "status")
+    private Integer status;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
     public Integer getId() {
         return id;

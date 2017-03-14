@@ -8,4 +8,8 @@
 		SELECT * FROM  tb1 WHERE id=#{id}
 	</select>
 
+	<select id="selectTestBeans" resultType="TestBean">
+		SELECT * FROM tb1 WHERE status=#{status}
+	</select>
+
 </mapper>

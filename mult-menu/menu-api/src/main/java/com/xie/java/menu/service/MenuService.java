@@ -10,5 +10,5 @@ public interface MenuService {
     List<Menu> selectMenuList(Integer menuId);
 
 
-    Boolean add(Menu menu);
+    Integer add(Menu menu);
 }

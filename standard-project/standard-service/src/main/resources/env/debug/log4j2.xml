@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration status="debug">
+    <!--当前工页下生成logs-->
     <Properties>
         <property name="log.path">logs</property>
     </Properties>
@@ -21,7 +22,6 @@
             <appender-ref ref="ConsoleAppender"/>
             <appender-ref ref="FileAppender"/>
         </logger>
-
 
 
         <logger name="java.sql" level="error" additivity="false">

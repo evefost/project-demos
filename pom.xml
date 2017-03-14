@@ -18,7 +18,7 @@
         <project.version>1.0.0</project.version>
         <spring.version>4.3.4.RELEASE</spring.version>
         <log4j.version>2.6.2</log4j.version>
-        <mybatis-plus.version>1.5</mybatis-plus.version>
+        <mybatis-plus.version>2.0</mybatis-plus.version>
         <fastjson.version>1.1.15</fastjson.version>
         <fasterxml.jackson.version>2.4.3</fasterxml.jackson.version>
         <jdbc.version>1.0.27</jdbc.version>
@@ -29,7 +29,7 @@
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.11</version>
+                <version>4.12</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -155,6 +155,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
+                <config.debug>true</config.debug>
                 <package.environment>env/dev</package.environment>
                 <package.mode>env/debug</package.mode>
                 <package.name_suff>dev-debug</package.name_suff>
@@ -164,6 +165,7 @@
             <id>dev_release</id>
 
             <properties>
+                <config.debug>false</config.debug>
                 <package.environment>env/dev</package.environment>
                 <package.mode>env/release</package.mode>
                 <package.name_suff>dev-release</package.name_suff>
@@ -173,6 +175,7 @@
         <profile>
             <id>test_debug</id>
             <properties>
+                <config.debug>true</config.debug>
                 <package.environment>env/test</package.environment>
                 <package.mode>env/debug</package.mode>
                 <package.name_suff>test-debug</package.name_suff>
@@ -181,6 +184,7 @@
         <profile>
             <id>test_release</id>
             <properties>
+                <config.debug>false</config.debug>
                 <package.environment>env/test</package.environment>
                 <package.mode>env/release</package.mode>
                 <package.name_suff>test-release</package.name_suff>
@@ -190,6 +194,7 @@
         <profile>
             <id>prd_debug</id>
             <properties>
+                <config.debug>true</config.debug>
                 <package.environment>env/prd</package.environment>
                 <package.mode>env/debug</package.mode>
                 <package.name_suff>prd-debug</package.name_suff>
@@ -198,6 +203,7 @@
         <profile>
             <id>prd_release</id>
             <properties>
+                <config.debug>false</config.debug>
                 <package.environment>env/prd</package.environment>
                 <package.mode>env/release</package.mode>
                 <package.name_suff>prd-release</package.name_suff>

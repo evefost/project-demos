@@ -12,6 +12,6 @@
     <!-- 扫描 service -->
     <context:component-scan base-package="com.xie.java.service.*"/>
     <context:component-scan base-package="com.xie.java.dao.*"/>
-
+    <bean id="config" class="com.xie.java.constant.AppConfig"/>
 
 </beans>
