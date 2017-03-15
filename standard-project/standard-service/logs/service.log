@@ -1,0 +1,17 @@
+2017-03-14 22:41:17 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6131 [] - ==>  Preparing: SELECT * FROM tb1 WHERE status=? LIMIT 0,5 
+2017-03-14 22:41:17 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6168 [] - ==> Parameters: 1(Integer)
+2017-03-14 22:41:17 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6192 [] - <==      Total: 2
+2017-03-14 22:42:26 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 9160 [] - ==>  Preparing: SELECT * FROM tb1 WHERE status=? LIMIT 0,5 
+2017-03-14 22:42:26 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 9199 [] - ==> Parameters: 0(Integer)
+2017-03-14 22:42:26 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 9231 [] - <==      Total: 5
+2017-03-14 22:43:26 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 7015 [] - ==>  Preparing: SELECT * FROM tb1 WHERE status=? LIMIT 0,5 
+2017-03-14 22:43:26 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 7035 [] - ==> Parameters: 0(Integer)
+2017-03-14 22:43:26 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 7049 [] - <==      Total: 5
+2017-03-14 22:44:08 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5540 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName FROM tb1 LIMIT 10,10 
+2017-03-14 22:44:08 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5559 [] - ==> Parameters: 
+2017-03-14 22:44:08 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5581 [] - <==      Total: 7
+2017-03-14 22:46:51 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 5181 [] - ==>  Preparing: SELECT * FROM tb1 WHERE status=? LIMIT 0,5 
+2017-03-14 22:46:51 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 5212 [] - ==> Parameters: 0(Integer)
+2017-03-14 22:48:13 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6355 [] - ==>  Preparing: SELECT * FROM tb1 WHERE status=? LIMIT 0,5 
+2017-03-14 22:48:13 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6373 [] - ==> Parameters: 0(Integer)
+2017-03-14 22:48:13 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6388 [] - <==      Total: 5
