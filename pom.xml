@@ -11,6 +11,7 @@
     <modules>
         <module>mult-menu</module>
         <module>standard-project</module>
+        <module>dubbo-simple</module>
         <module>common-util</module>
         <module>mybatis-code-generator</module>
     </modules>
@@ -142,6 +143,37 @@
                 <version>${mybatis-plus.version}</version>
             </dependency>
 
+            <!-- dubbo -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>2.5.3</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>spring</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.javassist</groupId>
+                        <artifactId>javassist</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.javassist</groupId>
+                <artifactId>javassist</artifactId>
+                <version>3.18.0-GA</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.sgroschupf</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>0.1</version>
+            </dependency>
+            <!-- dubbo end  -->
 
         </dependencies>
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/dubbo-simple/dubbo-simple-web" />
     <file type="web" url="file://$PROJECT_DIR$/mult-menu/menu-web" />
     <file type="web" url="file://$PROJECT_DIR$/standard-project/standard-web" />
   </component>
@@ -13,10 +14,18 @@
         <option value="$PROJECT_DIR$/standard-project/standard-web/pom.xml" />
         <option value="$PROJECT_DIR$/standard-project/pom.xml" />
         <option value="$PROJECT_DIR$/standard-project/standard-api/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-simple/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-simple/standard-api/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-simple/standard-service/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-simple/standard-web/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-simple/Dubbo-Consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-simple/Dubbo-Demo/pom.xml" />
+        <option value="$PROJECT_DIR$/dubbo-simple/Dubbo-Demo1/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/dubbo-simple/Dubbo-Demo1/pom.xml" />
         <option value="$PROJECT_DIR$/mult-memu/pom.xml" />
       </set>
     </option>

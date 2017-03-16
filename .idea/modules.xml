@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/dubbo-simple/Dubbo-Consumer/Dubbo-Consumer.iml" filepath="$PROJECT_DIR$/dubbo-simple/Dubbo-Consumer/Dubbo-Consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-simple/Dubbo-Demo/Dubbo-Demo.iml" filepath="$PROJECT_DIR$/dubbo-simple/Dubbo-Demo/Dubbo-Demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/common-util/common-util.iml" filepath="$PROJECT_DIR$/common-util/common-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-simple/Dubbo-Demo/dubbo-api/dubbo-api.iml" filepath="$PROJECT_DIR$/dubbo-simple/Dubbo-Demo/dubbo-api/dubbo-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-simple/Dubbo-Demo/dubbo-provider/dubbo-provider.iml" filepath="$PROJECT_DIR$/dubbo-simple/Dubbo-Demo/dubbo-provider/dubbo-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-simple/Dubbo-Demo1/dubbo-provider/dubbo-provider (1).iml" filepath="$PROJECT_DIR$/dubbo-simple/Dubbo-Demo1/dubbo-provider/dubbo-provider (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-simple/dubbo-simple.iml" filepath="$PROJECT_DIR$/dubbo-simple/dubbo-simple.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-simple/dubbo-simple-api/dubbo-simple-api.iml" filepath="$PROJECT_DIR$/dubbo-simple/dubbo-simple-api/dubbo-simple-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-simple/dubbo-simple-service/dubbo-simple-service.iml" filepath="$PROJECT_DIR$/dubbo-simple/dubbo-simple-service/dubbo-simple-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-simple/dubbo-simple-web/dubbo-simple-web.iml" filepath="$PROJECT_DIR$/dubbo-simple/dubbo-simple-web/dubbo-simple-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/mult-menu/menu-api/menu-api.iml" filepath="$PROJECT_DIR$/mult-menu/menu-api/menu-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/mult-menu/menu-service/menu-service.iml" filepath="$PROJECT_DIR$/mult-menu/menu-service/menu-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/mult-menu/menu-web/menu-web.iml" filepath="$PROJECT_DIR$/mult-menu/menu-web/menu-web.iml" />

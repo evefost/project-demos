@@ -7,6 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="common-util" />
+        <module name="dubbo-api" />
+        <module name="Dubbo-Consumer" />
+        <module name="dubbo-provider" />
+        <module name="dubbo-provider (1)" />
+        <module name="dubbo-simple-api" />
+        <module name="dubbo-simple-service" />
+        <module name="dubbo-simple-web" />
         <module name="menu-api" />
         <module name="menu-service" />
         <module name="menu-service (1)" />
@@ -20,6 +27,16 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="common-util" target="1.5" />
+      <module name="dubbo-api" target="1.5" />
+      <module name="Dubbo-Consumer" target="1.5" />
+      <module name="Dubbo-Demo" target="1.5" />
+      <module name="Dubbo-Demo (1)" target="1.5" />
+      <module name="dubbo-provider" target="1.5" />
+      <module name="dubbo-provider (1)" target="1.5" />
+      <module name="dubbo-simple" target="1.5" />
+      <module name="dubbo-simple-api" target="1.5" />
+      <module name="dubbo-simple-service" target="1.5" />
+      <module name="dubbo-simple-web" target="1.7" />
       <module name="menu-api" target="1.5" />
       <module name="menu-api (1)" target="1.5" />
       <module name="menu-service" target="1.5" />
