@@ -57,16 +57,36 @@
                     <exclude>env/**</exclude>
                 </excludes>
             </resource>
+
             <resource>
                 <!--指定打包某个环境变量配置-->
                 <directory>src/main/resources/${package.environment}</directory>
                 <targetPath>properties</targetPath>
                 <filtering>true</filtering>
+                <excludes>
+                    <exclude>dubbo.properties</exclude>
+                </excludes>
             </resource>
+            <resource>
+                <!--dubbo 启动加载属必，
+                 String configPath = ConfigUtils.getProperty("dubbo.spring.config");
+                if(configPath == null || configPath.length() == 0) {
+                    configPath = "classpath*:META-INF/spring/*.xml";
+                    }
+                -->
+                <directory>src/main/resources/${package.environment}</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>dubbo.properties</include>
+                </includes>
+                <excludes></excludes>
+            </resource>
+
             <resource>
                 <directory>src/main/resources/${package.mode}</directory>
                 <filtering>true</filtering>
             </resource>
+
         </resources>
 
     </build>
