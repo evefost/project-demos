@@ -27,10 +27,8 @@ public class TestServiceImpl implements TestService {
     private AppConfig appConfig;
 
     public String getVersion() {
-        logger.debug("sdebug");
-        logger.info("sinfo");
-        logger.error("serror");
-        return "1.0";
+        logger.debug("dubbo provideer getversion");
+        return "dubbo version is 2.5.3";
     }
 
 

@@ -16,7 +16,7 @@
 	</select>
 
 	<select id="selectTestBeans" resultMap="BaseResultMap">
-		SELECT * FROM tb1 WHERE status=#{status}
+		SELECT * FROM tb1 WHERE 1=1 and status=#{status}
 	</select>
 
 </mapper>

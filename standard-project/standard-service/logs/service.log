@@ -15,3 +15,11 @@
 2017-03-14 22:48:13 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6355 [] - ==>  Preparing: SELECT * FROM tb1 WHERE status=? LIMIT 0,5 
 2017-03-14 22:48:13 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6373 [] - ==> Parameters: 0(Integer)
 2017-03-14 22:48:13 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6388 [] - <==      Total: 5
+2017-03-17 10:19:06 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 2316 [] - ==>  Preparing: SELECT * FROM tb1 WHERE status=? LIMIT 0,5 
+2017-03-17 10:19:06 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 2326 [] - ==> Parameters: 0(Integer)
+2017-03-17 10:19:06 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 2335 [] - <==      Total: 3
+2017-03-17 10:29:14 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 2065 [] - ==>  Preparing: SELECT * FROM tb1 WHERE 1=1 ,status=? LIMIT 0,5 
+2017-03-17 10:29:14 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 2075 [] - ==> Parameters: 0(Integer)
+2017-03-17 10:29:50 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 2113 [] - ==>  Preparing: SELECT * FROM tb1 WHERE 1=1 and status=? LIMIT 0,5 
+2017-03-17 10:29:50 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 2124 [] - ==> Parameters: 0(Integer)
+2017-03-17 10:29:50 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 2134 [] - <==      Total: 3

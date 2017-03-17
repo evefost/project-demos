@@ -22,6 +22,7 @@
         <module name="mybatis-code-generator" />
         <module name="standar-project" />
         <module name="standard-api" />
+        <module name="standard-service" />
         <module name="standard-web" />
       </profile>
     </annotationProcessing>

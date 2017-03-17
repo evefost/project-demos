@@ -7,6 +7,7 @@ import com.xie.java.constant.AppConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,9 @@ import java.util.Set;
  * @author Window 7
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
+
+    @Value("${white_list}")
+    private String whileList;
 
     public static String USER_TOKEN = "token";
     final String[] filterFiles = new String[]{
@@ -42,7 +46,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         logger.debug("loggin incepter:" + pathInfo);
         logger.debug("loggin incepter:" + requestURI);
 
-        if (appConfig.getConfigDebug()) {
+        if (true) {
             return true;
         }
         if (requestURI == null) {
@@ -97,7 +101,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     }
 
     private boolean isInWileList(String path) {
-
+        if(whileList == null){
+            return true;
+        }
         if (whileListSet.size() == 0) {
             loadWhileList();
         }
@@ -107,7 +113,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
     private void loadWhileList() {
 
-        String[] split = appConfig.getWhileList().split(",");
+        String[] split = whileList.split(",");
         for (String s : split) {
             whileListSet.add(s);
         }

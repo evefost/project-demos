@@ -1,0 +1,22 @@
+2017-03-17 13:22:26 [DubboServerHandler-192.168.1.217:20883-thread-2] DEBUG com.xie.java.service.impl.TestServiceImpl(line-30) 36576 [] - sdebug
+2017-03-17 13:22:26 [DubboServerHandler-192.168.1.217:20883-thread-2] INFO  com.xie.java.service.impl.TestServiceImpl(line-31) 36577 [] - sinfo
+2017-03-17 13:22:26 [DubboServerHandler-192.168.1.217:20883-thread-2] ERROR com.xie.java.service.impl.TestServiceImpl(line-32) 36578 [] - serror
+2017-03-17 13:22:30 [DubboServerHandler-192.168.1.217:20883-thread-3] DEBUG com.xie.java.service.impl.TestServiceImpl(line-30) 40304 [] - sdebug
+2017-03-17 13:22:30 [DubboServerHandler-192.168.1.217:20883-thread-3] INFO  com.xie.java.service.impl.TestServiceImpl(line-31) 40304 [] - sinfo
+2017-03-17 13:22:30 [DubboServerHandler-192.168.1.217:20883-thread-3] ERROR com.xie.java.service.impl.TestServiceImpl(line-32) 40304 [] - serror
+2017-03-17 13:28:04 [DubboServerHandler-192.168.1.217:20883-thread-6] DEBUG com.xie.java.service.impl.TestServiceImpl(line-30) 374424 [] - sdebug
+2017-03-17 13:28:04 [DubboServerHandler-192.168.1.217:20883-thread-6] INFO  com.xie.java.service.impl.TestServiceImpl(line-31) 374425 [] - sinfo
+2017-03-17 13:28:04 [DubboServerHandler-192.168.1.217:20883-thread-6] ERROR com.xie.java.service.impl.TestServiceImpl(line-32) 374425 [] - serror
+2017-03-17 13:34:46 [DubboServerHandler-192.168.1.217:20883-thread-2] DEBUG com.xie.java.service.impl.TestServiceImpl(line-30) 31219 [] - sdebug
+2017-03-17 13:34:46 [DubboServerHandler-192.168.1.217:20883-thread-2] INFO  com.xie.java.service.impl.TestServiceImpl(line-31) 31221 [] - sinfo
+2017-03-17 13:34:46 [DubboServerHandler-192.168.1.217:20883-thread-2] ERROR com.xie.java.service.impl.TestServiceImpl(line-32) 31222 [] - serror
+2017-03-17 13:34:57 [DubboServerHandler-192.168.1.217:20883-thread-3] DEBUG com.xie.java.service.impl.TestServiceImpl(line-43) 42540 [] - getEnviroment
+2017-03-17 13:34:57 [DubboServerHandler-192.168.1.217:20883-thread-3] DEBUG com.xie.java.dao.TestMapper.selectById(line-145) 42571 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 WHERE id=? 
+2017-03-17 13:34:57 [DubboServerHandler-192.168.1.217:20883-thread-3] DEBUG com.xie.java.dao.TestMapper.selectById(line-145) 42592 [] - ==> Parameters: 1(Integer)
+2017-03-17 13:34:57 [DubboServerHandler-192.168.1.217:20883-thread-3] DEBUG com.xie.java.dao.TestMapper.selectById(line-145) 42632 [] - <==      Total: 1
+2017-03-17 13:37:09 [DubboServerHandler-192.168.1.217:20883-thread-2] DEBUG com.xie.java.service.impl.TestServiceImpl(line-41) 15402 [] - getEnviroment
+2017-03-17 13:37:09 [DubboServerHandler-192.168.1.217:20883-thread-2] DEBUG com.xie.java.dao.TestMapper.selectById(line-145) 15432 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 WHERE id=? 
+2017-03-17 13:37:09 [DubboServerHandler-192.168.1.217:20883-thread-2] DEBUG com.xie.java.dao.TestMapper.selectById(line-145) 15454 [] - ==> Parameters: 1(Integer)
+2017-03-17 13:37:09 [DubboServerHandler-192.168.1.217:20883-thread-2] DEBUG com.xie.java.dao.TestMapper.selectById(line-145) 15469 [] - <==      Total: 1
+2017-03-17 13:37:11 [DubboServerHandler-192.168.1.217:20883-thread-3] DEBUG com.xie.java.service.impl.TestServiceImpl(line-30) 17771 [] - dubbo provideer getversion
+2017-03-17 13:37:12 [DubboServerHandler-192.168.1.217:20883-thread-4] DEBUG com.xie.java.service.impl.TestServiceImpl(line-30) 18643 [] - dubbo provideer getversion

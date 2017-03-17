@@ -1,6 +1,6 @@
-com/xie/java/controller/UserController.class
-com/xie/filter/CorsFilter.class
-com/xie/java/controller/RestFulDesignController.class
-com/xie/java/controller/TestController.class
-com/xie/config/SwaggerConfig.class
-com/xie/intercepter/LoginInterceptor.class
+com\xie\java\controller\UserController.class
+com\xie\java\controller\TestController.class
+com\xie\intercepter\LoginInterceptor.class
+com\xie\config\SwaggerConfig.class
+com\xie\java\controller\RestFulDesignController.class
+com\xie\filter\CorsFilter.class

@@ -11,45 +11,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 
-@Api("dsdsdsdsd")
-@Controller
-@RequestMapping("/api/test")
+@Api("dubbo 测试接口")
+@RestController
+@RequestMapping("dubbo")
 public class TestController {
     private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 
     @Autowired
     private TestService testService;
 
-    @RequestMapping(value = "serviceVersion", method = RequestMethod.GET)
-    @ResponseBody
+    @RequestMapping(value = "version", method = RequestMethod.GET)
     public String getVersion() {
-
-        logger.debug("cdebug");
+        logger.debug("getVersion");
         logger.info("cinfo");
         logger.error("cerror{}", "aaa=============");
         return testService.getVersion();
     }
 
 
-    @RequestMapping(value = "getEnviroment", method = RequestMethod.GET)
-    @ResponseBody
+    @RequestMapping(value = "enviroment", method = RequestMethod.GET)
     @ApiOperation(value = "接口说明(测试)", httpMethod = "GET", notes = "在没有会话、没有签名的情况下，进入方法体")
     public String queryCurrentEnviroment() {
         String enviroment = testService.getEnviroment();
         logger.info("evn:{}", enviroment);
         logger.error("env error{}", enviroment);
         return enviroment;
-    }
-
-    @RequestMapping(value = "getBean", method = RequestMethod.GET)
-    @ResponseBody
-    public TestBean getBean() {
-        TestBean t = new TestBean();
-        t.setId(12);
-        t.setName("abcdef");
-        return t;
     }
 }

@@ -8,11 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
  */
 public final class AppConfig {
 
-    @Value("${package_enviroment}")
+    @Value("${package_env}")
     private String packageEnviroment;
-
-    @Value("${white_list}")
-    private String whileList;
 
     @Value("${config_debug}")
     private Boolean configDebug;
@@ -29,7 +26,5 @@ public final class AppConfig {
         return packageEnviroment;
     }
 
-    public String getWhileList() {
-        return whileList;
-    }
+
 }
