@@ -15,8 +15,6 @@
         <module>dubbo-simple-api</module>
         <module>dubbo-simple-service</module>
         <module>dubbo-simple-web</module>
-        <module>Dubbo-Demo</module>
-        <module>Dubbo-Consumer</module>
     </modules>
 
     <dependencies>
