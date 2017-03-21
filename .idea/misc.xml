@@ -18,13 +18,13 @@
         <option value="$PROJECT_DIR$/dubbo-simple/standard-api/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo-simple/standard-service/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo-simple/standard-web/pom.xml" />
-        <option value="$PROJECT_DIR$/dubbo-simple/Dubbo-Consumer/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo-simple/Dubbo-Demo/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo-simple/Dubbo-Demo1/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/dubbo-simple/Dubbo-Demo/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo-simple/Dubbo-Demo1/pom.xml" />
         <option value="$PROJECT_DIR$/mult-memu/pom.xml" />
       </set>

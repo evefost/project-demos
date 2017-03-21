@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="common-util" />
         <module name="dubbo-api" />
-        <module name="Dubbo-Consumer" />
         <module name="dubbo-provider" />
         <module name="dubbo-provider (1)" />
         <module name="dubbo-simple-api" />

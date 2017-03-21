@@ -18,7 +18,7 @@
 
     <properties>
         <project.version>1.0.0</project.version>
-        <spring.version>4.3.5.RELEASE</spring.version>
+        <spring.version>4.3.7.RELEASE</spring.version>
         <log4j.version>2.6.2</log4j.version>
         <mybatis-plus.version>2.0</mybatis-plus.version>
         <fastjson.version>1.1.15</fastjson.version>

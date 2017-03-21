@@ -20,3 +20,8 @@
 2017-03-17 13:37:09 [DubboServerHandler-192.168.1.217:20883-thread-2] DEBUG com.xie.java.dao.TestMapper.selectById(line-145) 15469 [] - <==      Total: 1
 2017-03-17 13:37:11 [DubboServerHandler-192.168.1.217:20883-thread-3] DEBUG com.xie.java.service.impl.TestServiceImpl(line-30) 17771 [] - dubbo provideer getversion
 2017-03-17 13:37:12 [DubboServerHandler-192.168.1.217:20883-thread-4] DEBUG com.xie.java.service.impl.TestServiceImpl(line-30) 18643 [] - dubbo provideer getversion
+2017-03-17 23:58:49 [DubboServerHandler-192.168.1.2:20883-thread-2] DEBUG com.xie.java.service.impl.TestServiceImpl(line-41) 223484 [] - getEnviroment
+2017-03-17 23:58:49 [DubboServerHandler-192.168.1.2:20883-thread-2] DEBUG com.xie.java.dao.TestMapper.selectById(line-145) 223550 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 WHERE id=? 
+2017-03-17 23:58:49 [DubboServerHandler-192.168.1.2:20883-thread-2] DEBUG com.xie.java.dao.TestMapper.selectById(line-145) 223650 [] - ==> Parameters: 1(Integer)
+2017-03-17 23:58:49 [DubboServerHandler-192.168.1.2:20883-thread-2] DEBUG com.xie.java.dao.TestMapper.selectById(line-145) 223721 [] - <==      Total: 1
+2017-03-18 00:00:23 [DubboServerHandler-192.168.1.2:20883-thread-3] DEBUG com.xie.java.service.impl.TestServiceImpl(line-30) 317259 [] - dubbo provideer getversion
