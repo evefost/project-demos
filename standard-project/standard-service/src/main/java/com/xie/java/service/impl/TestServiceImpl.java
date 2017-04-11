@@ -2,6 +2,7 @@ package com.xie.java.service.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.xie.java.constant.AppConfig;
 import com.xie.java.dao.TestMapper;
 import com.xie.java.entity.TestBean;
@@ -17,7 +18,7 @@ import java.util.List;
  * Created by chargerlink on 2016/11/25.
  */
 @Service("testService")
-public class TestServiceImpl implements TestService {
+public class TestServiceImpl extends ServiceImpl<TestMapper, TestBean> implements TestService {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 

@@ -2,10 +2,14 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns="http://www.springframework.org/schema/beans"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
          http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
          http://www.springframework.org/schema/context
-         http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+         http://www.springframework.org/schema/context/spring-context-4.2.xsd
+         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
     <!-- 打开Spring的Annotation支持 -->
     <context:annotation-config/>
@@ -13,5 +17,72 @@
     <context:component-scan base-package="com.xie.java.service.*"/>
     <context:component-scan base-package="com.xie.java.dao.*"/>
     <bean id="config" class="com.xie.java.constant.AppConfig"/>
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="driverClassName" value='${jdbc.driverClass}'/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="initialSize" value="${dataSource.initialSize}"/>
+        <property name="minIdle" value="${dataSource.maxIdle}"/>
+        <property name="maxActive" value="${dataSource.maxActive}"/>
+        <property name="maxWait" value="${dataSource.maxWait}"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>
+        <!-- 配置监控统计拦截的filters -->
+        <property name="filters" value="stat"/>
+    </bean>
+
+    <!--使用baomidou插件-->
+    <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:/mybatis-config.xml"/>
+        <property name="typeAliasesPackage" value="com.xie.java.entity"/>
+        <property name="mapperLocations" value="classpath*:mapper/**/*Mapper.xml"/>
+        <property name="plugins">
+            <!-- 分页插件配置 -->
+            <bean class="com.baomidou.mybatisplus.plugins.PaginationInterceptor">
+                <property name="dialectType" value="mysql" />
+            </bean>
+        </property>
+    </bean>
+
+
+    <!-- 加载 mapper.xml 接口 配置文件 -->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.xie.java.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+
+    <!-- 使用annotation注解方式配置事务 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!-- 使用JDBC事物 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- AOP配置事物 -->
+    <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="select*" read-only="true" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="insert*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 配置AOP切面 -->
+    <aop:config>
+        <aop:pointcut id="transactionPointcut"
+                      expression="execution(* com.xie.java.service.impl..*.*(..))"/>
+        <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice"/>
+    </aop:config>
+
 
 </beans>

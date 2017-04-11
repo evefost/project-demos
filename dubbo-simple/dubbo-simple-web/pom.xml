@@ -122,7 +122,8 @@
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
                     </archive>
-                    <warName>${artifactId}-${package.name_suff}</warName>
+                    <!--<warName>${artifactId}-${package.name_suff}</warName>-->
+                    <warName>${artifactId}</warName>
                     <webResources>
                         <resource>
                             <!--提指打包变量及结果放在目的路径-->

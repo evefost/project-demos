@@ -70,7 +70,7 @@ public class MpGenerator {
         // strategy.setInclude(new String[] { "user" }); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
         // 字段名生成策略
-        strategy.setFieldNaming(NamingStrategy.underline_to_camel);
+        //strategy.setFieldNaming(NamingStrategy.underline_to_camel);
         // 自定义实体父类
         // strategy.setSuperEntityClass("com.baomidou.demo.TestEntity");
         // 自定义实体，公共字段

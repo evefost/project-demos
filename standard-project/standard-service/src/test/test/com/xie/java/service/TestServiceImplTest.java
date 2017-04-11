@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.xie.java.entity.TestBean;
 import com.xie.java.service.TestService;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +13,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,6 +27,8 @@ import java.util.List;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring/*"})
+@TransactionConfiguration(defaultRollback = true)
+@Transactional
 public class TestServiceImplTest {
 
 
@@ -72,6 +77,16 @@ public class TestServiceImplTest {
         logger.debug(""+testBeanPage);
 
     }
+
+
+    @Test
+    public void addTestBean() throws Exception {
+        TestBean testBean = new TestBean();
+        testBean.setName("测233432");
+        boolean insert = testService.insert(testBean);
+        Assert.assertTrue(insert);
+    }
+
 
 
 
