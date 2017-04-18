@@ -1,4 +1,4 @@
-package com.xie.java.controller;
+package com.xie.java.test;
 
 import com.xie.java.common.response.ResponseDataVo;
 import io.swagger.annotations.ApiImplicitParam;
@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/user") // 通过这里配置使下面的映射都在/users下，可去除
@@ -38,5 +42,16 @@ public class UserController {
         logger.info("删除用户id:" + id);
         return ResponseDataVo.success();
     }
+
+    @RequestMapping("test")
+    public Map<String , Object> test(HttpServletRequest request){
+        logger.info("==================requestParam:{}" , request.getParameter("name"));
+        logger.info("==================sessionAttribute:{}" , request.getSession().getAttribute("name"));
+        Map<String , Object> result = new HashMap<String , Object>();
+        result.put("returnCode", 123);
+        result.put("message", "senvon");
+        return result;
+    }
+
 
 }  

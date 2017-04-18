@@ -32,3 +32,118 @@
 2017-04-11 23:37:11 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5213 [] - ==>  Preparing: INSERT INTO tb1 ( `name` ) VALUES ( ? ) 
 2017-04-11 23:37:11 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5259 [] - ==> Parameters: 测233432(String)
 2017-04-11 23:37:11 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5267 [] - <==    Updates: 1
+2017-04-12 00:25:24 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5605 [] - ==>  Preparing: INSERT INTO tb1 ( `name` ) VALUES ( ? ) 
+2017-04-12 00:25:24 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5661 [] - ==> Parameters: 测233432(String)
+2017-04-12 00:25:24 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5668 [] - <==    Updates: 1
+2017-04-12 00:25:24 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5878 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 LIMIT 10,10 
+2017-04-12 00:25:24 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5880 [] - ==> Parameters: 
+2017-04-12 00:25:24 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5903 [] - <==      Total: 9
+2017-04-12 00:25:24 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 5923 [] - ==>  Preparing: SELECT * FROM tb1 WHERE 1=1 and status=? LIMIT 0,5 
+2017-04-12 00:25:24 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 5925 [] - ==> Parameters: 0(Integer)
+2017-04-12 00:25:24 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 5935 [] - <==      Total: 5
+2017-04-12 00:26:34 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5857 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 LIMIT 0,5 
+2017-04-12 00:26:34 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5884 [] - ==> Parameters: 
+2017-04-12 00:26:34 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5911 [] - <==      Total: 5
+2017-04-12 00:26:34 [main] DEBUG com.xie.java.dao.TestMapper.selectList(line-145) 5933 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 WHERE (name = ? ) 
+2017-04-12 00:26:34 [main] DEBUG com.xie.java.dao.TestMapper.selectList(line-145) 5935 [] - ==> Parameters: 
+2017-04-12 00:26:34 [main] DEBUG com.xie.java.dao.TestMapper.selectList(line-145) 6094 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 WHERE (name LIKE '%bb%' AND description LIKE '%qq%') 
+2017-04-12 00:26:34 [main] DEBUG com.xie.java.dao.TestMapper.selectList(line-145) 6101 [] - ==> Parameters: 
+2017-04-12 00:26:34 [main] DEBUG com.xie.java.dao.TestMapper.selectList(line-145) 6117 [] - <==      Total: 1
+2017-04-12 00:26:34 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 6410 [] - ==>  Preparing: INSERT INTO tb1 ( `name` ) VALUES ( ? ) 
+2017-04-12 00:26:34 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 6416 [] - ==> Parameters: 测233432(String)
+2017-04-12 00:26:34 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 6420 [] - <==    Updates: 1
+2017-04-12 00:26:34 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 6470 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 LIMIT 10,10 
+2017-04-12 00:26:34 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 6471 [] - ==> Parameters: 
+2017-04-12 00:26:34 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 6480 [] - <==      Total: 9
+2017-04-12 00:26:34 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6553 [] - ==>  Preparing: SELECT * FROM tb1 WHERE 1=1 and status=? LIMIT 0,5 
+2017-04-12 00:26:34 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6554 [] - ==> Parameters: 0(Integer)
+2017-04-12 00:26:34 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6560 [] - <==      Total: 5
+2017-04-12 00:26:59 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5731 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 LIMIT 0,5 
+2017-04-12 00:26:59 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5750 [] - ==> Parameters: 
+2017-04-12 00:26:59 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5772 [] - <==      Total: 5
+2017-04-12 00:26:59 [main] DEBUG com.xie.java.dao.TestMapper.selectList(line-145) 5794 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 WHERE (name = ? ) 
+2017-04-12 00:26:59 [main] DEBUG com.xie.java.dao.TestMapper.selectList(line-145) 5795 [] - ==> Parameters: 
+2017-04-12 00:26:59 [main] DEBUG com.xie.java.dao.TestMapper.selectList(line-145) 5885 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 WHERE (name LIKE '%bb%' AND description LIKE '%qq%') 
+2017-04-12 00:26:59 [main] DEBUG com.xie.java.dao.TestMapper.selectList(line-145) 5886 [] - ==> Parameters: 
+2017-04-12 00:26:59 [main] DEBUG com.xie.java.dao.TestMapper.selectList(line-145) 5899 [] - <==      Total: 1
+2017-04-12 00:27:00 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 6308 [] - ==>  Preparing: INSERT INTO tb1 ( `name` ) VALUES ( ? ) 
+2017-04-12 00:27:00 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 6311 [] - ==> Parameters: 测233432(String)
+2017-04-12 00:27:00 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 6313 [] - <==    Updates: 1
+2017-04-12 00:27:00 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 6370 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 LIMIT 10,10 
+2017-04-12 00:27:00 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 6372 [] - ==> Parameters: 
+2017-04-12 00:27:00 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 6378 [] - <==      Total: 9
+2017-04-12 00:27:00 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6400 [] - ==>  Preparing: SELECT * FROM tb1 WHERE 1=1 and status=? LIMIT 0,5 
+2017-04-12 00:27:00 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6401 [] - ==> Parameters: 0(Integer)
+2017-04-12 00:27:00 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6409 [] - <==      Total: 5
+2017-04-12 00:27:27 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5399 [] - ==>  Preparing: INSERT INTO tb1 ( `name` ) VALUES ( ? ) 
+2017-04-12 00:27:27 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5442 [] - ==> Parameters: 测233432(String)
+2017-04-12 00:27:27 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5446 [] - <==    Updates: 1
+2017-04-12 00:27:27 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5552 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 LIMIT 10,10 
+2017-04-12 00:27:27 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5554 [] - ==> Parameters: 
+2017-04-12 00:27:27 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5584 [] - <==      Total: 9
+2017-04-12 00:27:27 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 5632 [] - ==>  Preparing: SELECT * FROM tb1 WHERE 1=1 and status=? LIMIT 0,5 
+2017-04-12 00:27:27 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 5641 [] - ==> Parameters: 0(Integer)
+2017-04-12 00:27:27 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 5646 [] - <==      Total: 5
+2017-04-12 00:27:57 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 6339 [] - ==>  Preparing: INSERT INTO tb1 ( `name` ) VALUES ( ? ) 
+2017-04-12 00:27:58 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 6415 [] - ==> Parameters: 测233432(String)
+2017-04-12 00:27:58 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 6425 [] - <==    Updates: 1
+2017-04-12 00:27:58 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 6614 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 LIMIT 10,10 
+2017-04-12 00:27:58 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 6615 [] - ==> Parameters: 
+2017-04-12 00:27:58 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 6638 [] - <==      Total: 9
+2017-04-12 00:27:58 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6661 [] - ==>  Preparing: SELECT * FROM tb1 WHERE 1=1 and status=? LIMIT 0,5 
+2017-04-12 00:27:58 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6664 [] - ==> Parameters: 0(Integer)
+2017-04-12 00:27:58 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6669 [] - <==      Total: 5
+2017-04-12 00:28:15 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5934 [] - ==>  Preparing: INSERT INTO tb1 ( `name` ) VALUES ( ? ) 
+2017-04-12 00:28:15 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5972 [] - ==> Parameters: 测233432(String)
+2017-04-12 00:28:15 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5977 [] - <==    Updates: 1
+2017-04-12 00:28:15 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 6118 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 LIMIT 10,10 
+2017-04-12 00:28:15 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 6120 [] - ==> Parameters: 
+2017-04-12 00:28:15 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 6154 [] - <==      Total: 9
+2017-04-12 00:28:15 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6183 [] - ==>  Preparing: SELECT * FROM tb1 WHERE 1=1 and status=? LIMIT 0,5 
+2017-04-12 00:28:15 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6184 [] - ==> Parameters: 0(Integer)
+2017-04-12 00:28:15 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6194 [] - <==      Total: 5
+2017-04-12 00:28:48 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5712 [] - ==>  Preparing: INSERT INTO tb1 ( `name` ) VALUES ( ? ) 
+2017-04-12 00:28:48 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5760 [] - ==> Parameters: 测233432(String)
+2017-04-12 00:28:48 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5765 [] - <==    Updates: 1
+2017-04-12 00:28:48 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5930 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 LIMIT 10,10 
+2017-04-12 00:28:48 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5936 [] - ==> Parameters: 
+2017-04-12 00:28:48 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5958 [] - <==      Total: 9
+2017-04-12 00:28:48 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 5990 [] - ==>  Preparing: SELECT * FROM tb1 WHERE 1=1 and status=? LIMIT 0,5 
+2017-04-12 00:28:48 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 5992 [] - ==> Parameters: 0(Integer)
+2017-04-12 00:28:48 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 5998 [] - <==      Total: 5
+2017-04-12 00:31:26 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5552 [] - ==>  Preparing: INSERT INTO tb1 ( `name` ) VALUES ( ? ) 
+2017-04-12 00:31:26 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5596 [] - ==> Parameters: 测233432(String)
+2017-04-12 00:31:26 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5601 [] - <==    Updates: 1
+2017-04-12 00:31:26 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5788 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 LIMIT 10,10 
+2017-04-12 00:31:26 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5790 [] - ==> Parameters: 
+2017-04-12 00:31:26 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5811 [] - <==      Total: 9
+2017-04-12 00:31:26 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 5831 [] - ==>  Preparing: SELECT * FROM tb1 WHERE 1=1 and status=? LIMIT 0,5 
+2017-04-12 00:31:26 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 5834 [] - ==> Parameters: 0(Integer)
+2017-04-12 00:31:26 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 5838 [] - <==      Total: 5
+2017-04-12 00:31:47 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5734 [] - ==>  Preparing: INSERT INTO tb1 ( `name` ) VALUES ( ? ) 
+2017-04-12 00:31:47 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5776 [] - ==> Parameters: 测233432(String)
+2017-04-12 00:31:47 [main] DEBUG com.xie.java.dao.TestMapper.insert(line-145) 5793 [] - <==    Updates: 1
+2017-04-12 00:31:47 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5926 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 LIMIT 10,10 
+2017-04-12 00:31:47 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5929 [] - ==> Parameters: 
+2017-04-12 00:31:47 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 5966 [] - <==      Total: 9
+2017-04-12 00:31:47 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 5988 [] - ==>  Preparing: SELECT * FROM tb1 WHERE 1=1 and status=? LIMIT 0,5 
+2017-04-12 00:31:47 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 5992 [] - ==> Parameters: 0(Integer)
+2017-04-12 00:31:47 [main] DEBUG com.xie.java.dao.TestMapper.selectTestBeans(line-145) 6001 [] - <==      Total: 5
+2017-04-18 10:32:34 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 9407 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 LIMIT 0,5 
+2017-04-18 10:32:34 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 9459 [] - ==> Parameters: 
+2017-04-18 10:32:35 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 9543 [] - <==      Total: 5
+2017-04-18 10:33:28 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 8242 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 LIMIT 0,5 
+2017-04-18 10:33:28 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 8262 [] - ==> Parameters: 
+2017-04-18 10:33:28 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 8290 [] - <==      Total: 5
+2017-04-18 10:34:27 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 7064 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 LIMIT 0,5 
+2017-04-18 10:34:27 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 7087 [] - ==> Parameters: 
+2017-04-18 10:34:27 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 7106 [] - <==      Total: 5
+2017-04-18 10:35:40 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 19481 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 LIMIT 0,5 
+2017-04-18 10:35:40 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 19814 [] - ==> Parameters: 
+2017-04-18 10:35:41 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 20050 [] - <==      Total: 5
+2017-04-18 10:37:03 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 13177 [] - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 LIMIT 0,5 
+2017-04-18 10:37:03 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 13192 [] - ==> Parameters: 
+2017-04-18 10:37:03 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 13206 [] - <==      Total: 5
+2017-04-18 11:06:14 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 13177 null - ==>  Preparing: SELECT id AS id,`name`,`status`,second_name AS secondName,description FROM tb1 LIMIT 0,5 
+2017-04-18 11:06:14 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 13538 null - ==> Parameters: 
+2017-04-18 11:06:14 [main] DEBUG com.xie.java.dao.TestMapper.selectPage(line-145) 13804 null - <==      Total: 5

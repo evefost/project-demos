@@ -1,9 +1,10 @@
 package com.baomidou.test.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.enums.IdType;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.activerecord.Model;
 import java.io.Serializable;
-
 
 /**
  * <p>
@@ -11,7 +12,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Yanghu
- * @since 2017-03-14
+ * @since 2017-04-11
  */
 public class Menu extends Model<Menu> {
 
@@ -20,6 +21,7 @@ public class Menu extends Model<Menu> {
     /**
      * 菜单id
      */
+	@TableId(value="id", type= IdType.AUTO)
 	private Integer id;
     /**
      * 菜单名称

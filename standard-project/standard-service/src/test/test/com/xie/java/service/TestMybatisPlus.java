@@ -47,11 +47,12 @@ public class TestMybatisPlus {
     //非分页插件分页
     @Test
     public void selectPage() {
-
+        logger.debug("======================================");
         EntityWrapper<TestBean> ew = new EntityWrapper<TestBean>();
 
         List<TestBean> userList = testMapper.selectPage( new Page<TestBean>(1, 5), ew);
         logger.debug("size:"+userList);
+        logger.debug("======================================"+userList);
 
     }
 

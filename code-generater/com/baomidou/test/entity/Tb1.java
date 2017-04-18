@@ -1,9 +1,10 @@
 package com.baomidou.test.entity;
 
-import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.enums.IdType;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.activerecord.Model;
 import java.io.Serializable;
-
 
 /**
  * <p>
@@ -11,12 +12,13 @@ import java.io.Serializable;
  * </p>
  *
  * @author Yanghu
- * @since 2017-03-14
+ * @since 2017-04-11
  */
 public class Tb1 extends Model<Tb1> {
 
     private static final long serialVersionUID = 1L;
 
+	@TableId(value="id", type= IdType.AUTO)
 	private Integer id;
 	private String name;
 	private Integer status;

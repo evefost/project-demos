@@ -1,4 +1,4 @@
-package com.xie.java.controller;
+package com.xie.java.test;
 
 import com.xie.java.common.response.ResponseDataVo;
 import com.xie.java.entity.TestBean;

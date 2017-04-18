@@ -17,6 +17,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * TestServiceImpl Tester.
@@ -88,6 +89,7 @@ public class TestServiceImplTest {
     }
 
 
+    CountDownLatch countDownLatch = new CountDownLatch(10);
 
 
 } 

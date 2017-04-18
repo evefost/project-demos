@@ -23,6 +23,10 @@
             <appender-ref ref="FileAppender"/>
         </logger>
 
+        <logger name="test.com" level="debug" additivity="false">
+            <appender-ref ref="ConsoleAppender"/>
+        </logger>
+
 
         <logger name="java.sql" level="error" additivity="false">
             <appender-ref ref="ConsoleAppender"/>
