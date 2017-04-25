@@ -7,6 +7,8 @@ CONF_DIR=$DEPLOY_DIR/conf
 LOGS_DIR=`dirname $PWD`/logs
 STDOUT_FILE=$LOGS_DIR/stdout.log
 START_REPORT_FILE=$LOGS_DIR/shell.log
+##############
+JAVA_AGENT_PATH=$
 # process system properties to java
 
 # JAVA_HOME in linux path

@@ -1,51 +1,7 @@
-2017-04-09 00:16:47,206 [main-SendThread(172.16.165.150:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x15ad2aab82d00a2 for server null, unexpected error, closing socket connection and attempting reconnect
-java.net.ConnectException: Connection refused
-	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
-	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
-	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
-2017-04-09 00:19:30,481 [main-SendThread(172.16.165.150:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x15ad2aab82d00a2 for server null, unexpected error, closing socket connection and attempting reconnect
-java.net.ConnectException: Connection refused
-	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
-	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
-	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
-2017-04-09 00:32:20,002 [main-SendThread(172.16.165.150:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x15ad2aab82d00a2 for server null, unexpected error, closing socket connection and attempting reconnect
-java.net.ConnectException: Connection refused
-	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
-	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
-	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
-2017-04-09 00:37:25,153 [main-SendThread(172.16.165.150:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x15ad2aab82d00a2 for server null, unexpected error, closing socket connection and attempting reconnect
-java.net.ConnectException: Connection refused
-	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
-	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
-	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
-2017-04-09 00:59:37,661 [DubboRegistryFailedRetryTimer-thread-1] WARN  com.alibaba.dubbo.registry.support.FailbackRegistry (FailbackRegistry.java:365) -  [DUBBO] Failed to retry subscribe {provider://192.168.100.29:20883/com.xie.java.service.TestService?anyhost=true&application=study-service-dev-debug&category=configurators&check=false&dubbo=2.5.3&interface=com.xie.java.service.TestService&loadbalance=roundrobin&methods=getVersion,getNameById,selectTestPage,getEnviroment,queryListBypage&owner=william&pid=1616&side=provider&timestamp=1491542338780=[]}, waiting for again, cause: Failed to subscribe provider://192.168.100.29:20883/com.xie.java.service.TestService?anyhost=true&application=study-service-dev-debug&category=configurators&check=false&dubbo=2.5.3&interface=com.xie.java.service.TestService&loadbalance=roundrobin&methods=getVersion,getNameById,selectTestPage,getEnviroment,queryListBypage&owner=william&pid=1616&side=provider&timestamp=1491542338780 to zookeeper zookeeper://172.16.165.150:2181/com.alibaba.dubbo.registry.RegistryService?application=study-service-dev-debug&dubbo=2.5.3&interface=com.alibaba.dubbo.registry.RegistryService&owner=william&pid=1616&timestamp=1491542338767, cause: java.lang.InterruptedException, dubbo version: 2.5.3, current host: 127.0.0.1
-com.alibaba.dubbo.rpc.RpcException: Failed to subscribe provider://192.168.100.29:20883/com.xie.java.service.TestService?anyhost=true&application=study-service-dev-debug&category=configurators&check=false&dubbo=2.5.3&interface=com.xie.java.service.TestService&loadbalance=roundrobin&methods=getVersion,getNameById,selectTestPage,getEnviroment,queryListBypage&owner=william&pid=1616&side=provider&timestamp=1491542338780 to zookeeper zookeeper://172.16.165.150:2181/com.alibaba.dubbo.registry.RegistryService?application=study-service-dev-debug&dubbo=2.5.3&interface=com.alibaba.dubbo.registry.RegistryService&owner=william&pid=1616&timestamp=1491542338767, cause: java.lang.InterruptedException
-	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:173)
-	at com.alibaba.dubbo.registry.support.FailbackRegistry.retry(FailbackRegistry.java:362)
-	at com.alibaba.dubbo.registry.support.FailbackRegistry$1.run(FailbackRegistry.java:67)
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
-	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-	at java.lang.Thread.run(Thread.java:745)
-Caused by: org.I0Itec.zkclient.exception.ZkInterruptedException: java.lang.InterruptedException
-	at org.I0Itec.zkclient.ZkClient.retryUntilConnected(ZkClient.java:687)
-	at org.I0Itec.zkclient.ZkClient.create(ZkClient.java:304)
-	at org.I0Itec.zkclient.ZkClient.createPersistent(ZkClient.java:213)
-	at com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient.createPersistent(ZkclientZookeeperClient.java:43)
-	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:44)
-	at com.alibaba.dubbo.remoting.zookeeper.support.AbstractZookeeperClient.create(AbstractZookeeperClient.java:39)
-	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.doSubscribe(ZookeeperRegistry.java:164)
-	... 9 more
-Caused by: java.lang.InterruptedException
-	at java.lang.Object.wait(Native Method)
-	at java.lang.Object.wait(Object.java:502)
-	at org.apache.zookeeper.ClientCnxn.submitRequest(ClientCnxn.java:1317)
-	at org.apache.zookeeper.ZooKeeper.create(ZooKeeper.java:635)
-	at org.I0Itec.zkclient.ZkConnection.create(ZkConnection.java:87)
-	at org.I0Itec.zkclient.ZkClient$1.call(ZkClient.java:308)
-	at org.I0Itec.zkclient.ZkClient$1.call(ZkClient.java:304)
-	at org.I0Itec.zkclient.ZkClient.retryUntilConnected(ZkClient.java:675)
-	... 15 more
+2017-04-25 00:07:13,173 [dubbo-remoting-server-heartbeat-thread-1] WARN  dubbo.remoting.exchange.support.header.HeartBeatTask (HeartBeatTask.java:71) -  [DUBBO] Close channel NettyChannel [channel=[id: 0x67e174ae, /172.16.165.150:40632 => /172.16.165.1:20883]], because heartbeat read idle time out: 180000ms, dubbo version: 2.5.3, current host: 127.0.0.1
+2017-04-25 08:45:57,912 [New I/O server worker #1-1] WARN  com.alibaba.dubbo.remoting.transport.AbstractServer (AbstractServer.java:197) -  [DUBBO] All clients has discontected from /172.16.165.1:20883. You can graceful shutdown now., dubbo version: 2.5.3, current host: 127.0.0.1
+2017-04-25 18:53:25,847 [dubbo-remoting-server-heartbeat-thread-1] WARN  dubbo.remoting.exchange.support.header.HeartBeatTask (HeartBeatTask.java:71) -  [DUBBO] Close channel NettyChannel [channel=[id: 0x34dea2d1, /172.16.165.150:40662 => /172.16.165.1:20883]], because heartbeat read idle time out: 180000ms, dubbo version: 2.5.3, current host: 127.0.0.1
+2017-04-25 18:53:25,887 [dubbo-remoting-server-heartbeat-thread-1] WARN  com.alibaba.dubbo.remoting.transport.AbstractServer (AbstractServer.java:197) -  [DUBBO] All clients has discontected from /172.16.165.1:20883. You can graceful shutdown now., dubbo version: 2.5.3, current host: 127.0.0.1
+2017-04-25 18:58:41,024 [New I/O server worker #1-5] WARN  com.alibaba.dubbo.remoting.transport.AbstractServer (AbstractServer.java:197) -  [DUBBO] All clients has discontected from /172.16.165.1:20883. You can graceful shutdown now., dubbo version: 2.5.3, current host: 127.0.0.1
+2017-04-25 20:55:44,066 [DubboShutdownHook] WARN  com.alibaba.dubbo.remoting.transport.AbstractServer (AbstractServer.java:197) -  [DUBBO] All clients has discontected from /172.16.165.1:20883. You can graceful shutdown now., dubbo version: 2.5.3, current host: 127.0.0.1
+2017-04-25 23:38:03,917 [DubboShutdownHook] WARN  com.alibaba.dubbo.remoting.transport.AbstractServer (AbstractServer.java:197) -  [DUBBO] All clients has discontected from /192.168.1.2:20883. You can graceful shutdown now., dubbo version: 2.5.3, current host: 127.0.0.1

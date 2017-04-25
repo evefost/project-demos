@@ -20,7 +20,7 @@
         <project.version>1.0.0</project.version>
         <spring.version>4.3.7.RELEASE</spring.version>
         <log4j.version>2.6.2</log4j.version>
-        <mybatis-plus.version>2.0</mybatis-plus.version>
+        <mybatis-plus.version>RELEASE</mybatis-plus.version>
         <fastjson.version>1.1.15</fastjson.version>
         <fasterxml.jackson.version>2.4.3</fasterxml.jackson.version>
         <jdbc.version>1.0.27</jdbc.version>
@@ -257,6 +257,13 @@
         </plugins>
 
     </build>
+    <distributionManagement>
 
+        <repository>
+            <id>snapshots</id>
+            <name>Snapshots</name>
+            <url>http://172.16.165.150:9999/nexus/content/repositories/snapshots</url>
+        </repository>
+    </distributionManagement>
 
 </project>
