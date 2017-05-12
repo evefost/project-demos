@@ -1,7 +1,1041 @@
-2017-04-25 00:07:13,173 [dubbo-remoting-server-heartbeat-thread-1] WARN  dubbo.remoting.exchange.support.header.HeartBeatTask (HeartBeatTask.java:71) -  [DUBBO] Close channel NettyChannel [channel=[id: 0x67e174ae, /172.16.165.150:40632 => /172.16.165.1:20883]], because heartbeat read idle time out: 180000ms, dubbo version: 2.5.3, current host: 127.0.0.1
-2017-04-25 08:45:57,912 [New I/O server worker #1-1] WARN  com.alibaba.dubbo.remoting.transport.AbstractServer (AbstractServer.java:197) -  [DUBBO] All clients has discontected from /172.16.165.1:20883. You can graceful shutdown now., dubbo version: 2.5.3, current host: 127.0.0.1
-2017-04-25 18:53:25,847 [dubbo-remoting-server-heartbeat-thread-1] WARN  dubbo.remoting.exchange.support.header.HeartBeatTask (HeartBeatTask.java:71) -  [DUBBO] Close channel NettyChannel [channel=[id: 0x34dea2d1, /172.16.165.150:40662 => /172.16.165.1:20883]], because heartbeat read idle time out: 180000ms, dubbo version: 2.5.3, current host: 127.0.0.1
-2017-04-25 18:53:25,887 [dubbo-remoting-server-heartbeat-thread-1] WARN  com.alibaba.dubbo.remoting.transport.AbstractServer (AbstractServer.java:197) -  [DUBBO] All clients has discontected from /172.16.165.1:20883. You can graceful shutdown now., dubbo version: 2.5.3, current host: 127.0.0.1
-2017-04-25 18:58:41,024 [New I/O server worker #1-5] WARN  com.alibaba.dubbo.remoting.transport.AbstractServer (AbstractServer.java:197) -  [DUBBO] All clients has discontected from /172.16.165.1:20883. You can graceful shutdown now., dubbo version: 2.5.3, current host: 127.0.0.1
-2017-04-25 20:55:44,066 [DubboShutdownHook] WARN  com.alibaba.dubbo.remoting.transport.AbstractServer (AbstractServer.java:197) -  [DUBBO] All clients has discontected from /172.16.165.1:20883. You can graceful shutdown now., dubbo version: 2.5.3, current host: 127.0.0.1
-2017-04-25 23:38:03,917 [DubboShutdownHook] WARN  com.alibaba.dubbo.remoting.transport.AbstractServer (AbstractServer.java:197) -  [DUBBO] All clients has discontected from /192.168.1.2:20883. You can graceful shutdown now., dubbo version: 2.5.3, current host: 127.0.0.1
+2017-05-10 20:26:40,512 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:26:42,265 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:26:43,578 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:26:45,584 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:26:46,947 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:26:48,957 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:26:50,743 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:26:52,198 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:26:53,514 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:26:54,845 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:26:56,777 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:26:58,644 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:26:59,816 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:01,366 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:02,686 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:03,815 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:05,343 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:07,239 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:08,521 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:09,758 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:10,875 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:12,677 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:14,129 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:16,093 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:18,068 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:20,087 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:21,999 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:24,017 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:26,044 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:27,467 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:29,371 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:31,238 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:32,907 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:34,890 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:36,016 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:37,414 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:38,830 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:40,822 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:42,928 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:44,701 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:46,039 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:47,985 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:49,579 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:51,071 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:52,240 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:53,587 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:54,846 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:56,728 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:58,362 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:27:59,511 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:01,559 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:03,322 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:04,772 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:06,582 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:07,844 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:09,161 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:10,464 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:11,973 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:13,501 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:15,493 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:17,099 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:19,012 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:20,508 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:21,857 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:23,222 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:24,525 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:26,497 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:28,446 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:29,668 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:31,661 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:33,248 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:35,082 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:36,457 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:38,244 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:40,003 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:41,439 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:43,291 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:44,682 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:46,298 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:47,928 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:50,029 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:51,780 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:53,830 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:55,114 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:56,493 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:58,143 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:28:59,648 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:01,753 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:03,595 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:05,698 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:07,788 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:09,334 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:11,350 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:12,746 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:14,671 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:16,678 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:18,527 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:19,770 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:21,069 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:22,950 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:24,346 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:25,611 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:27,529 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:29,231 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:31,148 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:32,887 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:34,461 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:35,955 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:37,836 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:39,371 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:40,621 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:46,593 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:48,664 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (ClientCnxn.java:1161) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2017-05-10 20:29:51,429 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:29:53,178 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:29:54,844 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:29:55,984 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:29:57,323 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:29:58,451 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:00,424 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:01,555 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:03,257 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:04,998 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:06,229 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:08,312 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:10,336 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:11,449 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:13,294 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:14,853 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:16,657 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:18,305 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:19,898 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:21,384 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:22,684 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:23,819 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:25,331 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:26,659 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:28,696 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:30,099 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:31,779 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:33,530 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:35,496 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:37,574 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:39,663 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:41,657 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:43,607 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:45,308 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:47,221 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:49,321 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:51,052 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:53,009 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:54,366 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:55,908 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:57,075 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:30:59,132 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:00,372 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:02,273 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:04,157 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:05,771 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:07,214 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:08,578 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:10,192 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:11,997 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:13,240 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:14,723 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:16,159 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:17,507 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:19,175 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:20,616 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:22,287 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:23,611 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:25,307 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:26,654 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:28,683 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:29,827 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:31,789 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:33,442 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:34,759 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:36,631 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:38,362 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:39,661 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:41,363 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:42,831 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:44,317 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:46,369 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:48,292 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:49,597 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:51,023 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:52,937 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:54,458 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:56,315 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:57,751 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:31:59,494 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:32:00,846 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:32:02,007 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:32:03,895 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:32:05,890 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:32:07,955 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:32:10,062 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:32:12,065 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:32:13,897 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:32:15,435 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:32:16,624 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:32:17,957 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:32:19,511 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:32:21,133 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:32:22,366 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:32:23,928 [main-SendThread(ubuntu:2181)] WARN  org.apache.zookeeper.ClientCnxn$SendThread (?:?) - Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:717)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(Unknown Source)
+2017-05-10 20:45:37,218 [DubboShutdownHook] WARN  com.alibaba.dubbo.remoting.transport.AbstractServer (AbstractServer.java:197) -  [DUBBO] All clients has discontected from /192.168.1.4:20883. You can graceful shutdown now., dubbo version: 2.5.3, current host: 127.0.0.1

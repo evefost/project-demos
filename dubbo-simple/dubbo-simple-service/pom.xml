@@ -10,6 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
     <artifactId>dubbo-simple-service</artifactId>
+    <properties>
+        <main.class>com.alibaba.dubbo.container.Main</main.class>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -47,7 +50,7 @@
 
     <build>
         <!--打包结果名称-->
-        <finalName>${artifactId}-${package.name_suff}</finalName>
+        <finalName>${project.artifactId}</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -91,54 +94,84 @@
         <!--打包所有相关资源-->
         <plugins>
             <plugin>
-            <artifactId>maven-jar-plugin</artifactId>
-            <configuration>
-                <classesDirectory>target/classes/</classesDirectory>
-                <archive>
-                    <addMavenDescriptor>false</addMavenDescriptor>
-                </archive>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <classesDirectory>target/classes/</classesDirectory>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                        <manifest>
+                            <mainClass>${main.class}</mainClass>
+                        </manifest>
+                    </archive>
 
-            </configuration>
-            <executions>
-                <!-- 定义在prepare-package时将classes/com打jar -->
-                <execution>
-                    <phase>prepare-package</phase>
-                    <goals>
-                        <goal>jar</goal>
-                    </goals>
-                    <configuration>
-                        <!-- 将spring的配置，psoperties等属性文件，不要打包到jar中，而是打包到外层的tar.gz中 -->
-                        <includes>
-                            <include>com/**</include>
-                            <include>mapper/**</include>
-                            <include>spring/**</include>
-                            <include>applicationContext.xml</include>
-                            <include>mybatis-config.xml</include>
-                        </includes>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
-        <plugin>
-            <artifactId>maven-assembly-plugin</artifactId>
-            <configuration>
-                <!-- not append assembly id in release file name -->
-                <appendAssemblyId>false</appendAssemblyId>
-                <finalName>${project.artifactId}-${package.name_suff}</finalName>
-                <descriptors>
-                    <descriptor>src/main/assemble/assembly.xml</descriptor>
-                </descriptors>
-            </configuration>
-            <executions>
-                <execution>
-                    <id>make-assembly</id>
-                    <phase>package</phase>
-                    <goals>
-                        <goal>single</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
+                </configuration>
+                <executions>
+                    <!-- 定义在prepare-package时将classes/com打jar -->
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <!-- 将spring的配置，psoperties等属性文件，不要打包到jar中，而是打包到外层的tar.gz中 -->
+                            <includes>
+                                <include>com/**</include>
+                                <include>mapper/**</include>
+                                <include>spring/**</include>
+                                <include>applicationContext.xml</include>
+                                <include>mybatis-config.xml</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <!-- not append assembly id in release file name -->
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <finalName>${project.artifactId}</finalName>
+                    <descriptors>
+                        <descriptor>src/main/assemble/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.13</version>
+
+                <configuration>
+                    <imageName>evefost/${project.artifactId}</imageName>
+                    <skipDockerBuild>false</skipDockerBuild>
+                    <!--连接远程docker 创建镜像 ,如果本地有装可以用本地-->
+                    <dockerHost>http://172.16.165.145:2376</dockerHost>
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+
+                    <!-- 私有仓库配置，需要settings.xml文件配合serverId对应的服务地址 -->
+                    <serverId>evefost</serverId>
+                    <registryUrl>registry.cn-hangzhou.aliyuncs.com</registryUrl>
+                    <!-- <forceTags>true</forceTags> -->
+                    <!--install阶段也上传，否则只有deploy阶段上传-->
+                    <pushImage>false</pushImage>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${build.finalName}.tar.gz</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
         </plugins>
 
     </build>
