@@ -9,14 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <packaging>pom</packaging>
-    <artifactId>destibution-manager</artifactId>
+    <artifactId>distribute-lock</artifactId>
 
-    <modules>
-        <module>bit-zookeeper</module>
-        <module>bit-server</module>
-        <module>bit-client</module>
-        <module>bit-admin</module>
-    </modules>
 
 </project>

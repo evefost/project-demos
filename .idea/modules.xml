@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-admin/bit-admin.iml" filepath="$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-admin/bit-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-client/bit-client.iml" filepath="$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-client/bit-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-server/bit-server.iml" filepath="$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-server/bit-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-zookeeper/bit-zookeeper.iml" filepath="$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-zookeeper/bit-zookeeper.iml" />
       <module fileurl="file://$PROJECT_DIR$/common-util/common-util.iml" filepath="$PROJECT_DIR$/common-util/common-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zookeeper-demos/distribute-lock/distribute-lock.iml" filepath="$PROJECT_DIR$/zookeeper-demos/distribute-lock/distribute-lock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zookeeper-demos/distribute-manager/distribute-manager.iml" filepath="$PROJECT_DIR$/zookeeper-demos/distribute-manager/distribute-manager.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo-simple/dubbo-simple.iml" filepath="$PROJECT_DIR$/dubbo-simple/dubbo-simple.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo-simple/dubbo-simple-api/dubbo-simple-api.iml" filepath="$PROJECT_DIR$/dubbo-simple/dubbo-simple-api/dubbo-simple-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo-simple/dubbo-simple-service/dubbo-simple-service.iml" filepath="$PROJECT_DIR$/dubbo-simple/dubbo-simple-service/dubbo-simple-service.iml" />
@@ -17,6 +23,7 @@
       <module fileurl="file://$PROJECT_DIR$/standard-project/standard-project.iml" filepath="$PROJECT_DIR$/standard-project/standard-project.iml" />
       <module fileurl="file://$PROJECT_DIR$/standard-project/standard-service/standard-service.iml" filepath="$PROJECT_DIR$/standard-project/standard-service/standard-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/standard-project/standard-web/standard-web.iml" filepath="$PROJECT_DIR$/standard-project/standard-web/standard-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zookeeper-demos/zookeeper-demos.iml" filepath="$PROJECT_DIR$/zookeeper-demos/zookeeper-demos.iml" />
     </modules>
   </component>
 </project>

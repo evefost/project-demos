@@ -18,9 +18,11 @@ public class BitServer implements Watcher {
 
 	void register(String serverName) throws Exception {
 		zook = bitZook.getConnection(this);
+		//如果主节点不存，则创建
 		if(zook.exists(BitZookeeperServer.root,false) == null){
 			zook.create(BitZookeeperServer.root,"root-node".getBytes(),ZooDefs.Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT);
 		}
+		//注册服务信息
 		String node = zook.create(BitZookeeperServer.root+"/server" ,
 				serverName.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE,
 				CreateMode.EPHEMERAL_SEQUENTIAL);

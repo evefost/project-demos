@@ -4,6 +4,8 @@
     <file type="web" url="file://$PROJECT_DIR$/dubbo-simple/dubbo-simple-web" />
     <file type="web" url="file://$PROJECT_DIR$/mult-menu/menu-web" />
     <file type="web" url="file://$PROJECT_DIR$/standard-project/standard-web" />
+    <file type="web" url="file://$PROJECT_DIR$/zookeeper-demos/bit-admin" />
+    <file type="web" url="file://$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-admin" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -20,6 +22,15 @@
         <option value="$PROJECT_DIR$/dubbo-simple/standard-web/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo-simple/Dubbo-Demo/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo-simple/Dubbo-Demo1/pom.xml" />
+        <option value="$PROJECT_DIR$/zookeeper-demos/destibution-manager/bit-zookeeper/pom.xml" />
+        <option value="$PROJECT_DIR$/zookeeper-demos/destibution-manager/bit-server/pom.xml" />
+        <option value="$PROJECT_DIR$/zookeeper-demos/destibution-manager/bit-client/pom.xml" />
+        <option value="$PROJECT_DIR$/zookeeper-demos/destibution-manager/bit-admin/pom.xml" />
+        <option value="$PROJECT_DIR$/zookeeper-demos/distribute-manager/pom.xml" />
+        <option value="$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-zookeeper/pom.xml" />
+        <option value="$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-server/pom.xml" />
+        <option value="$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-client/pom.xml" />
+        <option value="$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-admin/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
