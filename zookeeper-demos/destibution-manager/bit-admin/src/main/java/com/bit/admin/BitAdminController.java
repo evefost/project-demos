@@ -26,7 +26,6 @@ public class BitAdminController {
 	@RequestMapping("/list")
 	public String getList(HttpServletRequest request) throws Exception {
 		zook = bitZook.getConnection(new Watcher() {
-			@Override
 			public void process(WatchedEvent event) {
 			}
 		});
@@ -47,7 +46,6 @@ public class BitAdminController {
 	@RequestMapping("/stop")
 	public String stop(HttpServletRequest request) throws Exception {
 		zook = bitZook.getConnection(new Watcher() {
-			@Override
 			public void process(WatchedEvent event) {
 				
 			}
@@ -67,7 +65,6 @@ public class BitAdminController {
 	@RequestMapping("/run")
 	public String run(HttpServletRequest request) throws Exception {
 		zook = bitZook.getConnection(new Watcher() {
-			@Override
 			public void process(WatchedEvent event) {
 				
 			}
@@ -89,7 +86,6 @@ public class BitAdminController {
 	@RequestMapping("/delete")
 	public String delete(HttpServletRequest request) throws Exception {
 		zook = bitZook.getConnection(new Watcher() {
-			@Override
 			public void process(WatchedEvent event) {
 				
 			}
