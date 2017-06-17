@@ -37,7 +37,7 @@ public class OrderService implements Runnable {
     }
 
     public void getOrderRemote() {
-         lock.getLock();
+        lock.getLock();
         String orderNum = ong.getOrderNumber();
         System.out.println(Thread.currentThread().getName() + "获取得订单号:" + orderNum);
         lock.unLock();

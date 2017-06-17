@@ -86,6 +86,7 @@ fi
 
 echoReport "Starting the $SERVER_NAME ..."
 reportTo "java $JAVA_OPTS $JAVA_MEM_OPTS $JAVA_DEBUG_OPTS $JAVA_JMX_OPTS $JAVA_PROPERTIES_OPTS -classpath $CONF_DIR:$LIB_JARS com.alibaba.dubbo.container.Main"
+#nohup 后台执行
 nohup java $JAVA_OPTS $JAVA_MEM_OPTS $JAVA_DEBUG_OPTS $JAVA_JMX_OPTS $JAVA_PROPERTIES_OPTS -classpath $CONF_DIR:$LIB_JARS com.alibaba.dubbo.container.Main > /dev/null 2>&1 &
 sleep 1
 APP_PID=`ps -ef -ww | grep "java" | grep " -DappName=$SERVER_NAME " | awk '{print $2}'`
