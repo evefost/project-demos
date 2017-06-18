@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.service.IService;
  * </p>
  *
  * @author Yanghu
- * @since 2017-04-11
+ * @since 2017-06-18
  */
 public interface ITb1Service extends IService<Tb1> {
 	

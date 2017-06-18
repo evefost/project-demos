@@ -1,7 +1,7 @@
-/Users/xieyang/work/web_space/project-demos/standard-project/standard-web/src/main/java/com/xie/filter/CorsFilter.java
-/Users/xieyang/work/web_space/project-demos/standard-project/standard-web/src/main/java/com/xie/mode/Mode.java
 /Users/xieyang/work/web_space/project-demos/standard-project/standard-web/src/main/java/com/xie/intercepter/LoginInterceptor.java
-/Users/xieyang/work/web_space/project-demos/standard-project/standard-web/src/main/java/com/xie/java/test/TestController.java
-/Users/xieyang/work/web_space/project-demos/standard-project/standard-web/src/main/java/com/xie/java/test/UserController.java
+/Users/xieyang/work/web_space/project-demos/standard-project/standard-web/src/main/java/com/xie/web/controller/UserController.java
+/Users/xieyang/work/web_space/project-demos/standard-project/standard-web/src/main/java/com/xie/mode/Mode.java
+/Users/xieyang/work/web_space/project-demos/standard-project/standard-web/src/main/java/com/xie/web/controller/TestController.java
+/Users/xieyang/work/web_space/project-demos/standard-project/standard-web/src/main/java/com/xie/filter/CorsFilter.java
 /Users/xieyang/work/web_space/project-demos/standard-project/standard-web/src/main/java/com/xie/config/SwaggerConfig.java
-/Users/xieyang/work/web_space/project-demos/standard-project/standard-web/src/main/java/com/xie/java/test/RestFulDesignController.java
+/Users/xieyang/work/web_space/project-demos/standard-project/standard-web/src/main/java/com/xie/web/controller/RestFulDesignController.java

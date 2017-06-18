@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * </p>
  *
  * @author Yanghu
- * @since 2017-04-11
+ * @since 2017-06-18
  */
 public interface Tb1Mapper extends BaseMapper<Tb1> {
 

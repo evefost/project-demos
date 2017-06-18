@@ -1,7 +1,7 @@
-package com.xie.java.test;
+package com.xie.web.controller;
 
 import com.xie.java.common.response.ResponseDataVo;
-import com.xie.java.entity.TestBean;
+import com.xie.java.entity.Tb1;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -22,14 +22,14 @@ import java.util.Random;
 @RestController
 @RequestMapping("/restful")
 public class RestFulDesignController {
-    private static final Logger logger = LoggerFactory.getLogger(TestController.class);
+    private static final Logger logger = LoggerFactory.getLogger(TbController.class);
 
 
     @ApiOperation(value = "添加用户")
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public ResponseDataVo addUser() {
         logger.info("添加用户");
-        TestBean testBean = new TestBean();
+        Tb1 testBean = new Tb1();
         testBean.setId(new Random().nextInt());
         testBean.setName("xieyang");
         return ResponseDataVo.success(testBean, "添加用户");

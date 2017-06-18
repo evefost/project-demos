@@ -1,4 +1,4 @@
-package com.xie.java.test;
+package com.xie.web.controller;
 
 
 import com.xie.java.service.TestService;

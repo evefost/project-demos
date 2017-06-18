@@ -3,20 +3,22 @@ package com.xie.java.service;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
-import com.xie.java.entity.TestBean;
+import com.xie.java.entity.Tb1;
 
 import java.util.List;
 
-public interface TestService extends IService<TestBean> {
+public interface TestService extends IService<Tb1> {
+
+    Boolean add(Tb1 testBean);
 
     String getVersion();
 
-    TestBean getNameById(Integer id);
+    Tb1 getNameById(Integer id);
 
     String getEnviroment();
 
-    List<TestBean> queryListBypage(Integer page,Integer size,TestBean condition);
+    List<Tb1> queryListBypage(Integer page,Integer size,Tb1 condition);
 
 
-    Page<TestBean> selectTestPage(Page<TestBean> page, Integer status);
+    Page<Tb1> selectTestPage(Page<Tb1> page, Integer status);
 }

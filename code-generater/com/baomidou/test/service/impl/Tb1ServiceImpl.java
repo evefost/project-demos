@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author Yanghu
- * @since 2017-04-11
+ * @since 2017-06-18
  */
 @Service
 public class Tb1ServiceImpl extends ServiceImpl<Tb1Mapper, Tb1> implements ITb1Service {

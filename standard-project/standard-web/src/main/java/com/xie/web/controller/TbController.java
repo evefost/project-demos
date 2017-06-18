@@ -1,7 +1,8 @@
-package com.xie.java.test;
+package com.xie.web.controller;
 
 
-import com.xie.java.entity.TestBean;
+import com.xie.java.common.response.ResponseDataVo;
+import com.xie.java.entity.Tb1;
 import com.xie.java.service.TestService;
 import com.xie.mode.Mode;
 import io.swagger.annotations.Api;
@@ -12,14 +13,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
-@Api("dsdsdsdsd")
+@Api(description = "测试接口")
 @RestController
 @RequestMapping("/api/test")
-public class TestController {
-    private static final Logger logger = LoggerFactory.getLogger(TestController.class);
+public class TbController {
+    private static final Logger logger = LoggerFactory.getLogger(TbController.class);
 
     @Autowired
     private TestService testService;
+
+
+
+    @RequestMapping(value = "add", method = RequestMethod.POST)
+    public ResponseDataVo add() {
+        Tb1 testBean = new Tb1();
+        testBean.setName("张三添");
+        testService.add(testBean);
+        return ResponseDataVo.success();
+    }
+
 
     @RequestMapping(value = "serviceVersion", method = RequestMethod.GET)
     @ResponseBody
@@ -42,24 +54,24 @@ public class TestController {
     }
 
     @RequestMapping(value = "getBean", method = RequestMethod.GET)
-    public TestBean getBean() {
-        TestBean t = new TestBean();
+    public Tb1 getBean() {
+        Tb1 t = new Tb1();
         t.setId(12);
         t.setName("abcdef");
         return t;
     }
 
     @RequestMapping(value = "query", method = RequestMethod.GET)
-    public TestBean query( Mode bean) {
-        TestBean t = new TestBean();
+    public Tb1 query( Mode bean) {
+        Tb1 t = new Tb1();
         t.setId(12);
         t.setName("abcdef");
         return t;
     }
 
     @RequestMapping(value = "post", method = RequestMethod.POST)
-    public TestBean postInfo( @RequestBody Mode bean) {
-        TestBean t = new TestBean();
+    public Tb1 postInfo( @RequestBody Mode bean) {
+        Tb1 t = new Tb1();
         t.setId(12);
         t.setName("abcdef");
         return t;

@@ -1,8 +1,11 @@
-package com.xie.java.test;
+package com.xie.web.controller;
 
 import com.xie.java.common.response.ResponseDataVo;
 import com.xie.java.entity.TestBean;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PathVariable;

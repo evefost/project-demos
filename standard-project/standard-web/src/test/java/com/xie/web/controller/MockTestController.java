@@ -1,4 +1,4 @@
-package com.xie.java.test;
+package com.xie.web.controller;
 
 import org.junit.Assert;
 import org.junit.Test;
