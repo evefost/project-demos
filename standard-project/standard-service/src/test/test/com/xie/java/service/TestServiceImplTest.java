@@ -1,7 +1,7 @@
 package test.com.xie.java.service;
 
 import com.baomidou.mybatisplus.plugins.Page;
-import com.xie.java.entity.TestBean;
+import com.xie.java.entity.Tb1;
 import com.xie.java.service.TestService;
 import org.junit.After;
 import org.junit.Assert;
@@ -67,14 +67,14 @@ public class TestServiceImplTest {
      */
     @Test
     public void testGetEnviroment() throws Exception {
-        List<TestBean> testBeans = testService.queryListBypage(2, 10, null);
+        List<Tb1> testBeans = testService.queryListBypage(2, 10, null);
         logger.debug(""+testBeans);
     }
 
     @Test
     public void selectTestPage() throws Exception {
-        Page<TestBean> page  = new Page<TestBean>(0,5);
-        Page<TestBean> testBeanPage = testService.selectTestPage(page, 0);
+        Page<Tb1> page  = new Page<Tb1>(0,5);
+        Page<Tb1> testBeanPage = testService.selectTestPage(page, 0);
         logger.debug(""+testBeanPage);
 
     }
@@ -82,7 +82,7 @@ public class TestServiceImplTest {
 
     @Test
     public void addTestBean() throws Exception {
-        TestBean testBean = new TestBean();
+        Tb1 testBean = new Tb1();
         testBean.setName("测233432");
         boolean insert = testService.insert(testBean);
         Assert.assertTrue(insert);

@@ -1,9 +1,6 @@
 package com.xie.mode;
 
-import com.xie.java.entity.TestBean;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiParam;
 
 /**
  * Created by xieyang on 17/3/21.

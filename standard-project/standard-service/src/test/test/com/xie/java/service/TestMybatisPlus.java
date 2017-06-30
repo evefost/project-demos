@@ -2,8 +2,8 @@ package test.com.xie.java.service;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.xie.java.dao.TestMapper;
-import com.xie.java.entity.TestBean;
+import com.xie.java.entity.Tb1;
+import com.xie.java.mapper.Tb1Mapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -21,14 +21,14 @@ public class TestMybatisPlus {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    TestMapper testMapper;
+    Tb1Mapper testMapper;
 
     @Test
     public void like() {
-        EntityWrapper<TestBean> ew = new EntityWrapper<TestBean>();
+        EntityWrapper<Tb1> ew = new EntityWrapper<Tb1>();
         ew.like("name","bb");
         ew.like("description","qq");
-        List<TestBean> testBeans = testMapper.selectList(ew);
+        List<Tb1> testBeans = testMapper.selectList(ew);
         logger.debug("size:"+testBeans.size());
 
     }
@@ -36,10 +36,10 @@ public class TestMybatisPlus {
 
     @Test
     public void or() {
-        EntityWrapper<TestBean> ew = new EntityWrapper<TestBean>();
+        EntityWrapper<Tb1> ew = new EntityWrapper<Tb1>();
         ew.or("name = ? ","bb");
        // ew.like("description","qq");
-        List<TestBean> testBeans = testMapper.selectList(ew);
+        List<Tb1> testBeans = testMapper.selectList(ew);
         logger.debug("size:"+testBeans.size());
 
     }
@@ -48,9 +48,9 @@ public class TestMybatisPlus {
     @Test
     public void selectPage() {
         logger.debug("======================================");
-        EntityWrapper<TestBean> ew = new EntityWrapper<TestBean>();
+        EntityWrapper<Tb1> ew = new EntityWrapper<Tb1>();
 
-        List<TestBean> userList = testMapper.selectPage( new Page<TestBean>(1, 5), ew);
+        List<Tb1> userList = testMapper.selectPage( new Page<Tb1>(1, 5), ew);
         logger.debug("size:"+userList);
         logger.debug("======================================"+userList);
 
