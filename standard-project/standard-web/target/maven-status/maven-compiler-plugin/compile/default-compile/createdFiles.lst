@@ -1,7 +1,7 @@
-com/xie/intercepter/LoginInterceptor.class
-com/xie/mode/Mode.class
-com/xie/web/controller/TestController.class
-com/xie/config/SwaggerConfig.class
-com/xie/web/controller/RestFulDesignController.class
-com/xie/web/controller/UserController.class
-com/xie/filter/CorsFilter.class
+com\xie\web\controller\TbController.class
+com\xie\mode\Mode.class
+com\xie\intercepter\LoginInterceptor.class
+com\xie\web\controller\RestFulDesignController.class
+com\xie\config\SwaggerConfig.class
+com\xie\filter\CorsFilter.class
+com\xie\web\controller\UserController.class

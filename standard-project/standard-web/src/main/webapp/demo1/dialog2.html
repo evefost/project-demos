@@ -48,14 +48,17 @@ function clickBtn(id){
     var api;
     if(id ==1){
         api = Api.ajaxDemo.formAdd;
+        NetUtis.request(api,params);
     }else if(id ==2){
         api = Api.ajaxDemo.postBody;
+        NetUtis.request(api,params);
     }else if(id==3){
         api = Api.ajaxDemo.getRequest;
+        NetUtis.request(api,params,function (data) {
+            alert(JSON.stringify(data))
+        });
     }
-	NetUtis.doRequest(api,params,function (data) {
-        alert(JSON.stringify(data));
-    });
+
 }
 
 layui.use(['layer', 'laypage', 'element'], function(){
