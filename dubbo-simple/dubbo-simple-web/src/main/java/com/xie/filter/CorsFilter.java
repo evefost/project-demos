@@ -20,7 +20,7 @@ public class CorsFilter implements Filter {
         servletResponse.setHeader("Access-Control-Allow-Methods", "*");
         servletResponse.setHeader("Allow", "*");
         servletResponse.setHeader("Access-Control-Allow-Origin", "*");
-        servletResponse.setHeader("Content-type", "");
+        servletResponse.setHeader("Content-type", "*");
         servletResponse.setHeader("Access-Control-Allow-Headers", "*");
 
         arg2.doFilter(request, response);

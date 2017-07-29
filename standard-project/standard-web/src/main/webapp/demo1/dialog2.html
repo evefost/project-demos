@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>layui在线调试</title>
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <style>
+    body{margin: 10px;}
+  </style>
+</head>
+<body>
+ 
+<blockquote class="layui-elem-quote">
+  温馨提示：如果最左侧的导航的高度超出了你的屏幕，你可以将鼠标移入导航区域，然后滑动鼠标滚轮即可
+</blockquote>
+ 
+<div class="layui-tab layui-tab-card" lay-filter="demo" style="height: 300px;">
+  <ul class="layui-tab-title">
+    <li class="layui-this">演示说明</li>
+    <li>标题一</li>
+    <li>标题二</li>
+    <li>标题三</li>
+  </ul>
+  <div class="layui-tab-content">
+    <div class="layui-tab-item layui-show">
+       在这里，你将以最直观的形式体验Layui！在编辑器中可以执行layui相关的一切代码。
+      <br>你也可以点击左侧导航针对性地试验我们提供的示例。
+    </div>
+    <div class="layui-tab-item">内容1</div>
+    <div class="layui-tab-item">内容2</div>
+    <div class="layui-tab-item">内容3</div>
+  </div>
+  <input type="button" style="width: 40px;margin: 10px" id="button1" value="formAdd" onclick="clickBtn(1)" />
+  <input type="button" style="width: 40px;margin: 10px" id="button2" value="postBody" onclick="clickBtn(2)" />
+  <input type="button" style="width: 40px;margin: 10px" id="button3" value="getRequest" onclick="clickBtn(3)" />
+</div>
+ 
+<div id="pageDemo"></div>
+ 
+ 
+<script src="./layui/layui.js"></script>
+<script src="Api.js"></script>
+<script src="jquery.1.12.4.min.js"></script>
+<script>
+function clickBtn(id){
+    var params ={name:"张三",age:12}
+    var api;
+    if(id ==1){
+        api = Api.ajaxDemo.formAdd;
+    }else if(id ==2){
+        api = Api.ajaxDemo.postBody;
+    }else if(id==3){
+        api = Api.ajaxDemo.getRequest;
+    }
+	NetUtis.doRequest(api,params);
+}
+
+layui.use(['layer', 'laypage', 'element'], function(){
+  var layer = layui.layer
+  ,laypage = layui.laypage
+  ,element = layui.element();
+  
+  //向世界问个好
+  //layer.msg('Hello World');
+  
+ 
+  //监听Tab切换
+  element.on('tab(demo)', function(data){
+    layer.msg('切换了：'+ this.innerHTML);
+    console.log(data);
+  });
+
+  //分页
+  laypage({
+    cont: 'pageDemo' //分页容器的id
+    ,pages: 100 //总页数
+    ,skin: '#5FB878' //自定义选中色值
+    //,skip: true //开启跳页
+    ,jump: function(obj, first){
+      if(!first){
+        layer.msg('第'+ obj.curr +'页');
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>        
+        

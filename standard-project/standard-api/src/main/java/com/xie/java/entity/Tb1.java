@@ -2,6 +2,7 @@ package com.xie.java.entity;
 
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.activerecord.Model;
 import java.io.Serializable;
@@ -14,6 +15,7 @@ import java.io.Serializable;
  * @author Yanghu
  * @since 2017-06-18
  */
+@TableName("tb1")
 public class Tb1 extends Model<Tb1> {
 
     private static final long serialVersionUID = 1L;

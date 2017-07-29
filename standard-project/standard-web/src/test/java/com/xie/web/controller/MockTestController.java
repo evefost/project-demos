@@ -1,6 +1,9 @@
 package com.xie.web.controller;
 
+import com.alibaba.fastjson.JSON;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 
@@ -11,7 +14,13 @@ import java.util.Map;
  * mock 单无测试
  */
 public class MockTestController extends BaseTest{
+    @Before
+    public void before() throws Exception {
+    }
 
+    @After
+    public void after() throws Exception {
+    }
     @Test
     public  void addUser() throws Exception{
         MockHttpServletRequest request = new MockHttpServletRequest();

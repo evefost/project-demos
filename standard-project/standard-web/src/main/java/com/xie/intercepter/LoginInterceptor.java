@@ -42,21 +42,22 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             throws Exception {
 
         logger.debug("is Debug mode:" + appConfig.getConfigDebug());
-        String pathInfo = request.getPathInfo();
-        String requestURI = request.getRequestURI();
-        logger.debug("loggin incepter:" + pathInfo);
-        logger.debug("loggin incepter:" + requestURI);
+//        String pathInfo = request.getPathInfo();
+//        String requestURI = request.getRequestURI();
+//        logger.debug("loggin incepter:" + pathInfo);
+//        logger.debug("loggin incepter:" + requestURI);
 
-        if(appConfig.getConfigDebug()){
-            return true;
-        }
-        if (requestURI == null) {
-            return true;
-        }
-        if (isInWileList(requestURI) || isStaticResouce(requestURI) || isLogin(request, response)) {
-            return true;
-        }
-        return false;
+//        if(appConfig.getConfigDebug()){
+//            return true;
+//        }
+//        if (requestURI == null) {
+//            return true;
+//        }
+//        if (isInWileList(requestURI) || isStaticResouce(requestURI) || isLogin(request, response)) {
+//            return true;
+//        }
+//        return false;
+        return true;
 
     }
 

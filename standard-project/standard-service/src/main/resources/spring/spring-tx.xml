@@ -15,7 +15,7 @@
     <context:annotation-config/>
     <!-- 扫描 service -->
     <context:component-scan base-package="com.xie.java.service.*"/>
-    <context:component-scan base-package="com.xie.java.mapper.**"/>
+    <context:component-scan base-package="com.xie.java.mapper.*"/>
     <bean id="config" class="com.xie.java.constant.AppConfig"/>
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
@@ -41,7 +41,7 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:/mybatis-config.xml"/>
         <property name="typeAliasesPackage" value="com.xie.java.entity"/>
-        <property name="mapperLocations" value="classpath*:**/*Mapper.xml"/>
+        <property name="mapperLocations" value="classpath:mapper/**Mapper.xml"/>
         <property name="plugins">
             <!-- 分页插件配置 -->
             <bean class="com.baomidou.mybatisplus.plugins.PaginationInterceptor">
@@ -58,7 +58,7 @@
     </bean>
 
 
-    <!-- 使用annotation注解方式配置事务，注入service的代理，如果不开启，注入的service执为实现 -->
+    <!-- 使用annotation注解方式配置事务 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!-- 使用JDBC事物 -->
@@ -66,7 +66,7 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <!-- AOP 非注解式配置事物 -->
+    <!-- AOP配置事物 -->
     <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
         <tx:attributes>
             <tx:method name="select*" read-only="true" propagation="REQUIRED"/>

@@ -2,7 +2,7 @@
 <configuration status="debug">
     <Properties>
         <!--<property name="log.path">${sys:catalina.home}/logs/${artifactId}</property>-->
-        <property name="log.path">${webApp.root}/logs/${artifactId}</property>
+        <property name="log.path">${user.dir}/logs/${artifactId}</property>
     </Properties>
     <appenders>
         <Console name="ConsoleAppender" target="SYSTEM_OUT">
@@ -19,6 +19,11 @@
 
 
         <logger name="com.xie" level="debug" additivity="false">
+            <appender-ref ref="ConsoleAppender"/>
+            <appender-ref ref="FileAppender"/>
+        </logger>
+
+        <logger name="org.springframework" level="debug" additivity="false">
             <appender-ref ref="ConsoleAppender"/>
             <appender-ref ref="FileAppender"/>
         </logger>
