@@ -64,21 +64,22 @@ if (!Api) {
 if (!NetUtis) {
 
     var NetUtis = {
-        doRequest:function (api, params) {
+        doRequest:function (api, params,fn) {
             this.doLogBefore(api, params)
             if(api.method == "GET"){
-                this.doGet(api,params);
+                this.doGet(api,params,fn);
             }else  if(api.method == "POST"){
                 if(api.contentType == MediType_JSON){
-                    this.doPostBody(api,JSON.stringify(params));
+                    this.doPostBody(api,JSON.stringify(params),fn);
                 }else {
-                    this.doPostForm(api,params);
+                    this.doPostForm(api,params,fn);
                 }
             }else{
 
             }
         },
-        doGet:function (api, params) {
+        doGet:function (api, params,fn) {
+            var _fn = fn;
             $.ajax({
                 type: "GET", //请求方式
                 url: api.url, //请求地址
@@ -89,6 +90,9 @@ if (!NetUtis) {
                     if (Api.debug) {
                         console.log("请求结果:" + JSON.stringify(data))
                     }
+                    if(_fn){
+                        _fn.call(data);
+                    }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     console.log("请求信息失败 status:" + textStatus)
@@ -96,14 +100,19 @@ if (!NetUtis) {
 
             });
         },
-        doPostForm:function (api, params) {
+        doPostForm:function (api, params,fn) {
+            var _fn = fn;
             $.post(api.url, params, function (data) {
                 if (Api.debug) {
                     console.log("请求结果:" + JSON.stringify(data))
                 }
+                if(_fn){
+                    _fn.call(data);
+                }
             });
         },
-        doPostBody:function (api, params) {
+        doPostBody:function (api, params,fn) {
+            var _fn = fn;
             $.ajax({
                 type: "POST", //请求方式
                 url: api.url, //请求地址
@@ -113,6 +122,9 @@ if (!NetUtis) {
                 success: function (data) {
                     if (Api.debug) {
                         console.log("请求结果:" + JSON.stringify(data))
+                    }
+                    if(_fn){
+                        _fn.call(data);
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
