@@ -6,13 +6,27 @@ import com.alibaba.fastjson.JSON;
  * Created by Administrator on 2017/7/29.
  */
 public class User {
-   private Long id;
 
+    @ParamDes(required=true,descript = "主键id")
+    private Long id;
+
+    @ParamDes(required=false,descript = "姓名")
     private String name;
 
+    @ParamDes(descript = "年龄")
     private int age;
 
     private String school;
+
+    private Teacher teacher;
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
 
     public Long getId() {
         return id;

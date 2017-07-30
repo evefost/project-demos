@@ -14,7 +14,7 @@ if (!Api) {
                 method: "POST",
                 contentType: MediType_FORM_URLENCODE,
                 paramModel: {
-                    id:undefined,
+                    id:undefined,//
                     text:undefined,
                     name: undefined,
                     age: undefined,
@@ -22,7 +22,7 @@ if (!Api) {
                     teacher: {
                         name: undefined,
                         address: undefined,
-                        level: undefined
+                        level: undefined,
                     }
                 }
 
@@ -47,16 +47,18 @@ if (!Api) {
             },
             getRequest: {
                 url: app_root_path + "/api/ajax/getRequest",
-                paramModel: {
+                user:{
                     id:undefined,
-                    text:undefined,
-                    name: undefined,
-                    age: undefined,
-                    school: undefined,
-                    teacher: {
-                        name: undefined,
-                        address: undefined,
-                        level: undefined
+                    name:undefined,
+                    age:undefined,
+                    school:undefined,
+                    teacher:{
+                        teacherName:undefined,
+                        cource:undefined,
+                        student:{
+                            teacherName:undefined,
+                            cource:undefined
+                        }
                     }
                 }
 

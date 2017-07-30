@@ -31,7 +31,7 @@ public class AjaxController {
     }
 
     @RequestMapping(value = "getRequest", method = RequestMethod.GET)
-    public ResponseDataVo getRequest( User user) {
+    public ResponseDataVo getRequest( User user,@RequestParam(required = true)String name) {
         logger.debug("getRequest{}",user);
         return ResponseDataVo.success(user);
     }
