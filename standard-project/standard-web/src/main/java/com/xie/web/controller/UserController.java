@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,12 +21,19 @@ public class UserController {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+
     @ApiOperation(value = "获取用户列表", notes = "")
     @RequestMapping(value = {"login"}, method = RequestMethod.GET)
     public ResponseDataVo login(String username, String password) {
 
         logger.debug("login:{} {}",username,password);
         return ResponseDataVo.success();
+    }
+
+    @ApiOperation(value = "获取用户列表", notes = "")
+    @RequestMapping(value = {"index"}, method = RequestMethod.GET)
+    public String home() {
+        return "index";
     }
 
     @ApiOperation(value = "获取用户列表", notes = "")

@@ -20,6 +20,7 @@ public class AjaxController {
     @RequestMapping(value = "formAdd", method = RequestMethod.POST)
     public ResponseDataVo add(User user) {
         logger.debug("formAdd{}",user);
+        //user.getSchool().toString();
         return ResponseDataVo.success(user);
     }
 
