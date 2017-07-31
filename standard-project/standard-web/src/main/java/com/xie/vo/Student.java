@@ -5,25 +5,24 @@ package com.xie.vo;
  */
 public class Student {
 
-    private String teacherName;
+    private String studentName;
 
-    private String cource;
+    private String studentCources;
 
 
-
-    public String getTeacherName() {
-        return teacherName;
+    public String getStudentName() {
+        return studentName;
     }
 
-    public void setTeacherName(String teacherName) {
-        this.teacherName = teacherName;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
-    public String getCource() {
-        return cource;
+    public String getStudentCources() {
+        return studentCources;
     }
 
-    public void setCource(String cource) {
-        this.cource = cource;
+    public void setStudentCources(String studentCources) {
+        this.studentCources = studentCources;
     }
 }

@@ -1,3 +1,4 @@
+//应用根目录
 var app_root_path = "";
 //数据格式
 var MediType_FORM_URLENCODE = "application/x-www-form-urlencoded; charset=UTF-8";
@@ -10,9 +11,11 @@ if (!Api) {
         //接口demo，若api没指定，method:默认为get方法提交
         ajaxDemo: {
             formAdd: {
+                //form 表单提交例子
                 url: app_root_path + "/api/ajax/formAdd",
                 method: "POST",
                 contentType: MediType_FORM_URLENCODE,
+                //需要提交的参数模型
                 paramModel: {
                     id:undefined,//
                     text:undefined,
@@ -27,6 +30,7 @@ if (!Api) {
                 }
 
             },
+            // json body 提交提交例子
             postBody: {
                 url: app_root_path + "/api/ajax/postBody",
                 method: "POST",
@@ -45,6 +49,7 @@ if (!Api) {
                     }
                 }
             },
+            //普通get请求
             getRequest: {
                 url: app_root_path + "/api/ajax/getRequest",
                 user:{
@@ -177,6 +182,14 @@ if (!NetUtis) {
 }
 
 
+/**
+ * 标签参数元信息,用于获取指定容器内指定的参数名的属性的:值; 及参数值的属性的:值
+ * @param container 各参数所在的容器
+ * @param tagName 该值可以为标签名、className 或id,一般为className通用
+ * @param dataName 要提交的参数名(key)
+ * @param valueName 要提交的参数值(value)
+ * @constructor
+ */
 function TagInfo(container,tagName,dataName,valueName) {
     //容器名称
     this.container = container;
@@ -186,10 +199,13 @@ function TagInfo(container,tagName,dataName,valueName) {
     this.dataName = dataName;
     //自定义属数据参数的值的名称
     this.valueName = valueName;
-
-
 }
 
+/**
+ * 在某容器内找出所需提交的参数信息(不支持多级参数)
+ * @param tagInfo 参数元信息
+ * @param paramModel
+ */
 function findParamByModel(tagInfo, paramModel) {
     //复制参数model
     var params = cloneObj(paramModel);

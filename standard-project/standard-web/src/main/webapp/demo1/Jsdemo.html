@@ -76,11 +76,11 @@
 
     $(".btn").click(function () {
         var container = $(this).parent();
-        var tagInfo = new TagInfo(container, ".params", "data-name2", "value");
+        var tagInfo = new TagInfo(container, "input", "data-name2", "data-value2");
         //var api = Api.ajaxDemo.formAdd;
         //var api = Api.ajaxDemo.postBody;
         var api = Api.ajaxDemo.getRequest;
-        var params = findParamByModel(tagInfo,api.paramModel);
+        //var params = findParamByModel(tagInfo,api.paramModel);
         params.addition="abcd";
         NetUtis.request(api, params);
 

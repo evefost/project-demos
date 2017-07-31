@@ -2,13 +2,10 @@ package com.xie.vo;
 
 import com.alibaba.fastjson.JSON;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Administrator on 2017/7/29.
  */
-public class User {
+public class User2 {
 
     @ParamDes(required=true,descript = "主键id")
     private Long id;
@@ -21,14 +18,14 @@ public class User {
 
     private String school;
 
-    private List<Teacher> teachers;
+    private Teacher teacherBean;
 
-    public List<Teacher> getTeachers() {
-        return teachers;
+    public Teacher getTeacherBean() {
+        return teacherBean;
     }
 
-    public void setTeachers(List<Teacher> teachers) {
-        this.teachers = teachers;
+    public void setTeacherBean(Teacher teacherBean) {
+        this.teacherBean = teacherBean;
     }
 
     public Long getId() {

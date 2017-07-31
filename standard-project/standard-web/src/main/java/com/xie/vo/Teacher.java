@@ -9,7 +9,7 @@ public class Teacher {
 
     private String cource;
 
-    Student student;
+   private   Student studentBean;
 
     public String getTeacherName() {
         return teacherName;
@@ -25,5 +25,13 @@ public class Teacher {
 
     public void setCource(String cource) {
         this.cource = cource;
+    }
+
+    public Student getStudentBean() {
+        return studentBean;
+    }
+
+    public void setStudentBean(Student studentBean) {
+        this.studentBean = studentBean;
     }
 }

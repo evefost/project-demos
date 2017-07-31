@@ -2,6 +2,7 @@ package com.xie.scanapi;
 
 import com.xie.vo.ParamDes;
 import com.xie.vo.User;
+import com.xie.vo.User2;
 
 import java.lang.reflect.Field;
 
@@ -29,11 +30,11 @@ public class ApiUtils {
         //System.out.println( new String[2].getClass().isArray());
         //System.out.println(isWrapClass(User.class));
 
-        StringBuffer sb = generateApiJsonForm(User.class, 1, true);
+        StringBuffer sb = generateApiJsonForm(User2.class, 1, true);
         sb.replace(sb.lastIndexOf(","), sb.lastIndexOf(",") + 1, "");
         System.out.println(sb.toString());
-        StringBuffer stringBuffer = generateApiParamDescript(User.class);
-        System.out.println(stringBuffer.toString());
+      //  StringBuffer stringBuffer = generateApiParamDescript(User.class);
+       // System.out.println(stringBuffer.toString());
     }
 
     public static boolean isBase(Class clz) {
@@ -54,37 +55,36 @@ public class ApiUtils {
     public static StringBuffer generateApiJsonForm(Class clz, int loop, boolean forJs) {
 
         StringBuffer sb = new StringBuffer();
-        String className = clz.getSimpleName();
-        for (int i = 1; i < loop; i++) {
-            sb.append("\t");
-        }
-        if (!forJs) {
-            sb.append("\"");
-        }
-        sb.append(className.substring(0, 1).toLowerCase())
-                .append(className.substring(1, className.length()));
-        if (!forJs) {
-            sb.append("\"");
-        }
-        sb.append(":{\n");
-
+//        String className = clz.getSimpleName();
+//        for (int i = 1; i < loop; i++) {
+//            sb.append("\t");
+//        }
+//        if (!forJs) {
+//            sb.append("\"");
+//        }
+//        sb.append(className.substring(0, 1).toLowerCase())
+//                .append(className.substring(1, className.length()));
+//        if (!forJs) {
+//            sb.append("\"");
+//        }
+        sb.append("{\n");
         Field[] fields = clz.getDeclaredFields();
         for (Field field : fields) {
             field.setAccessible(true);
             String name = field.getName();
             Class<?> type = field.getType();
+            for (int i = 0; i < loop; i++) {
+                sb.append("\t");
+            }
+            if (!forJs) {
+                sb.append("\"");
+            }
+            sb.append(name);
+            if (!forJs) {
+                sb.append("\"");
+            }
+            sb.append(':');
             if (isBase(type)) {
-                for (int i = 0; i < loop; i++) {
-                    sb.append("\t");
-                }
-                if (!forJs) {
-                    sb.append("\"");
-                }
-                sb.append(name);
-                if (!forJs) {
-                    sb.append("\"");
-                }
-                sb.append(':');
                 if (!forJs) {
                     sb.append("\"");
                 }
@@ -96,7 +96,6 @@ public class ApiUtils {
                 if (forJs) {
                     sb.append("  //类型:").append(type.getSimpleName().toLowerCase()).append("\n");
                 }
-
                 sb.append("\n");
             } else {
                 loop++;
