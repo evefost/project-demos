@@ -8,14 +8,21 @@ import java.util.Set;
 /**
  * Created by Administrator on 2017/7/29.
  */
+@Descript("用户类")
 public class User {
 
 
+    @Descript(required = true,message = "学校名称")
     private String school;
 
-    private List<Teacher> teacherList;
+    @Descript("教师数组")
+    public List<Teacher> teacherList;
 
     private Set<Student> students;
+
+    private String tttttt;
+
+    private Student student;
 
     public String getSchool() {
         return school;

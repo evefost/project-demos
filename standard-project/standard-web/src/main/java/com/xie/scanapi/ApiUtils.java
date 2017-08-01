@@ -1,15 +1,12 @@
 package com.xie.scanapi;
 
 import com.xie.vo.Descript;
-import com.xie.vo.Student;
 import com.xie.vo.User;
-import com.xie.vo.User2;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by xieyang on 17/7/31.
@@ -49,7 +46,7 @@ public class ApiUtils {
 //        s.setStudents(students);
 
 
-        String sb = generateApiJsonForm(User2.class, false, false);
+        String sb = generateApiJsonForm(User.class, false, false);
         System.out.println(sb);
 //        StringBuffer stringBuffer = generateApiParamDescript(User.class);
 //        System.out.println(stringBuffer.toString());
@@ -105,9 +102,12 @@ public class ApiUtils {
     }
 
     private static StringBuffer generateApiJsonForm(Class clz, int loop, boolean forJs, boolean withDescript) {
+
         loop++;
         StringBuffer sb = new StringBuffer();
         sb.append("{\n");
+        Annotation annotation = clz.getAnnotation(Descript.class);
+        //appenDescript(sb, clz.getAnnotation(Descript.class), clz);
         Field[] fields = clz.getDeclaredFields();
         int c = 0;
         for (Field field : fields) {
@@ -130,51 +130,74 @@ public class ApiUtils {
                 } else {
                     sb.append(getDefaultValueByClassType(type));
                 }
-                if(c<fields.length){
+                if (c < fields.length) {
                     sb.append(",");
                 }
-                if (withDescript) {
-                    sb.append(" //");
-                    Descript annotation = field.getAnnotation(Descript.class);
-                    if (annotation != null) {
-                        sb.append(annotation.message());
-                    }
-                    sb.append(" 类型:").append(type.getSimpleName().toLowerCase());
-                    if (annotation != null) {
-                        boolean require = annotation.required();
-                        sb.append(" 必选(" + (require ? "是)" : "否)"));
-                    } else {
-                        sb.append(" 必选(未知)");
-                    }
+                if(withDescript){
+                    appenDescript(sb, field.getAnnotation(Descript.class), type);
                 }
                 sb.append("\n");
             } else {
-                loop++;
                 if (isList(type)) {
                     sb.append(" [");
+
                     Class pClass = getParameterizedClass(field);
                     if (pClass == null) {
-                        System.out.println("数组没有泛型参数");
+                        sb.append(" 数组没有泛型参数,没法解释到实际参数型");
                     } else {
                         StringBuffer json = generateApiJsonForm(pClass, loop, forJs, withDescript);
                         sb.append(json);
                     }
-                    sb.append(" ],");
-                    sb.append("\n");
+//                    if(withDescript){
+//                        appenDescript(sb, field, type);
+//                    }
+                    sb.append(" ]");
                 } else {
                     StringBuffer json = generateApiJsonForm(type, loop, forJs, withDescript);
                     sb.append(json);
+
                 }
+                if (c < fields.length) {
+                    sb.append(",");
+                }
+                sb.append("\n");
+
+
             }
         }
-        loop--;
+
         for (int i = 1; i < loop; i++) {
             sb.append("\t");
         }
         sb.append("}");
-        sb.append("\n");
+
+        loop--;
         return sb;
 
+    }
+
+    private static void appenDescript(StringBuffer sb, Descript annotation, Class type) {
+        sb.append(" //");
+        if (annotation != null) {
+            String message = isEmpty(annotation.value()) ? annotation.message() : annotation.value();
+            sb.append(message);
+        }
+        sb.append(" 类型:").append(type.getSimpleName().toLowerCase());
+        if (annotation != null) {
+            boolean require = annotation.required();
+            sb.append(" 必选(" + (require ? "是)" : "否)"));
+        } else {
+            sb.append(" 必选(未知)");
+        }
+
+    }
+
+
+    private static boolean isEmpty(String str) {
+        if (str == null || str.trim().length() == 0 || "".equals(str)) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -265,6 +288,11 @@ public class ApiUtils {
             }
         }
         return sb;
+
+    }
+
+
+    public static void scanApi(Class clz) {
 
     }
 

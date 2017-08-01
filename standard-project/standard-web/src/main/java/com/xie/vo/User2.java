@@ -22,11 +22,13 @@ public class User2 {
 
     private boolean aBoolean;
 
-    private String school;
+
 
     private Teacher teacherBean;
 
     private Teacher teacherBean2;
+
+    private String school;
 
     public Teacher getTeacherBean2() {
         return teacherBean2;

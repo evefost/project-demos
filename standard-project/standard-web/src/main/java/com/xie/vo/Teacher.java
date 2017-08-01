@@ -8,9 +8,12 @@ public class Teacher {
     private String teacherName;
 
     private short heiht;
+
     private String cource;
 
    private   Student studentBean;
+
+    private   Student studentBean22;
 
     public String getTeacherName() {
         return teacherName;
