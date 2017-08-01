@@ -1,11 +1,15 @@
 package com.xie.scanapi;
 
 import com.xie.vo.Descript;
+import com.xie.vo.Student;
 import com.xie.vo.User;
+import com.xie.vo.User2;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by xieyang on 17/7/31.
@@ -32,18 +36,30 @@ public class ApiUtils {
 //        System.out.println(new String[2].getClass().isArray());
         // System.out.println(isWrapClass(User.class));
 
+//        User s= new User();
+//        Student student = new Student();
+//        student.setStudentCources("aaaa");
+//        student.setStudentName("xieang");
+//        Student student2 = new Student();
+//        student2.setStudentCources("aaaa222");
+//        student2.setStudentName("xieang2222");
+//        Set<Student> students = new HashSet<>();
+//        students.add(student);
+//        students.add(student2);
+//        s.setStudents(students);
 
-        String sb = generateApiJsonForm(User.class, false,true);
+
+        String sb = generateApiJsonForm(User2.class, false, false);
         System.out.println(sb);
-          StringBuffer stringBuffer = generateApiParamDescript(User.class);
-         System.out.println(stringBuffer.toString());
-        //getGic();
+//        StringBuffer stringBuffer = generateApiParamDescript(User.class);
+//        System.out.println(stringBuffer.toString());
+
 //        Field[] declaredFields = User.class.getDeclaredFields();
-//        for(Field f:declaredFields){
+//        for (Field f : declaredFields) {
 //            f.setAccessible(true);
 //            Class<?>[] parameterizedType = getParameterizedType(f);
-//            if(parameterizedType != null && parameterizedType.length>0){
-//                for(Class clz:parameterizedType){
+//            if (parameterizedType != null && parameterizedType.length > 0) {
+//                for (Class clz : parameterizedType) {
 //                    System.out.println(clz.getSimpleName());
 //                }
 //            }
@@ -84,7 +100,7 @@ public class ApiUtils {
 
     public static String generateApiJsonForm(Class clz, boolean forJs, boolean withDescript) {
         StringBuffer sb = generateApiJsonForm(clz, 0, forJs, withDescript);
-        sb.replace(sb.lastIndexOf(","), sb.lastIndexOf(",") + 1, "");
+//        sb.replace(sb.lastIndexOf(","), sb.lastIndexOf(",") + 1, "");
         return sb.toString();
     }
 
@@ -93,7 +109,9 @@ public class ApiUtils {
         StringBuffer sb = new StringBuffer();
         sb.append("{\n");
         Field[] fields = clz.getDeclaredFields();
+        int c = 0;
         for (Field field : fields) {
+            c++;
             field.setAccessible(true);
             String name = field.getName();
             Class<?> type = field.getType();
@@ -108,11 +126,13 @@ public class ApiUtils {
             sb.append(':');
             if (isBase(type)) {
                 if (forJs) {
-                    sb.append("undefined,");
+                    sb.append("undefined");
                 } else {
-                    sb.append(getDefaultValueByClassType(type) + ",");
+                    sb.append(getDefaultValueByClassType(type));
                 }
-
+                if(c<fields.length){
+                    sb.append(",");
+                }
                 if (withDescript) {
                     sb.append(" //");
                     Descript annotation = field.getAnnotation(Descript.class);
@@ -130,8 +150,21 @@ public class ApiUtils {
                 sb.append("\n");
             } else {
                 loop++;
-                StringBuffer json = generateApiJsonForm(type, loop, forJs, withDescript);
-                sb.append(json);
+                if (isList(type)) {
+                    sb.append(" [");
+                    Class pClass = getParameterizedClass(field);
+                    if (pClass == null) {
+                        System.out.println("数组没有泛型参数");
+                    } else {
+                        StringBuffer json = generateApiJsonForm(pClass, loop, forJs, withDescript);
+                        sb.append(json);
+                    }
+                    sb.append(" ],");
+                    sb.append("\n");
+                } else {
+                    StringBuffer json = generateApiJsonForm(type, loop, forJs, withDescript);
+                    sb.append(json);
+                }
             }
         }
         loop--;
@@ -142,6 +175,37 @@ public class ApiUtils {
         sb.append("\n");
         return sb;
 
+    }
+
+    /**
+     * 只支持一个泛型
+     *
+     * @param field
+     * @return
+     */
+    private static Class getParameterizedClass(Field field) {
+        Class<?>[] parameterizedType = getParameterizedType(field);
+        if (parameterizedType != null && parameterizedType.length > 0) {
+            for (Class clz : parameterizedType) {
+                System.out.println(clz.getSimpleName());
+            }
+            return parameterizedType[0];
+        }
+        return null;
+    }
+
+    private static boolean isList(Class clz) {
+        String simpleName = clz.getSimpleName().toLowerCase();
+        switch (simpleName) {
+            case "list":
+            case "arraylist":
+            case "linklist":
+            case "set":
+            case "hashset":
+                return true;
+        }
+
+        return false;
     }
 
     private static Object getDefaultValueByClassType(Class type) {

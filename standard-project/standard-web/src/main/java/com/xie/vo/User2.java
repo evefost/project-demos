@@ -26,6 +26,16 @@ public class User2 {
 
     private Teacher teacherBean;
 
+    private Teacher teacherBean2;
+
+    public Teacher getTeacherBean2() {
+        return teacherBean2;
+    }
+
+    public void setTeacherBean2(Teacher teacherBean2) {
+        this.teacherBean2 = teacherBean2;
+    }
+
     public Teacher getTeacherBean() {
         return teacherBean;
     }
