@@ -2,6 +2,7 @@ package com.xie.scanapi;
 
 import com.xie.vo.Descript;
 import com.xie.vo.User;
+import com.xie.vo.User2;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -46,7 +47,7 @@ public class ApiUtils {
 //        s.setStudents(students);
 
 
-        String sb = generateApiJsonForm(User.class, false, false);
+        String sb = generateApiJsonForm(User.class, true, true);
         System.out.println(sb);
 //        StringBuffer stringBuffer = generateApiParamDescript(User.class);
 //        System.out.println(stringBuffer.toString());
@@ -96,16 +97,19 @@ public class ApiUtils {
     }
 
     public static String generateApiJsonForm(Class clz, boolean forJs, boolean withDescript) {
-        StringBuffer sb = generateApiJsonForm(clz, 0, forJs, withDescript);
+        StringBuffer sb = generateApiJsonForm(clz, 0, forJs, withDescript,"");
 //        sb.replace(sb.lastIndexOf(","), sb.lastIndexOf(",") + 1, "");
         return sb.toString();
     }
 
-    private static StringBuffer generateApiJsonForm(Class clz, int loop, boolean forJs, boolean withDescript) {
+    private static StringBuffer generateApiJsonForm(Class clz, int loop, boolean forJs, boolean withDescript,String objDes) {
 
         loop++;
         StringBuffer sb = new StringBuffer();
-        sb.append("{\n");
+        for (int i = 1; i < loop; i++) {
+            sb.append("\t");
+        }
+        sb.append("{").append(objDes).append("\n");
         Annotation annotation = clz.getAnnotation(Descript.class);
         //appenDescript(sb, clz.getAnnotation(Descript.class), clz);
         Field[] fields = clz.getDeclaredFields();
@@ -134,26 +138,37 @@ public class ApiUtils {
                     sb.append(",");
                 }
                 if(withDescript){
-                    appenDescript(sb, field.getAnnotation(Descript.class), type);
+                    appenDescript(sb, field.getAnnotation(Descript.class), type,"");
                 }
                 sb.append("\n");
             } else {
                 if (isList(type)) {
-                    sb.append(" [");
-
                     Class pClass = getParameterizedClass(field);
+                    sb.append("[");
+                    if(withDescript){
+                        String paramterClass="";
+                        if(pClass != null){
+                            paramterClass = pClass.getSimpleName().toLowerCase();
+                        }
+                        appenDescript(sb, field.getAnnotation(Descript.class), type,paramterClass);
+                    }
+                    sb.append("\n");
                     if (pClass == null) {
                         sb.append(" 数组没有泛型参数,没法解释到实际参数型");
                     } else {
-                        StringBuffer json = generateApiJsonForm(pClass, loop, forJs, withDescript);
+                        StringBuffer json = generateApiJsonForm(pClass, loop, forJs, withDescript,"");
                         sb.append(json);
                     }
-//                    if(withDescript){
-//                        appenDescript(sb, field, type);
-//                    }
-                    sb.append(" ]");
+                    sb.append("]");
                 } else {
-                    StringBuffer json = generateApiJsonForm(type, loop, forJs, withDescript);
+                    String tObjdes ="";
+                    if(withDescript){
+                        StringBuffer dsb = new StringBuffer();
+                        appenDescript(dsb, field.getAnnotation(Descript.class), type,"");
+                        tObjdes = dsb.toString();
+                    }
+
+                    StringBuffer json = generateApiJsonForm(type, loop, forJs, withDescript,tObjdes);
                     sb.append(json);
 
                 }
@@ -176,13 +191,16 @@ public class ApiUtils {
 
     }
 
-    private static void appenDescript(StringBuffer sb, Descript annotation, Class type) {
+    private static void appenDescript(StringBuffer sb, Descript annotation, Class type,String paramterClass) {
         sb.append(" //");
         if (annotation != null) {
             String message = isEmpty(annotation.value()) ? annotation.message() : annotation.value();
             sb.append(message);
         }
         sb.append(" 类型:").append(type.getSimpleName().toLowerCase());
+        if(!isEmpty(paramterClass)){
+            sb.append("<"+paramterClass+">");
+        }
         if (annotation != null) {
             boolean require = annotation.required();
             sb.append(" 必选(" + (require ? "是)" : "否)"));

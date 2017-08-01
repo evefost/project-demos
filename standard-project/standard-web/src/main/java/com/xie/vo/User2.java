@@ -24,6 +24,7 @@ public class User2 {
 
 
 
+    @Descript("老师王")
     private Teacher teacherBean;
 
     private Teacher teacherBean2;
