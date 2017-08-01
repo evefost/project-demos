@@ -47,7 +47,8 @@ if (!Api) {
                         address: undefined,
                         level: undefined
                     }
-                }
+                },
+
             },
             //普通get请求
             getRequest: {

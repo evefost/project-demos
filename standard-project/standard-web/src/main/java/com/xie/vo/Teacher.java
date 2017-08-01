@@ -7,12 +7,21 @@ public class Teacher {
 
     private String teacherName;
 
+    private short heiht;
     private String cource;
 
    private   Student studentBean;
 
     public String getTeacherName() {
         return teacherName;
+    }
+
+    public short getHeiht() {
+        return heiht;
+    }
+
+    public void setHeiht(short heiht) {
+        this.heiht = heiht;
     }
 
     public void setTeacherName(String teacherName) {

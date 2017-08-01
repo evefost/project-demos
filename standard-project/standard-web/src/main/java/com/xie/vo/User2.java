@@ -16,6 +16,12 @@ public class User2 {
     @ParamDes(descript = "年龄")
     private int age;
 
+
+    private double aDouble;
+
+
+    private boolean aBoolean;
+
     private String school;
 
     private Teacher teacherBean;
