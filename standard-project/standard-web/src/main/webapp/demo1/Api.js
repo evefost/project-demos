@@ -10,25 +10,32 @@ if (!Api) {
         debug: true,
         //接口demo，若api没指定，method:默认为get方法提交
         ajaxDemo: {
-            formAdd: {
-                //form 表单提交例子
-                url: app_root_path + "/api/ajax/formAdd",
-                method: "POST",
-                contentType: MediType_FORM_URLENCODE,
-                //需要提交的参数模型
-                paramModel: {
-                    id:undefined,//
-                    text:undefined,
-                    name: undefined,
-                    age: undefined,
-                    school: undefined,
-                    teacher: {
-                        name: undefined,
-                        address: undefined,
-                        level: undefined,
-                    }
+            formAdd: { //用户类 类型:user 必选(否)
+                school: undefined, //学校名称 类型:string 必选(是)
+                teacherList: [ //教师数组 类型:list<teacher> 必选(否)
+                    {
+                        teacherName: undefined, // 类型:string 必选(未知)
+                        heiht: undefined, // 类型:short 必选(未知)
+                        cource: undefined, // 类型:string 必选(未知)
+                        studentBean: { // 类型:student 必选(未知)
+                            studentName: undefined, // 类型:string 必选(未知)
+                            studentCources: undefined // 类型:string 必选(未知)
+                        },
+                        studentBean22: { // 类型:student 必选(未知)
+                            studentName: undefined, // 类型:string 必选(未知)
+                            studentCources: undefined // 类型:string 必选(未知)
+                        }
+                    }],
+                students: [ // 类型:set<student> 必选(未知)
+                    {
+                        studentName: undefined, // 类型:string 必选(未知)
+                        studentCources: undefined // 类型:string 必选(未知)
+                    }],
+                tttttt: undefined, // 类型:string 必选(未知)
+                student: { // 类型:student 必选(未知)
+                    studentName: undefined, // 类型:string 必选(未知)
+                    studentCources: undefined // 类型:string 必选(未知)
                 }
-
             },
             // json body 提交提交例子
             postBody: {
@@ -37,8 +44,8 @@ if (!Api) {
                 contentType: MediType_JSON,
                 descript: "post body 提交json demo接口",
                 paramModel: {
-                    id:undefined,
-                    text:undefined,
+                    id: undefined,
+                    text: undefined,
                     name: undefined,
                     age: undefined,
                     school: undefined,
@@ -53,17 +60,17 @@ if (!Api) {
             //普通get请求
             getRequest: {
                 url: app_root_path + "/api/ajax/getRequest",
-                user:{
-                    id:undefined,
-                    name:undefined,
-                    age:undefined,
-                    school:undefined,
-                    teacher:{
-                        teacherName:undefined,
-                        cource:undefined,
-                        student:{
-                            teacherName:undefined,
-                            cource:undefined
+                user: {
+                    id: undefined,
+                    name: undefined,
+                    age: undefined,
+                    school: undefined,
+                    teacher: {
+                        teacherName: undefined,
+                        cource: undefined,
+                        student: {
+                            teacherName: undefined,
+                            cource: undefined
                         }
                     }
                 }
@@ -191,7 +198,7 @@ if (!NetUtis) {
  * @param valueName 要提交的参数值(value)
  * @constructor
  */
-function TagInfo(container,tagName,dataName,valueName) {
+function TagInfo(container, tagName, dataName, valueName) {
     //容器名称
     this.container = container;
     //目录标签：标签名，类名或id 都可以
@@ -215,17 +222,17 @@ function findParamByModel(tagInfo, paramModel) {
     for (var i = 0; i < els.length; i++) {
         var dataName = $(els[i]).attr(tagInfo.dataName);
         if (dataName == undefined) {
-            console.warn("注意！有一个["+els[i].tagName+"]元素中没有定义名称为[" + tagInfo.dataName +"]属性请，请核对是否漏掉的参数名");
+            console.warn("注意！有一个[" + els[i].tagName + "]元素中没有定义名称为[" + tagInfo.dataName + "]属性请，请核对是否漏掉的参数名");
             continue;
         }
         var value;
-        if (tagInfo.valueName == "value" && (els[i].tagName == "INPUT" ||  els[i].tagName=="TEXTAREA" )) {
+        if (tagInfo.valueName == "value" && (els[i].tagName == "INPUT" || els[i].tagName == "TEXTAREA" )) {
             value = $(els[i]).val();
         } else {
             value = $(els[i]).attr(tagInfo.valueName);
         }
         if (value == undefined) {
-            console.warn("注意！有一个[ "+els[i].tagName+" ]元素中没有定义:" + tagInfo.valueName +"属性，请核对是参数名为["+dataName+"]的参数是否需要赋值");
+            console.warn("注意！有一个[ " + els[i].tagName + " ]元素中没有定义:" + tagInfo.valueName + "属性，请核对是参数名为[" + dataName + "]的参数是否需要赋值");
             continue;
         }
         for (key in params) {
@@ -242,10 +249,10 @@ function findParamByModel(tagInfo, paramModel) {
     var undfinedPs = "";
     for (key in params) {
         if (params[key] == undefined) {
-            undfinedPs+=key+",";
+            undfinedPs += key + ",";
         }
     }
-    if(undfinedPs){
+    if (undfinedPs) {
         console.warn("注意model中定义的参数: " + undfinedPs + "没有值，请检查是否为必传参数");
     }
     console.log("获取到的参数:" + JSON.stringify(params));

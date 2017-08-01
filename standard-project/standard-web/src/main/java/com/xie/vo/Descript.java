@@ -12,7 +12,7 @@ public @interface Descript {
 
     String value() default "";
 
-    boolean required() default true;
+    boolean required() default false;
 
     String message() default "暂无参数说明";
 
