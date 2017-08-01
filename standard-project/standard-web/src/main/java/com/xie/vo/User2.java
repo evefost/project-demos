@@ -7,13 +7,13 @@ import com.alibaba.fastjson.JSON;
  */
 public class User2 {
 
-    @Descript(required=true,descript = "主键id")
+    @Descript(required=true,message = "主键id")
     private Long id;
 
-    @Descript(required=false,descript = "姓名")
+    @Descript(required=false,message = "姓名")
     private String name;
 
-    @Descript(descript = "年龄")
+    @Descript(message = "年龄")
     private int age;
 
 

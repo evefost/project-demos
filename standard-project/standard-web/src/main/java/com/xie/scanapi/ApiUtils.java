@@ -122,9 +122,9 @@ public class ApiUtils {
                     sb.append(" 类型:").append(type.getSimpleName().toLowerCase());
                     if (annotation != null) {
                         boolean require = annotation.required();
-                        sb.append(" 必需(" + (require ? "是)" : "否)"));
+                        sb.append(" 必选(" + (require ? "是)" : "否)"));
                     } else {
-                        sb.append(" 必需(未知)");
+                        sb.append(" 必选(未知)");
                     }
                 }
                 sb.append("\n");
