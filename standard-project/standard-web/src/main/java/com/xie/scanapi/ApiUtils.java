@@ -1,14 +1,11 @@
 package com.xie.scanapi;
 
-import com.xie.vo.ParamDes;
+import com.xie.vo.Descript;
 import com.xie.vo.User;
-import com.xie.vo.User2;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by xieyang on 17/7/31.
@@ -36,21 +33,21 @@ public class ApiUtils {
         // System.out.println(isWrapClass(User.class));
 
 
-//        String sb = generateApiJsonForm(User.class, false,true);
-//        System.out.println(sb);
-//          StringBuffer stringBuffer = generateApiParamDescript(User.class);
-//         System.out.println(stringBuffer.toString());
+        String sb = generateApiJsonForm(User.class, false,true);
+        System.out.println(sb);
+          StringBuffer stringBuffer = generateApiParamDescript(User.class);
+         System.out.println(stringBuffer.toString());
         //getGic();
-        Field[] declaredFields = User.class.getDeclaredFields();
-        for(Field f:declaredFields){
-            f.setAccessible(true);
-            Class<?>[] parameterizedType = getParameterizedType(f);
-            if(parameterizedType != null && parameterizedType.length>0){
-                for(Class clz:parameterizedType){
-                    System.out.println(clz.getSimpleName());
-                }
-            }
-        }
+//        Field[] declaredFields = User.class.getDeclaredFields();
+//        for(Field f:declaredFields){
+//            f.setAccessible(true);
+//            Class<?>[] parameterizedType = getParameterizedType(f);
+//            if(parameterizedType != null && parameterizedType.length>0){
+//                for(Class clz:parameterizedType){
+//                    System.out.println(clz.getSimpleName());
+//                }
+//            }
+//        }
     }
 
     public static Class<?>[] getParameterizedType(Field f) {
@@ -118,9 +115,9 @@ public class ApiUtils {
 
                 if (withDescript) {
                     sb.append(" //");
-                    ParamDes annotation = field.getAnnotation(ParamDes.class);
+                    Descript annotation = field.getAnnotation(Descript.class);
                     if (annotation != null) {
-                        sb.append(annotation.descript());
+                        sb.append(annotation.message());
                     }
                     sb.append(" 类型:").append(type.getSimpleName().toLowerCase());
                     if (annotation != null) {
@@ -187,10 +184,9 @@ public class ApiUtils {
         Field[] fields = clz.getDeclaredFields();
         for (Field field : fields) {
             field.setAccessible(true);
-
             Class<?> type = field.getType();
             String name = field.getName();
-            ParamDes annotation = field.getAnnotation(ParamDes.class);
+            Descript annotation = field.getAnnotation(Descript.class);
             if (annotation != null) {
                 boolean require = annotation.required();
                 sb.append("|").append(name).append("|" + (require ? "是" : "否"));
@@ -199,7 +195,7 @@ public class ApiUtils {
             }
             sb.append("|").append(type.getSimpleName().toLowerCase());
             if (annotation != null) {
-                sb.append("|" + annotation.descript() + "|\n");
+                sb.append("|" + annotation.message() + "|\n");
             } else {
                 sb.append("|暂无参数说明|\n");
             }

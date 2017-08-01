@@ -10,11 +10,11 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 
-public @interface ParamDes {
+public @interface Descript {
 
     boolean required() default true;
 
-    String descript() default "暂无参数说明";
+    String message() default "暂无参数说明";
 
 
 }
