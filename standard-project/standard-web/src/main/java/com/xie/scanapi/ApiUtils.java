@@ -2,11 +2,15 @@ package com.xie.scanapi;
 
 import com.xie.vo.Descript;
 import com.xie.vo.User;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by xieyang on 17/7/31.
@@ -45,11 +49,11 @@ public class ApiUtils {
 //        students.add(student2);
 //        s.setStudents(students);
 
-        Descript annotation = User.class.getAnnotation(Descript.class);
+        //Descript annotation = User.class.getAnnotation(Descript.class);
 
 
-        String sb = generateApiJsonForm(User.class, true, true);
-        System.out.println(sb);
+//        String sb = generateApiJsonForm(User.class, false, false);
+//        System.out.println(sb);
 //        StringBuffer stringBuffer = generateApiParamDescript(User.class);
 //        System.out.println(stringBuffer.toString());
 
@@ -63,7 +67,35 @@ public class ApiUtils {
 //                }
 //            }
 //        }
+
+        scanPagkage();
+
     }
+
+    public static void scanPagkage() {
+        Package aPackage = ApiUtils.class.getPackage();
+        String name = aPackage.getName();
+        // String shortPack = name.substring(0,name.indexOf(","));
+
+        List<ControllerInfo> controllerInfos = new ArrayList<>();
+        List<Class<?>> classes = ClassUtil.getClasses("com.xie");
+        for (Class clz : classes) {
+            Annotation annotation = clz.getAnnotation(RestController.class);
+            if (annotation != null) {
+                System.out.println("controller类[" + clz.getName());
+                controllerInfos.add(new ControllerInfo(clz,annotation,true));
+            } else {
+                annotation = clz.getAnnotation(Controller.class);
+                if (annotation != null) {
+                    System.out.println("controller类[" + clz.getName());
+                    controllerInfos.add(new ControllerInfo(clz,annotation,false));
+                }
+            }
+        }
+        System.out.println(classes);
+    }
+
+
 
     public static Class<?>[] getParameterizedType(Field f) {
         // 获取f字段的通用类型
@@ -99,12 +131,12 @@ public class ApiUtils {
 
     public static String generateApiJsonForm(Class clz, boolean forJs, boolean withDescript) {
 
-        String classDes ="";
-        if(withDescript){
+        String classDes = "";
+        if (withDescript) {
             Annotation annotation = clz.getAnnotation(Descript.class);
             if (annotation != null) {
                 Descript descript = (Descript) annotation;
-                classDes = appenDescript(descript,clz,"").toString();
+                classDes = appenDescript(descript, clz, "").toString();
             }
         }
         StringBuffer sb = generateApiJsonForm(clz, 0, forJs, withDescript, classDes);
