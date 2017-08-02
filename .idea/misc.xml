@@ -36,6 +36,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/api-doc-util/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo-simple/Dubbo-Demo/pom.xml" />
         <option value="$PROJECT_DIR$/dubbo-simple/Dubbo-Demo1/pom.xml" />
         <option value="$PROJECT_DIR$/mult-memu/pom.xml" />

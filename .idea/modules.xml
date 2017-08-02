@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/api-doc-util/api-doc-util.iml" filepath="$PROJECT_DIR$/api-doc-util/api-doc-util.iml" />
       <module fileurl="file://$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-admin/bit-admin.iml" filepath="$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-admin/bit-admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-client/bit-client.iml" filepath="$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-client/bit-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-server/bit-server.iml" filepath="$PROJECT_DIR$/zookeeper-demos/distribute-manager/bit-server/bit-server.iml" />

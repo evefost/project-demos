@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="api-doc-util" />
         <module name="bit-admin" />
         <module name="bit-client" />
         <module name="bit-server" />
@@ -31,40 +32,28 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="api-doc-util" target="1.7" />
       <module name="bit-admin" target="1.5" />
       <module name="bit-client" target="1.5" />
       <module name="bit-server" target="1.5" />
       <module name="bit-zookeeper" target="1.5" />
       <module name="common-util" target="1.5" />
-      <module name="destibution-manager" target="1.5" />
       <module name="distribute-lock" target="1.5" />
       <module name="distribute-manager" target="1.5" />
-      <module name="dubbo-api" target="1.5" />
-      <module name="Dubbo-Consumer" target="1.5" />
-      <module name="Dubbo-Demo" target="1.5" />
-      <module name="Dubbo-Demo (1)" target="1.5" />
-      <module name="dubbo-provider" target="1.5" />
-      <module name="dubbo-provider (1)" target="1.5" />
       <module name="dubbo-simple" target="1.5" />
       <module name="dubbo-simple-api" target="1.5" />
       <module name="dubbo-simple-service" target="1.5" />
       <module name="dubbo-simple-web" target="1.7" />
       <module name="menu-api" target="1.5" />
-      <module name="menu-api (1)" target="1.5" />
       <module name="menu-service" target="1.5" />
-      <module name="menu-service (1)" target="1.5" />
       <module name="menu-web" target="1.7" />
-      <module name="menu-web (1)" target="1.8" />
-      <module name="mult-memu" target="1.5" />
       <module name="mult-menu" target="1.5" />
       <module name="mybatis-code-generator" target="1.5" />
       <module name="project-demos" target="1.5" />
-      <module name="standar-project" target="1.5" />
       <module name="standard-api" target="1.5" />
       <module name="standard-project" target="1.5" />
       <module name="standard-service" target="1.5" />
       <module name="standard-web" target="1.7" />
-      <module name="xie-zookeeper" target="1.5" />
       <module name="zookeeper-demos" target="1.5" />
     </bytecodeTargetLevel>
   </component>
