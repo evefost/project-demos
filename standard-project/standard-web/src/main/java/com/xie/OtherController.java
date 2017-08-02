@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class OtherController {
     private  final Logger logger = LoggerFactory.getLogger(getClass());
 
-    @RequestMapping(value = "other/formAdd", method = RequestMethod.POST)
+    @RequestMapping(value = "other/formAdd")
     public ResponseDataVo add(User user) {
         logger.debug("formAdd{}",user);
         //user.getSchool().toString();

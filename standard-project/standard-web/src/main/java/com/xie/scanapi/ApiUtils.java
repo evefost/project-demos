@@ -351,9 +351,7 @@ public class ApiUtils {
     }
 
 
-    public static void scanApi(Class clz) {
 
-    }
 
 
 }
