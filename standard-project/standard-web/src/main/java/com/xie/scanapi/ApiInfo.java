@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.lang.reflect.Type;
 
 /**
  * 接口信息
@@ -46,10 +47,12 @@ public class ApiInfo {
 
     private void parse() {
         parseSupportMethods();
-
-
+        parseParamters();
+        
+        
     }
 
+ 
 
     private void parseSupportMethods() {
 
@@ -76,6 +79,14 @@ public class ApiInfo {
 
         }
     }
+
+    private void parseParamters() {
+        Class<?>[] parameterTypes = method.getParameterTypes();
+        Type[] genericParameterTypes = method.getGenericParameterTypes();
+
+
+    }
+
 
 
 }

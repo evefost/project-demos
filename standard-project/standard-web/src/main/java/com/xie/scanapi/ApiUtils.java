@@ -1,7 +1,6 @@
 package com.xie.scanapi;
 
-import com.xie.vo.Descript;
-import com.xie.vo.User;
+import com.xie.vo.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -52,8 +51,8 @@ public class ApiUtils {
         //Descript annotation = User.class.getAnnotation(Descript.class);
 
 
-//        String sb = generateApiJsonForm(User.class, false, false);
-//        System.out.println(sb);
+        String sb = generateApiJsonForm(OnlineOrderParams.class, false, true);
+        System.out.println(sb);
 //        StringBuffer stringBuffer = generateApiParamDescript(User.class);
 //        System.out.println(stringBuffer.toString());
 
@@ -68,7 +67,7 @@ public class ApiUtils {
 //            }
 //        }
 
-        scanPagkage();
+        //scanPagkage();
 
     }
 
@@ -187,27 +186,35 @@ public class ApiUtils {
                 if (isList(type)) {
                     Class pClass = getParameterizedClass(field);
                     sb.append("[");
-                    if (withDescript) {
-                        String paramterClass = "";
-                        if (pClass != null) {
-                            paramterClass = pClass.getSimpleName().toLowerCase();
-                        }
-                        sb.append(appenDescript(field.getAnnotation(Descript.class), type, paramterClass));
-                    }
-                    sb.append("\n");
+
+
                     if (pClass == null) {
                         sb.append(" 数组没有泛型参数,没法解释到实际参数型");
                     } else {
-                        StringBuffer json = generateApiJsonForm(pClass, loop, forJs, withDescript, "");
-                        sb.append(json);
+                        if(isBase(pClass)){
+                            sb.append(getDefaultValueByClassType(pClass)).append(',').append(getDefaultValueByClassType(pClass));
+                            sb.append("]");
+                            if (withDescript) {
+                                String paramterClass = pClass.getSimpleName().toLowerCase();
+                                sb.append(appenDescript(field.getAnnotation(Descript.class), type, paramterClass));
+                            }
+                        }else {
+                            if (withDescript) {
+                                String paramterClass = pClass.getSimpleName().toLowerCase();
+                                sb.append(appenDescript(field.getAnnotation(Descript.class), type, paramterClass));
+                            }
+                            sb.append("\n");
+                            StringBuffer json = generateApiJsonForm(pClass, loop, forJs, withDescript, "");
+                            sb.append(json);
+                            sb.append("]");
+                        }
                     }
-                    sb.append("]");
+
                 } else {
                     String tObjdes = "";
                     if (withDescript) {
                         tObjdes = appenDescript(field.getAnnotation(Descript.class), type, "").toString();
                     }
-
                     StringBuffer json = generateApiJsonForm(type, loop, forJs, withDescript, tObjdes);
                     sb.append(json);
 
@@ -219,7 +226,6 @@ public class ApiUtils {
 
             }
         }
-
         for (int i = 1; i < loop; i++) {
             sb.append("\t");
         }
