@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/7/29.
  */
@@ -17,8 +19,22 @@ import org.springframework.web.bind.annotation.*;
 public class OtherController {
     private  final Logger logger = LoggerFactory.getLogger(getClass());
 
-    @RequestMapping(value = "other/formAdd")
-    public ResponseDataVo add(User user) {
+    @RequestMapping(value = "base/list")
+    public ResponseDataVo baseList(List<Long> longList) {
+        logger.debug("formAdd{}",longList);
+        //user.getSchool().toString();
+        return ResponseDataVo.success(longList);
+    }
+
+    @RequestMapping(value = "base/list")
+    public ResponseDataVo customGic(List<User> userList) {
+        logger.debug("formAdd{}",userList);
+        //user.getSchool().toString();
+        return ResponseDataVo.success(userList);
+    }
+
+    @RequestMapping(value = "annotation/formAdd")
+    public ResponseDataVo annatation(@RequestParam("xieyang") User user) {
         logger.debug("formAdd{}",user);
         //user.getSchool().toString();
         return ResponseDataVo.success(user);
@@ -30,9 +46,5 @@ public class OtherController {
         return ResponseDataVo.success(user);
     }
 
-    @RequestMapping(value = "other/getRequest", method = RequestMethod.GET)
-    public ResponseDataVo getRequest( User user,@RequestParam(required = true)String name) {
-        logger.debug("getRequest{}",user);
-        return ResponseDataVo.success(user);
-    }
+
 }

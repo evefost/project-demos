@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * 线下订单分发
  */
+@Descript("线下订单分发")
 public class OrderDistribute {
 
     @Descript(required = true,message = " 主订单编号")

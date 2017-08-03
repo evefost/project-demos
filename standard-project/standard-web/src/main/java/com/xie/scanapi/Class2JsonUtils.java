@@ -2,7 +2,6 @@ package com.xie.scanapi;
 
 import com.xie.vo.Descript;
 import com.xie.vo.ListOrderDistribute;
-import com.xie.vo.OrderDistribute;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,10 +12,12 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.xie.scanapi.ClassHelper.*;
+
 /**
  * Created by xieyang on 17/7/31.
  */
-public class ApiUtils {
+public class Class2JsonUtils {
 
 
     public static void main(String[] args) throws Exception {
@@ -69,70 +70,14 @@ public class ApiUtils {
 //            }
 //        }
 
-        //scanPagkage();
 
     }
 
-    public static void scanPagkage() {
-        Package aPackage = ApiUtils.class.getPackage();
-        String name = aPackage.getName();
-        // String shortPack = name.substring(0,name.indexOf(","));
-
-        List<ControllerInfo> controllerInfos = new ArrayList<>();
-        List<Class<?>> classes = ClassUtil.getClasses("com.xie");
-        for (Class clz : classes) {
-            Annotation annotation = clz.getAnnotation(RestController.class);
-            if (annotation != null) {
-                System.out.println("controller类[" + clz.getName());
-                controllerInfos.add(new ControllerInfo(clz, annotation, true));
-            } else {
-                annotation = clz.getAnnotation(Controller.class);
-                if (annotation != null) {
-                    System.out.println("controller类[" + clz.getName());
-                    controllerInfos.add(new ControllerInfo(clz, annotation, false));
-                }
-            }
-        }
-        System.out.println(classes);
-    }
 
 
-    public static Class<?>[] getParameterizedType(Field f) {
-        // 获取f字段的通用类型
-        Type fc = f.getGenericType(); // 关键的地方得到其Generic的类型
-        // 如果不为空并且是泛型参数的类型
-        if (fc != null && fc instanceof ParameterizedType) {
-            ParameterizedType pt = (ParameterizedType) fc;
-            Type[] types = pt.getActualTypeArguments();
-            if (types != null && types.length > 0) {
-                Class<?>[] classes = new Class<?>[types.length];
-                for (int i = 0; i < classes.length; i++) {
-                    classes[i] = (Class<?>) types[i];
-                }
-                return classes;
-            }
-        }
-        return null;
-    }
-
-    public static boolean isBase(Class clz) {
-        try {
-            if (clz.isPrimitive()) {
-                return true;
-            }
-            if (clz.getSimpleName().equals("String")) {
-                return true;
-            }
-            return ((Class) clz.getField("TYPE").get(null)).isPrimitive();
-        } catch (Exception e) {
-            return false;
-        }
-    }
 
     public static String generateApiJsonForm(Class clz, boolean forJs, boolean withDescript) {
-
         String classDes = "";
-
         Annotation annotation = clz.getAnnotation(Descript.class);
         if (annotation != null) {
             Descript descript = (Descript) annotation;
@@ -166,7 +111,7 @@ public class ApiUtils {
                 sb.append("\"").append(name).append("\"");
             }
             sb.append(':');
-            if (isBase(type)) {
+            if (isBaseClass(type)) {
                 if (forJs) {
                     sb.append("undefined");
                 } else {
@@ -184,7 +129,7 @@ public class ApiUtils {
                     if (pClass == null) {
                         sb.append(" 数组没有泛型参数,没法解释到实际参数型");
                     } else {
-                        if (isBase(pClass)) {
+                        if (isBaseClass(pClass)) {
                             sb.append(getDefaultValueByClassType(pClass)).append(',').append(getDefaultValueByClassType(pClass));
                             sb.append("]");
                             String paramterClass = pClass.getSimpleName().toLowerCase();
@@ -252,62 +197,7 @@ public class ApiUtils {
         return false;
     }
 
-    /**
-     * 只支持一个泛型
-     *
-     * @param field
-     * @return
-     */
-    private static Class getParameterizedClass(Field field) {
-        Class<?>[] parameterizedType = getParameterizedType(field);
-        if (parameterizedType != null && parameterizedType.length > 0) {
-            for (Class clz : parameterizedType) {
-                //System.out.println(clz.getSimpleName());
-            }
-            return parameterizedType[0];
-        }
-        return null;
-    }
 
-    private static boolean isList(Class clz) {
-        String simpleName = clz.getSimpleName().toLowerCase();
-        switch (simpleName) {
-            case "list":
-            case "arraylist":
-            case "linklist":
-            case "set":
-            case "hashset":
-                return true;
-        }
-
-        return false;
-    }
-
-    private static Object getDefaultValueByClassType(Class type) {
-        String typeName = type.getSimpleName().toLowerCase();
-        switch (typeName) {
-            case "short":
-            case "int":
-            case "long":
-                return 0;
-            case "double":
-            case "float":
-                return 0.0;
-            case "boolean":
-                return false;
-            case "byte":
-                return "0";
-            case "string":
-                return "\"\"";
-            case "char":
-            case "character":
-                return "0";
-            default:
-                break;
-
-        }
-        return null;
-    }
 
 
     //    |参数名|必选|类型|说明|

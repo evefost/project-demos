@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 /**
@@ -29,7 +30,7 @@ public class ApiInfo {
     /**
      * 接口参数信息
      */
-    private ParamtersInfo paramtersInfo;
+    private ParamtersInfo[] paramtersInfos;
 
     /**
      * 接口返回信息
@@ -48,11 +49,10 @@ public class ApiInfo {
     private void parse() {
         parseSupportMethods();
         parseParamters();
-        
-        
+
+
     }
 
- 
 
     private void parseSupportMethods() {
 
@@ -81,12 +81,31 @@ public class ApiInfo {
     }
 
     private void parseParamters() {
-        Class<?>[] parameterTypes = method.getParameterTypes();
-        Type[] genericParameterTypes = method.getGenericParameterTypes();
 
-
+        //Class<?>[] parameterTypes = method.getParameterTypes();
+        Type[] gTypes = method.getGenericParameterTypes();
+        if (gTypes != null && gTypes.length > 0) {
+            paramtersInfos = new ParamtersInfo[gTypes.length];
+            int i = 0;
+            ParamtersInfo pInfo = null;
+            for (Type type : gTypes) {
+                pInfo = new ParamtersInfo();
+                if (type instanceof ParameterizedType) {
+                    ParameterizedType paramType = (ParameterizedType) type;
+                    Type[] actualTypeArguments = paramType.getActualTypeArguments();
+                    Type rawType = paramType.getRawType();
+                    pInfo.setActualTypeArguments(actualTypeArguments);
+                    pInfo.setRawType(rawType);
+                    pInfo.setGener(true);
+                } else {
+                    pInfo.setRawType(type);
+                    pInfo.setGener(false);
+                }
+                paramtersInfos[i] = pInfo;
+                i++;
+            }
+        }
     }
-
 
 
 }

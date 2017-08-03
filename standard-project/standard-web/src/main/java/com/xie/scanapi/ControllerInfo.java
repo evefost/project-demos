@@ -1,14 +1,14 @@
 package com.xie.scanapi;
 
+import com.xie.scanapi.mappingResolver.MappingResolver;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by Administrator on 2017/8/2.
@@ -20,76 +20,67 @@ public class ControllerInfo {
     private boolean isRest;
     private String[] rootPaths;
 
-    private String firstRoot="";
+    private String firstRoot = "";
+    private Map<String, ApiInfo> apiInfoMap = new HashMap<>();
 
-    private Map<String,ApiInfo> apiInfoMap = new HashMap<>();
+
+    private  Map<String, MappingResolver> mappingResolverMap;
 
 
-    public ControllerInfo(Class clz, Annotation annotation,boolean isRest){
+    public ControllerInfo(Class clz, Annotation annotation, Map<String, MappingResolver> resolverMap) {
         this.clz = clz;
         this.controllerAnn = annotation;
-        this.isRest = isRest;
+        this.mappingResolverMap = resolverMap;
         pares();
     }
 
-    private void pares(){
-        if(isRest){
-            RestController controller = (RestController) controllerAnn;
-        }else {
-            Controller controller = (Controller) controllerAnn;
-        }
-        RequestMapping  clzReqMaping = (RequestMapping) clz.getAnnotation(RequestMapping.class);
-        if(clzReqMaping != null){
+    private void pares() {
+        RequestMapping clzReqMaping = (RequestMapping) clz.getAnnotation(RequestMapping.class);
+        if (clzReqMaping != null) {
             rootPaths = clzReqMaping.value();
-            if(rootPaths != null && rootPaths.length>0){
+            if (rootPaths != null && rootPaths.length > 0) {
                 firstRoot = rootPaths[0];
-                if(!firstRoot.startsWith("/")){
-                   firstRoot="/"+firstRoot;
+                if (!firstRoot.startsWith("/")) {
+                    firstRoot = "/" + firstRoot;
                 }
             }
         }
         paresMethods();
     }
 
-    private void paresMethods(){
-
+    private void paresMethods() {
         Method[] declaredMethods = this.clz.getDeclaredMethods();
-        for(Method method:declaredMethods){
+        for (Method method : declaredMethods) {
             Annotation[] declaredAnnotations = method.getDeclaredAnnotations();
-            for (Annotation annotation:declaredAnnotations){
-                String[] paths = null;
-                if(annotation instanceof RequestMapping){
-                    RequestMapping mapping = (RequestMapping) annotation;
-                    paths = mapping.value();
-                }else  if(annotation instanceof GetMapping){
-                    GetMapping mapping = (GetMapping) annotation;
-                    paths = mapping.value();
-                }else  if(annotation instanceof PostMapping){
-                    PostMapping mapping = (PostMapping) annotation;
-                }else  if(annotation instanceof PutMapping){
-                    PutMapping mapping = (PutMapping) annotation;
-                    paths = mapping.value();
-                }else  if(annotation instanceof DeleteMapping){
-                    DeleteMapping mapping = (DeleteMapping) annotation;
-                    paths = mapping.value();
-                }else  {
-                    //todo not suport
-
+            for (Annotation annotation : declaredAnnotations) {
+                MappingResolver resolver = getResoler(annotation);
+                if(resolver == null){
+                    continue;
                 }
-                if(paths != null && paths.length>0){
-                    String path =null;
-                    if(paths[0].startsWith("/")){
-                       path = firstRoot+paths[0];
-                    }else {
-                        path =firstRoot+"/"+paths[0];
+                String[] paths = resolver.getValue(annotation);
+                if (paths != null && paths.length > 0) {
+                    String path = null;
+                    if (paths[0].startsWith("/")) {
+                        path = firstRoot + paths[0];
+                    } else {
+                        path = firstRoot + "/" + paths[0];
                     }
-                    ApiInfo apiInfo = new ApiInfo(path,annotation,method);
-                    apiInfoMap.put(path,apiInfo);
+                    ApiInfo apiInfo = new ApiInfo(path, annotation, method);
+                    apiInfoMap.put(path, apiInfo);
                 }
             }
         }
     }
 
+    private MappingResolver getResoler(Annotation annotation) {
+        for (Map.Entry<String, MappingResolver> entry : mappingResolverMap.entrySet()) {
+            MappingResolver resolver = entry.getValue();
+            if (resolver.support(annotation.getClass())) {
+                return resolver;
+            }
+        }
+        return null;
+    }
 
 
 }

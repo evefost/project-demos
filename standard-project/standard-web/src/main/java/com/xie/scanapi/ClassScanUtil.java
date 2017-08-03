@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-public class ClassUtil {
+public class ClassScanUtil {
 
 
     public static void main(String[] args) throws Exception {
-        List<Class> classes = ClassUtil.getAllClassByInterface(Class.forName("com.im.protocol.handler.ProtocolHandler2"));
+        List<Class> classes = ClassScanUtil.getAllClassByInterface(Class.forName("com.im.protocol.handler.ProtocolHandler2"));
         for (Class clas : classes) {
             System.out.println(clas.getName());
         }
