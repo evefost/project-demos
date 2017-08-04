@@ -3,6 +3,7 @@ package com.xie.scanapi;
 import com.xie.scanapi.mappingResolver.MappingResolver;
 import com.xie.scanapi.mappingResolver.ResolverSupport;
 import com.xie.scanapi.parse.ControllerInfo;
+import com.xie.web.controller.AjaxController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,28 +23,40 @@ public class ApiScanUtils {
     public static void main(String[] args) throws Exception {
 
 
-        scanPagkage();
+        scanPagkage("com.xie", new Class[]{AjaxController.class});
 
     }
 
-    public static void scanPagkage() throws InstantiationException, IllegalAccessException {
-        Package aPackage = ApiScanUtils.class.getPackage();
-        String name = aPackage.getName();
-        // String shortPack = name.substring(0,name.indexOf(","));
+    public static void scanPagkage(String packageName) throws InstantiationException, IllegalAccessException {
+        scanPagkage(packageName, null);
+
+    }
+
+    public static void scanPagkage(String packageName, Class<?>[] controllerClzs) throws InstantiationException, IllegalAccessException {
         List<ControllerInfo> controllerInfos = new ArrayList<>();
         List<Class<?>> classes = ClassScanUtil.getClasses("com.xie");
         instances(classes);
         ResolverSupport support = new ResolverSupport(mappingResolverMap);
-        for (Class clz : classes) {
-            Annotation annotation = clz.getAnnotation(RestController.class);
+        if (controllerClzs != null && controllerClzs.length > 0) {
+            for (Class clz : controllerClzs) {
+                findControllers(controllerInfos, support, clz);
+            }
+        } else {
+            for (Class clz : classes) {
+                findControllers(controllerInfos, support, clz);
+            }
+        }
+
+    }
+
+    private static void findControllers(List<ControllerInfo> controllerInfos, ResolverSupport support, Class clz) {
+        Annotation annotation = clz.getAnnotation(RestController.class);
+        if (annotation != null) {
+            controllerInfos.add(new ControllerInfo(clz, annotation, support));
+        } else {
+            annotation = clz.getAnnotation(Controller.class);
             if (annotation != null) {
-                System.out.println("controller类[" + clz.getName());
                 controllerInfos.add(new ControllerInfo(clz, annotation, support));
-            } else {
-                annotation = clz.getAnnotation(Controller.class);
-                if (annotation != null) {
-                    controllerInfos.add(new ControllerInfo(clz, annotation, support));
-                }
             }
         }
     }

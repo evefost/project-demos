@@ -1,5 +1,7 @@
 package com.xie.scanapi.mappingResolver;
 
+import com.xie.scanapi.parse.ApiInfo;
+
 import java.lang.annotation.Annotation;
 
 /**
@@ -16,6 +18,6 @@ public interface MappingResolver {
     String[] getSupportMethods(Annotation annotation);
 
 
-
+    String printApiDoc(ApiInfo apiInfo);
 
 }

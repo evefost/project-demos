@@ -1,5 +1,6 @@
 package com.xie.scanapi.mappingResolver;
 
+import com.xie.scanapi.parse.ApiInfo;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -34,5 +35,10 @@ public class RequestMappingResolver implements MappingResolver {
             supportMethods[i] = methods[i].toString();
         }
         return supportMethods;
+    }
+
+    @Override
+    public String printApiDoc(ApiInfo apiInfo) {
+        return null;
     }
 }

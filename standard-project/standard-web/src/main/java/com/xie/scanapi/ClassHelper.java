@@ -79,7 +79,9 @@ public class ClassHelper {
         switch (typeName) {
             case "short":
             case "int":
+            case "integer":
             case "long":
+
                 return 0;
             case "double":
             case "float":

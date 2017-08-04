@@ -11,31 +11,15 @@ if (!Api) {
         //接口demo，若api没指定，method:默认为get方法提交
         ajaxDemo: {
             formAdd: { //用户类 类型:user 必选(否)
-                school: undefined, //学校名称 类型:string 必选(是)
-                teacherList: [ //教师数组 类型:list<teacher> 必选(否)
-                    {
-                        teacherName: undefined, // 类型:string 必选(未知)
-                        heiht: undefined, // 类型:short 必选(未知)
-                        cource: undefined, // 类型:string 必选(未知)
-                        studentBean: { // 类型:student 必选(未知)
-                            studentName: undefined, // 类型:string 必选(未知)
-                            studentCources: undefined // 类型:string 必选(未知)
-                        },
-                        studentBean22: { // 类型:student 必选(未知)
-                            studentName: undefined, // 类型:string 必选(未知)
-                            studentCources: undefined // 类型:string 必选(未知)
-                        }
-                    }],
-                students: [ // 类型:set<student> 必选(未知)
-                    {
-                        studentName: undefined, // 类型:string 必选(未知)
-                        studentCources: undefined // 类型:string 必选(未知)
-                    }],
-                tttttt: undefined, // 类型:string 必选(未知)
-                student: { // 类型:student 必选(未知)
-                    studentName: undefined, // 类型:string 必选(未知)
-                    studentCources: undefined // 类型:string 必选(未知)
-                }
+                url: app_root_path + "/api/ajax/formAdd2",
+                method: "POST",
+                contentType: MediType_FORM_URLENCODE,
+                descript: "post form demo接口",
+                paramModel: {
+                    id:undefined, // 类型:long 必选(未知)
+                    name:undefined, // 类型:string 必选(未知)
+                    testname:undefined
+                },
             },
             // json body 提交提交例子
             postBody: {
@@ -44,16 +28,8 @@ if (!Api) {
                 contentType: MediType_JSON,
                 descript: "post body 提交json demo接口",
                 paramModel: {
-                    id: undefined,
-                    text: undefined,
-                    name: undefined,
-                    age: undefined,
-                    school: undefined,
-                    teacher: {
-                        name: undefined,
-                        address: undefined,
-                        level: undefined
-                    }
+                    id:undefined, // 类型:long 必选(未知)
+                    name:undefined // 类型:string 必选(未知)
                 },
 
             },
@@ -117,7 +93,7 @@ if (!NetUtis) {
             this.doSend(api, params, callback);
         },
         /**
-         * post方法 form表单提交数据，
+         * post方法 form表单提交数据(如果不超过层，后台body体可以解释到数)，
          * @param api 对象
          * @param params 参数，统一json格式
          * @param callback 请求回调，据需求是否传入
@@ -128,7 +104,7 @@ if (!NetUtis) {
             this.doSend(api, params, callback);
         },
         /**
-         * post json格式，body 里提交数据
+         * post json格式，body 里提交数据（如果不超一层，后台在form参中可以正常解释
          * @param api 对象
          * @param params 参数，统一json格式
          * @param callback 请求回调，据需求是否传入

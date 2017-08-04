@@ -79,10 +79,18 @@
         var tagInfo = new TagInfo(container, "input", "data-name2", "data-value2");
         //var api = Api.ajaxDemo.formAdd;
         //var api = Api.ajaxDemo.postBody;
-        var api = Api.ajaxDemo.getRequest;
+        var api = Api.ajaxDemo.formAdd;
         //var params = findParamByModel(tagInfo,api.paramModel);
-        params.addition="abcd";
-        NetUtis.request(api, params);
+        //params.addition="abcd";
+        var params = {
+            name:"xieyang",
+            id:123,
+            testname:"texxxxxxx",
+            inner:{name:"nxnn"}
+
+
+        }
+        NetUtis.doPostBody(api, params);
 
     });
 

@@ -37,6 +37,8 @@ public class ControllerInfo implements IInfo {
 
     @Override
     public void parse() {
+        System.out.println("\n\n");
+        System.out.println("controllor name:"+clz.getName());
         RequestMapping clzReqMaping = (RequestMapping) clz.getAnnotation(RequestMapping.class);
         if (clzReqMaping != null) {
             rootPaths = clzReqMaping.value();

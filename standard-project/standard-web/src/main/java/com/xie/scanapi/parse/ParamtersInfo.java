@@ -1,11 +1,17 @@
 package com.xie.scanapi.parse;
 
+import com.xie.scanapi.Class2JsonUtils;
+import com.xie.scanapi.ClassHelper;
+import com.xie.scanapi.mappingResolver.ResolverSupport;
+
 import java.lang.reflect.Type;
 
 /**
  * 参数信息
  */
 public class ParamtersInfo implements IInfo {
+
+    private ResolverSupport resolverSupport;
 
     private Type[] actualTypeArguments;
 
@@ -14,32 +20,39 @@ public class ParamtersInfo implements IInfo {
     //是否为泛型
     private boolean isGener = false;
 
-    public Type[] getActualTypeArguments() {
-        return actualTypeArguments;
-    }
-
-    public void setActualTypeArguments(Type[] actualTypeArguments) {
-        this.actualTypeArguments = actualTypeArguments;
-    }
-
-    public Type getRawType() {
-        return rawType;
-    }
-
-    public void setRawType(Type rawType) {
+    public ParamtersInfo(ResolverSupport resolverSupport, Type rawType) {
         this.rawType = rawType;
+        this.resolverSupport = resolverSupport;
+        parse();
     }
 
-    public boolean isGener() {
-        return isGener;
+
+    public ParamtersInfo(ResolverSupport resolverSupport, Type rawType, Type[] actualTypeArguments) {
+        this.resolverSupport = resolverSupport;
+        this.rawType = rawType;
+        this.actualTypeArguments = actualTypeArguments;
+        this.isGener = true;
+
+        parse();
     }
 
-    public void setGener(boolean gener) {
-        isGener = gener;
-    }
 
     @Override
     public void parse() {
+        if (isGener) {
+            //有泛型参数
+            System.out.println("泛型参数：" + rawType.toString() + "\n 实参" + actualTypeArguments[0].toString());
+        } else {
+            Class clz = (Class) rawType;
+            if (ClassHelper.isBaseClass(clz)) {
+                //基本类型
+
+            } else {
+                System.out.println("=======" + rawType.toString());
+                String s = Class2JsonUtils.generateApiJsonForm((Class) rawType, true, true);
+                System.out.println(s);
+            }
+        }
 
     }
 }

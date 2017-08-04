@@ -1,5 +1,6 @@
 package com.xie.scanapi.mappingResolver;
 
+import com.xie.scanapi.parse.ApiInfo;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.lang.annotation.Annotation;
@@ -23,5 +24,10 @@ public class DeleteMappingResolver implements MappingResolver {
     @Override
     public String[] getSupportMethods(Annotation annotation) {
         return  new String[]{"DELETE"};
+    }
+
+    @Override
+    public String printApiDoc(ApiInfo apiInfo) {
+        return null;
     }
 }

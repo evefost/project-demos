@@ -1,6 +1,7 @@
 package com.xie;
 
 import com.xie.java.common.response.ResponseDataVo;
+import com.xie.vo.Descript;
 import com.xie.vo.User;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;
@@ -19,6 +20,7 @@ import java.util.List;
 public class OtherController {
     private  final Logger logger = LoggerFactory.getLogger(getClass());
 
+    @Descript("这是一个泛型基本数组")
     @RequestMapping(value = "base/list")
     public ResponseDataVo baseList(List<Long> longList) {
         logger.debug("formAdd{}",longList);
@@ -26,6 +28,7 @@ public class OtherController {
         return ResponseDataVo.success(longList);
     }
 
+    @Descript("这是一个泛型自定义对象数组")
     @RequestMapping(value = "base/list")
     public ResponseDataVo customGic(List<User> userList) {
         logger.debug("formAdd{}",userList);
@@ -33,8 +36,8 @@ public class OtherController {
         return ResponseDataVo.success(userList);
     }
 
-    @RequestMapping(value = "annotation/formAdd")
-    public ResponseDataVo annatation(@RequestParam("xieyang") User user,@RequestParam("username")String name) {
+    @PostMapping(value = "annotation/formAdd")
+    public ResponseDataVo annatation(@RequestParam("xieyang") @RequestBody User user,@RequestParam("username")String name) {
         logger.debug("formAdd{}",user);
         //user.getSchool().toString();
         return ResponseDataVo.success(user);
@@ -46,5 +49,9 @@ public class OtherController {
         return ResponseDataVo.success(user);
     }
 
-
+    @RequestMapping(value = "/other/{id}/{name}", method = RequestMethod.PUT)
+    public ResponseDataVo updateUser(@PathVariable Long id, @PathVariable String name) {
+        logger.info("更新用户:" + id + "==" + name);
+        return ResponseDataVo.success(null, "更新用户");
+    }
 }

@@ -1,25 +1,31 @@
 package com.xie.scanapi.parse;
 
+import com.xie.java.common.response.ResponseDataVo;
+import com.xie.scanapi.Class2JsonUtils;
 import com.xie.scanapi.mappingResolver.MappingResolver;
 import com.xie.scanapi.mappingResolver.ResolverSupport;
-import org.springframework.web.bind.annotation.*;
+import com.xie.vo.Descript;
+import com.xie.vo.SimpleUser;
 
-import javax.swing.plaf.synth.SynthConstants;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.Map;
 
 /**
  * 接口信息
  */
-public class ApiInfo implements IInfo{
+public class ApiInfo implements IInfo {
 
     private Method method;
 
     private Annotation annotation;
 
+
+    /**
+     * 接口描述
+     */
+    private String description;
 
     /**
      * 接口路径
@@ -41,9 +47,66 @@ public class ApiInfo implements IInfo{
      */
     private ResponeInfo responeInfo;
 
+
+    public ResponeInfo getResponeInfo() {
+        return responeInfo;
+    }
+
+    public void setResponeInfo(ResponeInfo responeInfo) {
+        this.responeInfo = responeInfo;
+    }
+
+    public Method getMethod() {
+        return method;
+    }
+
+    public void setMethod(Method method) {
+        this.method = method;
+    }
+
+    public Annotation getAnnotation() {
+        return annotation;
+    }
+
+    public void setAnnotation(Annotation annotation) {
+        this.annotation = annotation;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String[] getSupportMethods() {
+        return supportMethods;
+    }
+
+    public void setSupportMethods(String[] supportMethods) {
+        this.supportMethods = supportMethods;
+    }
+
+    public ParamtersInfo[] getParamtersInfos() {
+        return paramtersInfos;
+    }
+
+    public void setParamtersInfos(ParamtersInfo[] paramtersInfos) {
+        this.paramtersInfos = paramtersInfos;
+    }
+
+    public ResolverSupport getResolverSupport() {
+        return resolverSupport;
+    }
+
+    public void setResolverSupport(ResolverSupport resolverSupport) {
+        this.resolverSupport = resolverSupport;
+    }
+
     private ResolverSupport resolverSupport;
 
-    public ApiInfo(String path, Annotation annotation, Method method,ResolverSupport resolverSupport) {
+    public ApiInfo(String path, Annotation annotation, Method method, ResolverSupport resolverSupport) {
         this.path = path;
         this.annotation = annotation;
         this.method = method;
@@ -54,51 +117,61 @@ public class ApiInfo implements IInfo{
 
     @Override
     public void parse() {
-        parseSupportMethods();
-        parseParamters();
+        System.out.println("\n\n");
 
+        Descript des = method.getAnnotation(Descript.class);
+        if (des != null) {
+            description = des.value();
+            System.out.println("接口路径描述:" + description);
+        } else {
+            description = "未知";
+        }
 
-    }
+        System.out.println("接口路径:" + path + "\n" + method.toGenericString());
 
-
-    private void parseSupportMethods() {
         MappingResolver resoler = resolverSupport.getResoler(annotation);
-        supportMethods =  resoler.getSupportMethods(annotation);
-    }
-
-    private void parseParamters() {
-
-        //Class<?>[] parameterTypes = method.getParameterTypes();
+        supportMethods = resoler.getSupportMethods(annotation);
+        //处理泛型参数
         Type[] gTypes = method.getGenericParameterTypes();
         if (gTypes != null && gTypes.length > 0) {
             paramtersInfos = new ParamtersInfo[gTypes.length];
             int i = 0;
             ParamtersInfo pInfo = null;
             for (Type type : gTypes) {
-                pInfo = new ParamtersInfo();
+
                 if (type instanceof ParameterizedType) {
                     ParameterizedType paramType = (ParameterizedType) type;
                     Type[] actualTypeArguments = paramType.getActualTypeArguments();
                     Type rawType = paramType.getRawType();
-                    pInfo.setActualTypeArguments(actualTypeArguments);
-                    pInfo.setRawType(rawType);
-                    pInfo.setGener(true);
+                    pInfo = new ParamtersInfo(resolverSupport, rawType, actualTypeArguments);
                 } else {
-                    pInfo.setRawType(type);
-                    pInfo.setGener(false);
+                    pInfo = new ParamtersInfo(resolverSupport, type);
                 }
                 paramtersInfos[i] = pInfo;
                 i++;
             }
         }
+        //参数名称列表
+        String[] parameterNames = resolverSupport.getParameterNames(method);
+        if (parameterNames != null && parameterNames.length > 0) {
+            for (String name : parameterNames) {
+                System.out.println(name);
+            }
+        }
+
+
+        //参数注解处理
         Annotation[][] parameterAnnotations = method.getParameterAnnotations();
-        if(parameterAnnotations != null && parameterAnnotations.length>0){
-            for(Annotation[] annotations:parameterAnnotations){
-                for(Annotation annotation:annotations){
-                    System.out.println(annotation);
+        if (parameterAnnotations != null && parameterAnnotations.length > 0) {
+            for (Annotation[] annotations : parameterAnnotations) {
+                for (Annotation annotation : annotations) {
+                    //System.out.println(annotation);
                 }
             }
         }
+        Type genericReturnType = method.getGenericReturnType();
+
+        resoler.printApiDoc(this);
     }
 
 

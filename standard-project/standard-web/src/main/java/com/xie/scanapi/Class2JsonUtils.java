@@ -2,6 +2,7 @@ package com.xie.scanapi;
 
 import com.xie.vo.Descript;
 import com.xie.vo.ListOrderDistribute;
+import com.xie.vo.SimpleUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -54,7 +55,7 @@ public class Class2JsonUtils {
         //Descript annotation = User.class.getAnnotation(Descript.class);
 
 
-        String sb = generateApiJsonForm(ListOrderDistribute.class, false, true);
+        String sb = generateApiJsonForm(SimpleUser.class, true, true);
         System.out.println(sb);
 //        StringBuffer stringBuffer = generateApiParamDescript(User.class);
 //        System.out.println(stringBuffer.toString());
