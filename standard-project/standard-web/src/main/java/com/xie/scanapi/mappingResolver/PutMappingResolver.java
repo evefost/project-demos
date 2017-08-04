@@ -19,4 +19,9 @@ public class PutMappingResolver implements MappingResolver{
         PutMapping mapping = (PutMapping) annotation;
         return mapping.value();
     }
+
+    @Override
+    public String[] getSupportMethods(Annotation annotation) {
+        return  new String[]{"PUT"};
+    }
 }

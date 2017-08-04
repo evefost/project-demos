@@ -13,4 +13,9 @@ public interface MappingResolver {
     String[]  getValue(Annotation annotation);
 
 
+    String[] getSupportMethods(Annotation annotation);
+
+
+
+
 }

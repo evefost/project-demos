@@ -19,4 +19,9 @@ public class PostMappingResolver implements MappingResolver{
         PostMapping mapping = (PostMapping) annotation;
         return mapping.value();
     }
+
+    @Override
+    public String[] getSupportMethods(Annotation annotation) {
+        return  new String[]{"POST"};
+    }
 }

@@ -20,4 +20,9 @@ public class GetMappingResolver implements MappingResolver {
         GetMapping mapping = (GetMapping) annotation;
         return mapping.value();
     }
+
+    @Override
+    public String[] getSupportMethods(Annotation annotation) {
+        return   new String[]{"GET"};
+    }
 }

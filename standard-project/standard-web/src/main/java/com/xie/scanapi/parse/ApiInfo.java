@@ -1,16 +1,20 @@
-package com.xie.scanapi;
+package com.xie.scanapi.parse;
 
+import com.xie.scanapi.mappingResolver.MappingResolver;
+import com.xie.scanapi.mappingResolver.ResolverSupport;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.plaf.synth.SynthConstants;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.Map;
 
 /**
  * 接口信息
  */
-public class ApiInfo {
+public class ApiInfo implements IInfo{
 
     private Method method;
 
@@ -37,16 +41,19 @@ public class ApiInfo {
      */
     private ResponeInfo responeInfo;
 
+    private ResolverSupport resolverSupport;
 
-    public ApiInfo(String path, Annotation annotation, Method method) {
+    public ApiInfo(String path, Annotation annotation, Method method,ResolverSupport resolverSupport) {
         this.path = path;
         this.annotation = annotation;
         this.method = method;
+        this.resolverSupport = resolverSupport;
         parse();
 
     }
 
-    private void parse() {
+    @Override
+    public void parse() {
         parseSupportMethods();
         parseParamters();
 
@@ -55,29 +62,8 @@ public class ApiInfo {
 
 
     private void parseSupportMethods() {
-
-        if (annotation instanceof RequestMapping) {
-            RequestMapping mapping = (RequestMapping) annotation;
-            RequestMethod[] methods = mapping.method();
-            if (methods == null || methods.length == 0) {
-                methods = RequestMethod.values();
-            }
-            supportMethods = new String[methods.length];
-            for (int i = 0; i < methods.length; i++) {
-                supportMethods[i] = methods[i].toString();
-            }
-        } else if (annotation instanceof GetMapping) {
-            supportMethods = new String[]{"GET"};
-        } else if (annotation instanceof PostMapping) {
-            supportMethods = new String[]{"POST"};
-        } else if (annotation instanceof PutMapping) {
-            supportMethods = new String[]{"PUT"};
-        } else if (annotation instanceof DeleteMapping) {
-            supportMethods = new String[]{"DELETE"};
-        } else {
-            //todo not suport
-
-        }
+        MappingResolver resoler = resolverSupport.getResoler(annotation);
+        supportMethods =  resoler.getSupportMethods(annotation);
     }
 
     private void parseParamters() {
@@ -103,6 +89,14 @@ public class ApiInfo {
                 }
                 paramtersInfos[i] = pInfo;
                 i++;
+            }
+        }
+        Annotation[][] parameterAnnotations = method.getParameterAnnotations();
+        if(parameterAnnotations != null && parameterAnnotations.length>0){
+            for(Annotation[] annotations:parameterAnnotations){
+                for(Annotation annotation:annotations){
+                    System.out.println(annotation);
+                }
             }
         }
     }

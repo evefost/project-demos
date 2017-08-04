@@ -34,7 +34,7 @@ public class OtherController {
     }
 
     @RequestMapping(value = "annotation/formAdd")
-    public ResponseDataVo annatation(@RequestParam("xieyang") User user) {
+    public ResponseDataVo annatation(@RequestParam("xieyang") User user,@RequestParam("username")String name) {
         logger.debug("formAdd{}",user);
         //user.getSchool().toString();
         return ResponseDataVo.success(user);

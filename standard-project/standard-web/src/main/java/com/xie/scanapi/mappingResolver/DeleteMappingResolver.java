@@ -19,4 +19,9 @@ public class DeleteMappingResolver implements MappingResolver {
         DeleteMapping mapping = (DeleteMapping) annotation;
         return mapping.value();
     }
+
+    @Override
+    public String[] getSupportMethods(Annotation annotation) {
+        return  new String[]{"DELETE"};
+    }
 }

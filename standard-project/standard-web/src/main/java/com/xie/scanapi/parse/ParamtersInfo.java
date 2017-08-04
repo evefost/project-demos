@@ -1,11 +1,11 @@
-package com.xie.scanapi;
+package com.xie.scanapi.parse;
 
 import java.lang.reflect.Type;
 
 /**
  * 参数信息
  */
-public class ParamtersInfo {
+public class ParamtersInfo implements IInfo {
 
     private Type[] actualTypeArguments;
 
@@ -36,5 +36,10 @@ public class ParamtersInfo {
 
     public void setGener(boolean gener) {
         isGener = gener;
+    }
+
+    @Override
+    public void parse() {
+
     }
 }
