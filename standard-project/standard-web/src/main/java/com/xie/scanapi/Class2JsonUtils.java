@@ -1,17 +1,12 @@
 package com.xie.scanapi;
 
 import com.xie.vo.Descript;
-import com.xie.vo.ListOrderDistribute;
 import com.xie.vo.SimpleUser;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
+import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 import static com.xie.scanapi.ClassHelper.*;
 
@@ -75,20 +70,22 @@ public class Class2JsonUtils {
     }
 
 
-
-
     public static String generateApiJsonForm(Class clz, boolean forJs, boolean withDescript) {
+        return generateApiJsonForm(clz, forJs, withDescript, null);
+    }
+
+    public static String generateApiJsonForm(Class clz, boolean forJs, boolean withDescript, Map<String, Class> actualTypeMap) {
         String classDes = "";
         Annotation annotation = clz.getAnnotation(Descript.class);
         if (annotation != null) {
             Descript descript = (Descript) annotation;
             classDes = appendDescript(withDescript, descript, clz, "").toString();
         }
-        StringBuffer sb = generateApiJsonForm(clz, 0, forJs, withDescript, classDes);
+        StringBuffer sb = generateApiJsonForm(clz, 0, forJs, withDescript, classDes, actualTypeMap);
         return sb.toString();
     }
 
-    private static StringBuffer generateApiJsonForm(Class clz, int loop, boolean forJs, boolean withDescript, String objDes) {
+    private static StringBuffer generateApiJsonForm(Class clz, int loop, boolean forJs, boolean withDescript, String objDes, Map<String, Class> actualTypeMap) {
 
         loop++;
         StringBuffer sb = new StringBuffer();
@@ -125,10 +122,17 @@ public class Class2JsonUtils {
                 sb.append("\n");
             } else {
                 if (isList(type)) {
-                    Class pClass = getParameterizedClass(field);
+                    Class pClass = null;
+                    if (actualTypeMap != null && actualTypeMap.size() > 0) {
+                        String gegerType = ((ParameterizedTypeImpl) field.getGenericType()).getActualTypeArguments()[0].toString();
+                        pClass = actualTypeMap.get(gegerType);
+                    }
+                    if (pClass == null) {
+                        pClass = getParameterizedClass(field);
+                    }
                     sb.append("[");
                     if (pClass == null) {
-                        sb.append(" 数组没有泛型参数,没法解释到实际参数型");
+                        sb.append(" //数组没有泛型参数,没法解释到实际参数型 ]");
                     } else {
                         if (isBaseClass(pClass)) {
                             sb.append(getDefaultValueByClassType(pClass)).append(',').append(getDefaultValueByClassType(pClass));
@@ -139,14 +143,29 @@ public class Class2JsonUtils {
                             String paramterClass = pClass.getSimpleName().toLowerCase();
                             sb.append(appendDescript(withDescript, field.getAnnotation(Descript.class), type, paramterClass));
                             sb.append("\n");
-                            StringBuffer json = generateApiJsonForm(pClass, loop, forJs, withDescript, "");
+                            StringBuffer json = generateApiJsonForm(pClass, loop, forJs, withDescript, "", null);
                             sb.append(json);
                             sb.append("]");
                         }
                     }
                 } else {
                     String tObjdes = appendDescript(withDescript, field.getAnnotation(Descript.class), type, "").toString();
-                    StringBuffer json = generateApiJsonForm(type, loop, forJs, withDescript, tObjdes);
+                    StringBuffer json = null;
+                    //获取泛参名称
+                    if (actualTypeMap != null && actualTypeMap.size() > 0) {
+                        String generType = field.getGenericType().toString();
+                        //获取实参
+                        Class aClass = actualTypeMap.get(generType);
+                        if (aClass != null) {
+                            tObjdes = appendDescript(withDescript, field.getAnnotation(Descript.class), aClass, "").toString();
+                            json = generateApiJsonForm(aClass, loop, forJs, withDescript, tObjdes, actualTypeMap);
+                        } else {
+                            json = generateApiJsonForm(type, loop, forJs, withDescript, tObjdes, actualTypeMap);
+                        }
+                    } else {
+                         json = generateApiJsonForm(type, loop, forJs, withDescript, tObjdes, null);
+
+                    }
                     sb.append(json);
 
                 }
@@ -197,8 +216,6 @@ public class Class2JsonUtils {
         }
         return false;
     }
-
-
 
 
     //    |参数名|必选|类型|说明|

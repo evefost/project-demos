@@ -30,5 +30,11 @@ public class GicController {
         //user.getSchool().toString();
         return ResponseDataVo.success(user);
     }
+    @RequestMapping(value = "formAdds222", method = RequestMethod.POST)
+    public ResponseDataVo<SimpleUser> gicParam2(SimpleUser user) {
+        logger.debug("formAdd{}",user);
+        //user.getSchool().toString();
+        return ResponseDataVo.success(user);
+    }
 
 }

@@ -5,6 +5,7 @@ import com.xie.scanapi.mappingResolver.ResolverSupport;
 import com.xie.scanapi.parse.ControllerInfo;
 import com.xie.web.controller.AjaxController;
 import com.xie.web.controller.GicController;
+import com.xie.web.controller.SimpleParamsController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 

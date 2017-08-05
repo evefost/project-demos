@@ -2,7 +2,7 @@
 <configuration status="debug">
     <Properties>
         <!--<property name="log.path">${sys:catalina.home}/logs/standard-web</property>-->
-        <property name="log.path">C:\\Users\\Administrator\\.IntelliJIdea2017.1\\system\\compile-server/logs/standard-web</property>
+        <property name="log.path">/Users/xieyang/Library/Caches/IntelliJIdea2016.3/compile-server/logs/standard-web</property>
     </Properties>
     <appenders>
         <Console name="ConsoleAppender" target="SYSTEM_OUT">

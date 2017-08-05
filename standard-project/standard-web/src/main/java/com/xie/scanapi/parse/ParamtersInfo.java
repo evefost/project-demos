@@ -15,13 +15,21 @@ import java.util.Map;
  */
 public class ParamtersInfo implements IInfo {
 
+    public static final int BASE = 1;//1
+
+    public static final int OBJ = 2;//10
+
+    public static final int GIC_OBJ = 4;//100
+
+    public int pType = 1;
+
     private ResolverSupport resolverSupport;
 
     private Type[] actualTypeArguments;
 
     private Type rawType;
 
-    private Map<String,Class> actualTypeMap = new HashMap<>();
+    private Map<String, Class> actualTypeMap = new HashMap<>();
 
     //是否为泛型
     private boolean isGener = false;
@@ -46,37 +54,51 @@ public class ParamtersInfo implements IInfo {
     @Override
     public void parse() {
         if (isGener) {
+            pType = GIC_OBJ;
             //有泛型参数
             printGicAgrInfo();
-            System.out.println( "字段参数===========================");
-
+            String s = Class2JsonUtils.generateApiJsonForm((Class) rawType,false,true,actualTypeMap);
+            System.out.println(s);
         } else {
             Class clz = (Class) rawType;
             if (ClassHelper.isBaseClass(clz)) {
-                //基本类型
-
+                pType = BASE;
             } else {
-                System.out.println("=======" + rawType.toString());
-                String s = Class2JsonUtils.generateApiJsonForm((Class) rawType, true, true);
-                System.out.println("方法参数名:"+s);
+                pType = OBJ;
+                StringBuffer paramDescript = Class2JsonUtils.generateApiParamDescript((Class) rawType);
+                System.out.println("");
+                System.out.println("**参数：** ");
+                System.out.println("");
+                System.out.println(paramDescript);
+                String jsonDes = Class2JsonUtils.generateApiJsonForm((Class) rawType, false, true);
+                System.out.println("``` ");
+                System.out.println(jsonDes);
+                System.out.println("``` ");
             }
         }
 
     }
 
 
-    private void printGicAgrInfo(){
+    private void printGicAgrInfo() {
         System.out.println("打印泛型－实参");
         //泛型－实参
         //参数变量
         TypeVariable[] typeParameters = ((Class) rawType).getTypeParameters();
-        for(int i=0;i<actualTypeArguments.length;i++){
-            System.out.println("泛型:"+typeParameters[i]+"==实参:"+actualTypeArguments[i]);
+        for (int i = 0; i < actualTypeArguments.length; i++) {
+            System.out.println("类泛型参数变量:" + typeParameters[i] + "  ==实参:" + actualTypeArguments[i]);
             actualTypeMap.put(typeParameters[i].getName(), (Class) actualTypeArguments[i]);
         }
         Field[] declaredFields = ((Class) rawType).getDeclaredFields();
-        for(Field field:declaredFields){
-            System.out.println("字段 name:"+field.getName()+"对应泛参名"+field.getGenericType().toString()+"对应的实参:");
+        for (Field field : declaredFields) {
+
+            String generType = field.getGenericType().toString();
+            Class actuTypeClass = actualTypeMap.get(generType);
+            if (actuTypeClass != null) {
+                System.out.println("类泛参变量:field name:" + field.getName() + "  对应泛参名:" + generType + "  对应的实参:" + actuTypeClass.getName());
+            } else {
+                System.out.println("非字类泛参变量:field name:" + field.getName() + "  实参类型:" + generType);
+            }
         }
     }
 }

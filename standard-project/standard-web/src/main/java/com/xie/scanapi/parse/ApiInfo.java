@@ -117,7 +117,7 @@ public class ApiInfo implements IInfo {
 
     @Override
     public void parse() {
-        System.out.println("\n\n");
+        System.out.println("\n");
 
         Descript des = method.getAnnotation(Descript.class);
         if (des != null) {
@@ -127,10 +127,17 @@ public class ApiInfo implements IInfo {
             description = "未知";
         }
 
-        System.out.println("接口路径:" + path + "\n" + method.toGenericString());
+        System.out.println("接口路径:" + path);
+
 
         MappingResolver resoler = resolverSupport.getResoler(annotation);
         supportMethods = resoler.getSupportMethods(annotation);
+        System.out.println("***请求方式：** ");
+        for(String m:supportMethods){
+            System.out.print(" - "+m);
+        }
+        System.out.println("");
+
         //处理泛型参数
         Type[] gTypes = method.getGenericParameterTypes();
         if (gTypes != null && gTypes.length > 0) {
@@ -152,13 +159,6 @@ public class ApiInfo implements IInfo {
             }
         }
         //参数名称列表
-        String[] parameterNames = resolverSupport.getParameterNames(method);
-        if (parameterNames != null && parameterNames.length > 0) {
-            for (String name : parameterNames) {
-                System.out.println(name);
-            }
-        }
-
 
         //参数注解处理
         Annotation[][] parameterAnnotations = method.getParameterAnnotations();
@@ -169,9 +169,34 @@ public class ApiInfo implements IInfo {
                 }
             }
         }
-        Type genericReturnType = method.getGenericReturnType();
 
+        Type genericReturnType = method.getGenericReturnType();
+        System.out.println();
+        System.out.println("返回参数类型 start =======");
+        if(genericReturnType instanceof ParameterizedType){
+            ParameterizedType paramType = (ParameterizedType) genericReturnType;
+            Type[] actualTypeArguments = paramType.getActualTypeArguments();
+            Type rawType = paramType.getRawType();
+            ParamtersInfo pInfo = new ParamtersInfo(resolverSupport, rawType, actualTypeArguments);
+        }else {
+            ParamtersInfo pInfo = new ParamtersInfo(resolverSupport, genericReturnType);
+        }
+        System.out.println("返回参数类型 end =======");
         resoler.printApiDoc(this);
+        //megerParams();
+    }
+
+    /**
+     * 合并参数
+     */
+    private void megerParams(){
+        int parseType = 0;
+        if(paramtersInfos != null && paramtersInfos.length>0){
+            for(ParamtersInfo pI:paramtersInfos){
+                parseType = parseType|pI.pType;
+            }
+        }
+        System.out.println("类型:"+parseType);
     }
 
 
