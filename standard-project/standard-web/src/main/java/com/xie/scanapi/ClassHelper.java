@@ -10,23 +10,7 @@ import java.lang.reflect.Type;
 public class ClassHelper {
 
 
-    public static Class<?>[] getParameterizedType(Field f) {
-        // 获取f字段的通用类型
-        Type fc = f.getGenericType(); // 关键的地方得到其Generic的类型
-        // 如果不为空并且是泛型参数的类型
-        if (fc != null && fc instanceof ParameterizedType) {
-            ParameterizedType pt = (ParameterizedType) fc;
-            Type[] types = pt.getActualTypeArguments();
-            if (types != null && types.length > 0) {
-                Class<?>[] classes = new Class<?>[types.length];
-                for (int i = 0; i < classes.length; i++) {
-                    classes[i] = (Class<?>) types[i];
-                }
-                return classes;
-            }
-        }
-        return null;
-    }
+
 
     public static boolean isBaseClass(Class clz) {
         try {
@@ -56,6 +40,24 @@ public class ClassHelper {
                 //System.out.println(clz.getSimpleName());
             }
             return parameterizedType[0];
+        }
+        return null;
+    }
+
+    public static Class<?>[] getParameterizedType(Field f) {
+        // 获取f字段的通用类型
+        Type fc = f.getGenericType(); // 关键的地方得到其Generic的类型
+        // 如果不为空并且是泛型参数的类型
+        if (fc != null && fc instanceof ParameterizedType) {
+            ParameterizedType pt = (ParameterizedType) fc;
+            Type[] types = pt.getActualTypeArguments();
+            if (types != null && types.length > 0) {
+                Class<?>[] classes = new Class<?>[types.length];
+                for (int i = 0; i < classes.length; i++) {
+                    classes[i] = (Class<?>) types[i];
+                }
+                return classes;
+            }
         }
         return null;
     }

@@ -4,6 +4,7 @@ import com.xie.scanapi.Class2JsonUtils;
 import com.xie.scanapi.ClassHelper;
 import com.xie.scanapi.mappingResolver.ResolverSupport;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 
 /**
@@ -41,7 +42,16 @@ public class ParamtersInfo implements IInfo {
     public void parse() {
         if (isGener) {
             //有泛型参数
-            System.out.println("泛型参数：" + rawType.toString() + "\n 实参" + actualTypeArguments[0].toString());
+            System.out.println("泛型参数：" + rawType.toString() + "\n 实参数组:");
+            for(Type aType : actualTypeArguments){
+                System.out.println( " 实参" + aType.toString());
+            }
+
+            Field[] declaredFields = ((Class) rawType).getDeclaredFields();
+            for(Field field:declaredFields){
+                System.out.println("字段 name:"+field.getName()+"对应泛参名"+field.getGenericType().toString());
+            }
+
         } else {
             Class clz = (Class) rawType;
             if (ClassHelper.isBaseClass(clz)) {

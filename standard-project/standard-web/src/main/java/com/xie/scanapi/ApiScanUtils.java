@@ -4,6 +4,7 @@ import com.xie.scanapi.mappingResolver.MappingResolver;
 import com.xie.scanapi.mappingResolver.ResolverSupport;
 import com.xie.scanapi.parse.ControllerInfo;
 import com.xie.web.controller.AjaxController;
+import com.xie.web.controller.GicController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +24,7 @@ public class ApiScanUtils {
     public static void main(String[] args) throws Exception {
 
 
-        scanPagkage("com.xie", new Class[]{AjaxController.class});
+        scanPagkage("com.xie", new Class[]{GicController.class});
 
     }
 
