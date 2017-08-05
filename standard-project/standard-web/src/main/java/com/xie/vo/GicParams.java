@@ -15,4 +15,6 @@ public class GicParams<A,B> {
     private List<A> listA;
 
     private List<B> listB;
+
+    private String testName;
 }

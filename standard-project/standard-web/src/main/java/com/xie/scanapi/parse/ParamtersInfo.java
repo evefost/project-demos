@@ -6,6 +6,9 @@ import com.xie.scanapi.mappingResolver.ResolverSupport;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 参数信息
@@ -17,6 +20,8 @@ public class ParamtersInfo implements IInfo {
     private Type[] actualTypeArguments;
 
     private Type rawType;
+
+    private Map<String,Class> actualTypeMap = new HashMap<>();
 
     //是否为泛型
     private boolean isGener = false;
@@ -42,15 +47,8 @@ public class ParamtersInfo implements IInfo {
     public void parse() {
         if (isGener) {
             //有泛型参数
-            System.out.println("泛型参数：" + rawType.toString() + "\n 实参数组:");
-            for(Type aType : actualTypeArguments){
-                System.out.println( " 实参" + aType.toString());
-            }
-
-            Field[] declaredFields = ((Class) rawType).getDeclaredFields();
-            for(Field field:declaredFields){
-                System.out.println("字段 name:"+field.getName()+"对应泛参名"+field.getGenericType().toString());
-            }
+            printGicAgrInfo();
+            System.out.println( "字段参数===========================");
 
         } else {
             Class clz = (Class) rawType;
@@ -60,9 +58,25 @@ public class ParamtersInfo implements IInfo {
             } else {
                 System.out.println("=======" + rawType.toString());
                 String s = Class2JsonUtils.generateApiJsonForm((Class) rawType, true, true);
-                System.out.println(s);
+                System.out.println("方法参数名:"+s);
             }
         }
 
+    }
+
+
+    private void printGicAgrInfo(){
+        System.out.println("打印泛型－实参");
+        //泛型－实参
+        //参数变量
+        TypeVariable[] typeParameters = ((Class) rawType).getTypeParameters();
+        for(int i=0;i<actualTypeArguments.length;i++){
+            System.out.println("泛型:"+typeParameters[i]+"==实参:"+actualTypeArguments[i]);
+            actualTypeMap.put(typeParameters[i].getName(), (Class) actualTypeArguments[i]);
+        }
+        Field[] declaredFields = ((Class) rawType).getDeclaredFields();
+        for(Field field:declaredFields){
+            System.out.println("字段 name:"+field.getName()+"对应泛参名"+field.getGenericType().toString()+"对应的实参:");
+        }
     }
 }
