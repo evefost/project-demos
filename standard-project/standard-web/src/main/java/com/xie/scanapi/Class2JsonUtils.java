@@ -50,7 +50,7 @@ public class Class2JsonUtils {
         //Descript annotation = User.class.getAnnotation(Descript.class);
 
 
-        String sb = generateApiJsonForm(SimpleUser.class, true, true);
+        StringBuffer sb = generateApiJsonForm(SimpleUser.class, true, true);
         System.out.println(sb);
 //        StringBuffer stringBuffer = generateApiParamDescript(User.class);
 //        System.out.println(stringBuffer.toString());
@@ -70,11 +70,11 @@ public class Class2JsonUtils {
     }
 
 
-    public static String generateApiJsonForm(Class clz, boolean forJs, boolean withDescript) {
+    public static StringBuffer generateApiJsonForm(Class clz, boolean forJs, boolean withDescript) {
         return generateApiJsonForm(clz, forJs, withDescript, null);
     }
 
-    public static String generateApiJsonForm(Class clz, boolean forJs, boolean withDescript, Map<String, Class> actualTypeMap) {
+    public static StringBuffer generateApiJsonForm(Class clz, boolean forJs, boolean withDescript, Map<String, Class> actualTypeMap) {
         String classDes = "";
         Annotation annotation = clz.getAnnotation(Descript.class);
         if (annotation != null) {
@@ -82,7 +82,7 @@ public class Class2JsonUtils {
             classDes = appendDescript(withDescript, descript, clz, "").toString();
         }
         StringBuffer sb = generateApiJsonForm(clz, 0, forJs, withDescript, classDes, actualTypeMap);
-        return sb.toString();
+        return sb;
     }
 
     private static StringBuffer generateApiJsonForm(Class clz, int loop, boolean forJs, boolean withDescript, String objDes, Map<String, Class> actualTypeMap) {
@@ -93,7 +93,23 @@ public class Class2JsonUtils {
             sb.append("\t");
         }
         sb.append("{").append(objDes).append("\n");
-        Field[] fields = clz.getDeclaredFields();
+        Class superclass = clz.getSuperclass();
+        Field[] supperFields = new Field[]{};
+        if(superclass != null){
+            supperFields = superclass.getDeclaredFields();
+        }
+
+        Field[] childFields = clz.getDeclaredFields();
+
+        Field[] fields =  new Field[supperFields.length+childFields.length];
+        for(int n = 0;n<fields.length;n++){
+            if(n<supperFields.length){
+                fields[n] = supperFields[n];
+            }else {
+                fields[n] = childFields[n-supperFields.length];
+            }
+
+        }
         int c = 0;
         for (Field field : fields) {
             c++;

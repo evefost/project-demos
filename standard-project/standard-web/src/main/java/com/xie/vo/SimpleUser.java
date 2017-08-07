@@ -1,5 +1,7 @@
 package com.xie.vo;
 
+import javax.jws.soap.SOAPBinding;
+
 /**
  * Created by xieyang on 17/8/5.
  */

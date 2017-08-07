@@ -5,6 +5,8 @@ package com.xie.scanapi.parse;
  */
 public interface IInfo {
 
-    void parse();
+    StringBuffer parse();
+
+    StringBuffer getParemsDescription();
 
 }

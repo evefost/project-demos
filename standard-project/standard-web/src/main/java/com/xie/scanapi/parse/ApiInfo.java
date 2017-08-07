@@ -1,16 +1,16 @@
 package com.xie.scanapi.parse;
 
-import com.xie.java.common.response.ResponseDataVo;
 import com.xie.scanapi.Class2JsonUtils;
 import com.xie.scanapi.mappingResolver.MappingResolver;
 import com.xie.scanapi.mappingResolver.ResolverSupport;
 import com.xie.vo.Descript;
-import com.xie.vo.SimpleUser;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+
+import static com.xie.scanapi.parse.ParamtersInfo.OBJ;
 
 /**
  * 接口信息
@@ -111,32 +111,31 @@ public class ApiInfo implements IInfo {
         this.annotation = annotation;
         this.method = method;
         this.resolverSupport = resolverSupport;
-        parse();
+
 
     }
 
     @Override
-    public void parse() {
-        System.out.println("\n");
+    public StringBuffer parse() {
+
+        StringBuffer sb = new StringBuffer();
+        sb.append("\n");
 
         Descript des = method.getAnnotation(Descript.class);
         if (des != null) {
             description = des.value();
-            System.out.println("接口路径描述:" + description);
         } else {
             description = "未知";
         }
-
-        System.out.println("接口路径:" + path);
-
-
+        sb.append("接口路径描述:" + description);
+        sb.append("\n接口路径:" + path);
         MappingResolver resoler = resolverSupport.getResoler(annotation);
         supportMethods = resoler.getSupportMethods(annotation);
-        System.out.println("***请求方式：** ");
-        for(String m:supportMethods){
-            System.out.print(" - "+m);
+        sb.append("\n\n***请求方式：** ");
+        for (String m : supportMethods) {
+            sb.append(" - " + m);
         }
-        System.out.println("");
+        sb.append("\n\n");
 
         //处理泛型参数
         Type[] gTypes = method.getGenericParameterTypes();
@@ -145,17 +144,17 @@ public class ApiInfo implements IInfo {
             int i = 0;
             ParamtersInfo pInfo = null;
             for (Type type : gTypes) {
-
-                if (type instanceof ParameterizedType) {
-                    ParameterizedType paramType = (ParameterizedType) type;
-                    Type[] actualTypeArguments = paramType.getActualTypeArguments();
-                    Type rawType = paramType.getRawType();
-                    pInfo = new ParamtersInfo(resolverSupport, rawType, actualTypeArguments);
-                } else {
-                    pInfo = new ParamtersInfo(resolverSupport, type);
-                }
+                pInfo = getParamtersInfo(type);
                 paramtersInfos[i] = pInfo;
                 i++;
+                if(pInfo.pType == OBJ){
+                    StringBuffer descript = Class2JsonUtils.generateApiParamDescript((Class) type);
+                    descript.append("\n\n");
+                    sb.append("**参数：** \n");
+                    sb.append("\n");
+                    sb.append(descript);
+                }
+                sb.append(pInfo.parse());
             }
         }
         //参数名称列表
@@ -171,32 +170,47 @@ public class ApiInfo implements IInfo {
         }
 
         Type genericReturnType = method.getGenericReturnType();
-        System.out.println();
-        System.out.println("返回参数类型 start =======");
-        if(genericReturnType instanceof ParameterizedType){
+        sb.append("\n\n");
+        sb.append("返回参数类型 start =======\n");
+        ParamtersInfo pInfo = getParamtersInfo(genericReturnType);
+        sb.append(pInfo.parse());
+        sb.append("\n返回参数类型 end =======\n\n");
+        System.out.println(sb.toString());
+
+        resoler.printApiDoc(this);
+        return sb;
+        //megerParams();
+    }
+
+    @Override
+    public StringBuffer getParemsDescription() {
+        return null;
+    }
+
+    private ParamtersInfo getParamtersInfo(Type genericReturnType) {
+        ParamtersInfo pInfo;
+        if (genericReturnType instanceof ParameterizedType) {
             ParameterizedType paramType = (ParameterizedType) genericReturnType;
             Type[] actualTypeArguments = paramType.getActualTypeArguments();
             Type rawType = paramType.getRawType();
-            ParamtersInfo pInfo = new ParamtersInfo(resolverSupport, rawType, actualTypeArguments);
-        }else {
-            ParamtersInfo pInfo = new ParamtersInfo(resolverSupport, genericReturnType);
+            pInfo = new ParamtersInfo(resolverSupport, rawType, actualTypeArguments);
+        } else {
+            pInfo = new ParamtersInfo(resolverSupport, genericReturnType);
         }
-        System.out.println("返回参数类型 end =======");
-        resoler.printApiDoc(this);
-        //megerParams();
+        return pInfo;
     }
 
     /**
      * 合并参数
      */
-    private void megerParams(){
+    private void megerParams() {
         int parseType = 0;
-        if(paramtersInfos != null && paramtersInfos.length>0){
-            for(ParamtersInfo pI:paramtersInfos){
-                parseType = parseType|pI.pType;
+        if (paramtersInfos != null && paramtersInfos.length > 0) {
+            for (ParamtersInfo pI : paramtersInfos) {
+                parseType = parseType | pI.pType;
             }
         }
-        System.out.println("类型:"+parseType);
+        System.out.println("类型:" + parseType);
     }
 
 

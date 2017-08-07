@@ -52,31 +52,43 @@ public class ParamtersInfo implements IInfo {
 
 
     @Override
-    public void parse() {
+    public StringBuffer parse() {
         if (isGener) {
             pType = GIC_OBJ;
             //有泛型参数
-            printGicAgrInfo();
-            String s = Class2JsonUtils.generateApiJsonForm((Class) rawType,false,true,actualTypeMap);
-            System.out.println(s);
+            //printGicAgrInfo();
+            TypeVariable[] typeParameters = ((Class) rawType).getTypeParameters();
+            for (int i = 0; i < actualTypeArguments.length; i++) {
+                actualTypeMap.put(typeParameters[i].getName(), (Class) actualTypeArguments[i]);
+            }
+            StringBuffer sb = new StringBuffer();
+            sb.append("``` \n");
+            StringBuffer rs =  Class2JsonUtils.generateApiJsonForm((Class) rawType, false, true, actualTypeMap);
+            sb.append(rs);
+            sb.append("\n``` ");
+            return sb;
         } else {
             Class clz = (Class) rawType;
             if (ClassHelper.isBaseClass(clz)) {
                 pType = BASE;
+                StringBuffer sb = new StringBuffer();
+                return sb;
             } else {
                 pType = OBJ;
-                StringBuffer paramDescript = Class2JsonUtils.generateApiParamDescript((Class) rawType);
-                System.out.println("");
-                System.out.println("**参数：** ");
-                System.out.println("");
-                System.out.println(paramDescript);
-                String jsonDes = Class2JsonUtils.generateApiJsonForm((Class) rawType, false, true);
-                System.out.println("``` ");
-                System.out.println(jsonDes);
-                System.out.println("``` ");
+                StringBuffer sb = new StringBuffer();
+                sb.append("``` \n");
+                StringBuffer jsonDes = Class2JsonUtils.generateApiJsonForm((Class) rawType, false, true);
+                sb.append(jsonDes);
+                sb.append("\n``` ");
+                return sb;
             }
         }
 
+    }
+
+    @Override
+    public StringBuffer getParemsDescription() {
+        return Class2JsonUtils.generateApiParamDescript((Class) rawType);
     }
 
 
