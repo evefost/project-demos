@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Api(description = "ajax提交测试")
 @RestController
-@RequestMapping("/api/ajax")
+@RequestMapping("/api/simple")
 public class SimpleParamsController {
 
     private  final Logger logger = LoggerFactory.getLogger(getClass());
@@ -22,13 +22,13 @@ public class SimpleParamsController {
 
 
     @Descript("简单的get方法参数解释1")
-    @RequestMapping(value = "noparams", method = RequestMethod.GET)
+    @RequestMapping(value = "no/params", method = RequestMethod.GET)
     public ResponseDataVo list() {
         //user.getSchool().toString();
         return ResponseDataVo.success(null);
     }
     @Descript("简单的get方法参数解释1")
-    @RequestMapping(value = "getParams", method = RequestMethod.GET)
+    @RequestMapping(value = "getParams1", method = RequestMethod.GET)
     public ResponseDataVo list(Aclass aclass,String exxxxx) {
         logger.debug("formAdd{}",aclass);
         //user.getSchool().toString();
@@ -36,7 +36,7 @@ public class SimpleParamsController {
     }
 
     @Descript("简单的get方法参数解释2")
-    @RequestMapping(value = "getParams", method = RequestMethod.GET)
+    @RequestMapping(value = "getParams2", method = RequestMethod.GET)
     public ResponseDataVo list(String name, Long id) {
         logger.debug("name:{},id",name,id);
         //user.getSchool().toString();
@@ -44,14 +44,14 @@ public class SimpleParamsController {
     }
 
 
-    @RequestMapping(value = "gic", method = RequestMethod.POST)
+    @RequestMapping(value = "generParams", method = RequestMethod.POST)
     public ResponseDataVo gicParam(ResponseDataVo<SimpleUser> user,String exxxxx) {
         logger.debug("formAdd{}",user);
         //user.getSchool().toString();
         return ResponseDataVo.success(user);
     }
 
-    @RequestMapping(value = "gic", method = RequestMethod.POST)
+    @RequestMapping(value = "generParams2", method = RequestMethod.POST)
     public ResponseDataVo gicParam(User user,String exxxxx) {
         logger.debug("formAdd{}",user);
         //user.getSchool().toString();

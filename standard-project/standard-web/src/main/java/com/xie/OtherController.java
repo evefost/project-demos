@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Api(description = "ajax提交测试")
 @Controller
-@RequestMapping()
+@RequestMapping("other")
 public class OtherController {
     private  final Logger logger = LoggerFactory.getLogger(getClass());
 

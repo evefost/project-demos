@@ -11,15 +11,9 @@ public class SimpleUser {
 
     private String name;
 
-    private Inner inner;
 
-    public Inner getInner() {
-        return inner;
-    }
 
-    public void setInner(Inner inner) {
-        this.inner = inner;
-    }
+
 
     public Long getId() {
         return id;
@@ -37,16 +31,5 @@ public class SimpleUser {
         this.name = name;
     }
 
-    public static class Inner{
 
-        private String name;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-    }
 }

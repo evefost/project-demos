@@ -28,14 +28,15 @@ public class AjaxController {
         //user.getSchool().toString();
         return ResponseDataVo.success(user);
     }
-    @RequestMapping(value = "formAdds", method = RequestMethod.POST)
+    @RequestMapping(value = "generPost", method = RequestMethod.POST)
     public ResponseDataVo gicParam(ResponseDataVo<SimpleUser> user) {
         logger.debug("formAdd{}",user);
         //user.getSchool().toString();
         return ResponseDataVo.success(user);
     }
+
     @RequestMapping(value = "formAdd", method = RequestMethod.POST)
-    public ResponseDataVo add(SimpleUser user) {
+    public ResponseDataVo add(@RequestBody SimpleUser user) {
         logger.debug("formAdd{}",user);
         //user.getSchool().toString();
         return ResponseDataVo.success(user);

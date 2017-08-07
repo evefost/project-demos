@@ -1,5 +1,6 @@
 package com.xie.web.controller;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.xie.java.common.response.ResponseDataVo;
 import com.xie.vo.*;
 import io.swagger.annotations.Api;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(description = "ajax提交测试")
 @RestController
-@RequestMapping("/api/ajax")
+@RequestMapping("/api/generparams")
 public class GicController {
 
     private  final Logger logger = LoggerFactory.getLogger(getClass());
@@ -25,7 +26,7 @@ public class GicController {
     }
 
     @RequestMapping(value = "formAdds", method = RequestMethod.POST)
-    public ResponseDataVo gicParam(ResponseDataVo<SimpleUser> user) {
+    public ResponseDataVo<Page<SimpleUser>> gicParam(ResponseDataVo<SimpleUser> user) {
         logger.debug("formAdd{}",user);
         //user.getSchool().toString();
         return ResponseDataVo.success(user);

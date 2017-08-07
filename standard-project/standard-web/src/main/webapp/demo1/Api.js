@@ -11,7 +11,7 @@ if (!Api) {
         //接口demo，若api没指定，method:默认为get方法提交
         ajaxDemo: {
             formAdd: { //用户类 类型:user 必选(否)
-                url: app_root_path + "/api/ajax/formAdd2",
+                url: app_root_path + "/api/ajax/formAdd",
                 method: "POST",
                 contentType: MediType_FORM_URLENCODE,
                 descript: "post form demo接口",
