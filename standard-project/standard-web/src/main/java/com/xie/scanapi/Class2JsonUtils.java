@@ -1,6 +1,9 @@
 package com.xie.scanapi;
 
+import com.baomidou.mybatisplus.plugins.Page;
+import com.xie.java.common.response.ResponseDataVo;
 import com.xie.vo.Descript;
+import com.xie.vo.Inner;
 import com.xie.vo.SimpleUser;
 import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
 
@@ -50,7 +53,7 @@ public class Class2JsonUtils {
         //Descript annotation = User.class.getAnnotation(Descript.class);
 
 
-        StringBuffer sb = generateApiJsonForm(SimpleUser.class, true, true);
+        StringBuffer sb = generateApiJsonForm(Inner.class, true, true);
         System.out.println(sb);
 //        StringBuffer stringBuffer = generateApiParamDescript(User.class);
 //        System.out.println(stringBuffer.toString());
@@ -95,18 +98,18 @@ public class Class2JsonUtils {
         sb.append("{").append(objDes).append("\n");
         Class superclass = clz.getSuperclass();
         Field[] supperFields = new Field[]{};
-        if(superclass != null){
+        if (superclass != null) {
             supperFields = superclass.getDeclaredFields();
         }
 
         Field[] childFields = clz.getDeclaredFields();
 
-        Field[] fields =  new Field[supperFields.length+childFields.length];
-        for(int n = 0;n<fields.length;n++){
-            if(n<supperFields.length){
+        Field[] fields = new Field[supperFields.length + childFields.length];
+        for (int n = 0; n < fields.length; n++) {
+            if (n < supperFields.length) {
                 fields[n] = supperFields[n];
-            }else {
-                fields[n] = childFields[n-supperFields.length];
+            } else {
+                fields[n] = childFields[n - supperFields.length];
             }
 
         }
@@ -179,7 +182,7 @@ public class Class2JsonUtils {
                             json = generateApiJsonForm(type, loop, forJs, withDescript, tObjdes, actualTypeMap);
                         }
                     } else {
-                         json = generateApiJsonForm(type, loop, forJs, withDescript, tObjdes, null);
+                        json = generateApiJsonForm(type, loop, forJs, withDescript, tObjdes, null);
 
                     }
                     sb.append(json);

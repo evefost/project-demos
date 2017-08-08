@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.*;
 public class GicController {
 
     private  final Logger logger = LoggerFactory.getLogger(getClass());
-
-    @RequestMapping(value = "list", method = RequestMethod.POST)
-    public ResponseDataVo list(GicParams<Aclass,Bclass> user) {
-        logger.debug("formAdd{}",user);
-        //user.getSchool().toString();
-        return ResponseDataVo.success(user);
-    }
+//
+//    @RequestMapping(value = "list", method = RequestMethod.POST)
+//    public ResponseDataVo list(GicParams<Aclass,Bclass> user) {
+//        logger.debug("formAdd{}",user);
+//        //user.getSchool().toString();
+//        return ResponseDataVo.success(user);
+//    }
 
     @RequestMapping(value = "formAdds", method = RequestMethod.POST)
     public ResponseDataVo<Page<SimpleUser>> gicParam(ResponseDataVo<SimpleUser> user) {
@@ -31,11 +31,11 @@ public class GicController {
         //user.getSchool().toString();
         return ResponseDataVo.success(user);
     }
-    @RequestMapping(value = "formAdds222", method = RequestMethod.GET)
-    public ResponseDataVo<SimpleUser> gicParam2(SimpleUser user) {
-        logger.debug("formAdd{}",user);
-        //user.getSchool().toString();
-        return ResponseDataVo.success(user);
-    }
+//    @RequestMapping(value = "formAdds222", method = RequestMethod.GET)
+//    public ResponseDataVo<SimpleUser> gicParam2(SimpleUser user) {
+//        logger.debug("formAdd{}",user);
+//        //user.getSchool().toString();
+//        return ResponseDataVo.success(user);
+//    }
 
 }

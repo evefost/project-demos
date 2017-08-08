@@ -1,15 +1,10 @@
 package com.xie.vo;
 
+import com.baomidou.mybatisplus.plugins.Page;
+import com.xie.java.common.response.ResponseDataVo;
+
 public  class Inner{
 
-        private String name;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
+    ResponseDataVo<Page<SimpleUser>> testss;
 
 }

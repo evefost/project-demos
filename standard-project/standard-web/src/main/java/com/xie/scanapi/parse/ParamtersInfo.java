@@ -3,6 +3,7 @@ package com.xie.scanapi.parse;
 import com.xie.scanapi.Class2JsonUtils;
 import com.xie.scanapi.ClassHelper;
 import com.xie.scanapi.mappingResolver.ResolverSupport;
+import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
@@ -58,12 +59,20 @@ public class ParamtersInfo implements IInfo {
             //有泛型参数
             //printGicAgrInfo();
             TypeVariable[] typeParameters = ((Class) rawType).getTypeParameters();
-            for (int i = 0; i < actualTypeArguments.length; i++) {
-                actualTypeMap.put(typeParameters[i].getName(), (Class) actualTypeArguments[i]);
-            }
             StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < actualTypeArguments.length; i++) {
+                Type ar = actualTypeArguments[i];
+                if (ar instanceof ParameterizedTypeImpl) {
+                    ParameterizedTypeImpl tar = (ParameterizedTypeImpl) ar;
+                    ParamtersInfo pInfo = new ParamtersInfo(resolverSupport, tar.getRawType(), tar.getActualTypeArguments());
+                   return pInfo.parse();
+                } else {
+                    actualTypeMap.put(typeParameters[i].getName(), (Class) actualTypeArguments[i]);
+                }
+            }
+
             sb.append("``` \n");
-            StringBuffer rs =  Class2JsonUtils.generateApiJsonForm((Class) rawType, false, true, actualTypeMap);
+            StringBuffer rs = Class2JsonUtils.generateApiJsonForm((Class) rawType, false, true, actualTypeMap);
             sb.append(rs);
             sb.append("\n``` ");
             return sb;
