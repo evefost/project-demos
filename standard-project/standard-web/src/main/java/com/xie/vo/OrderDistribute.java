@@ -1,5 +1,7 @@
 package com.xie.vo;
 
+import com.xie.java.common.annotation.Descript;
+
 import java.util.List;
 
 /**

@@ -3,12 +3,9 @@ package com.xie.scanapi;
 import com.xie.java.common.annotation.Descript;
 import com.xie.vo.Inner;
 import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
-import sun.reflect.generics.reflectiveObjects.TypeVariableImpl;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
-import java.util.HashMap;
 import java.util.Map;
 
 import static com.xie.scanapi.ClassHelper.*;
@@ -16,7 +13,7 @@ import static com.xie.scanapi.ClassHelper.*;
 /**
  * Created by xieyang on 17/7/31.
  */
-public class Class2JsonUtils {
+public class Class2JsonUtils2 {
 
 
     public static void main(String[] args) throws Exception {
@@ -73,26 +70,22 @@ public class Class2JsonUtils {
     }
 
 
-    public static StringBuffer generateApiJsonForm(Type type, boolean forJs, boolean withDescript) {
+    public static StringBuffer generateApiJsonForm(Class clz, boolean forJs, boolean withDescript) {
+        return generateApiJsonForm(clz, forJs, withDescript, null);
+    }
+
+    public static StringBuffer generateApiJsonForm(Class clz, boolean forJs, boolean withDescript, Map<String, Class> actualTypeMap) {
         String classDes = "";
-        if (type instanceof ParameterizedTypeImpl) {
-            Class<?> rawType = ((ParameterizedTypeImpl) type).getRawType();
-            Descript annotation = rawType.getAnnotation(Descript.class);
-            if (annotation != null) {
-                classDes = appendDescript(withDescript, annotation, rawType, "").toString();
-            }
-        } else {
-            Class<?> clz = (Class) type;
-            Descript annotation = clz.getAnnotation(Descript.class);
-            if (annotation != null) {
-                classDes = appendDescript(withDescript, annotation, clz, "").toString();
-            }
+        Annotation annotation = clz.getAnnotation(Descript.class);
+        if (annotation != null) {
+            Descript descript = (Descript) annotation;
+            classDes = appendDescript(withDescript, descript, clz, "").toString();
         }
-        StringBuffer sb = generateApiJsonForm(type, 0, forJs, withDescript, classDes);
+        StringBuffer sb = generateApiJsonForm(clz, 0, forJs, withDescript, classDes, actualTypeMap);
         return sb;
     }
 
-    private static StringBuffer generateApiJsonForm(Type srcType, int loop, boolean forJs, boolean withDescript, String objDes) {
+    private static StringBuffer generateApiJsonForm(Class clz, int loop, boolean forJs, boolean withDescript, String objDes, Map<String, Class> actualTypeMap) {
 
         loop++;
         StringBuffer sb = new StringBuffer();
@@ -100,19 +93,6 @@ public class Class2JsonUtils {
             sb.append("\t");
         }
         sb.append("{").append(objDes).append("\n");
-        Class<?> clz = null;
-        Map<String, Type> typeHashMap = new HashMap<>();
-        if (srcType instanceof ParameterizedTypeImpl) {
-            clz = ((ParameterizedTypeImpl) srcType).getRawType();
-            Type[] actualTypeArguments = ((ParameterizedTypeImpl) srcType).getActualTypeArguments();
-            TypeVariable<? extends Class<?>>[] typeParameters = clz.getTypeParameters();
-            for (int i = 0; i < actualTypeArguments.length; i++) {
-                typeHashMap.put(typeParameters[i].getName(), actualTypeArguments[i]);
-            }
-
-        } else {
-            clz = (Class<?>) srcType;
-        }
         Class superclass = clz.getSuperclass();
         Field[] supperFields = new Field[]{};
         if (superclass != null) {
@@ -159,19 +139,9 @@ public class Class2JsonUtils {
             } else {
                 if (isList(type)) {
                     Class pClass = null;
-                    Type genericType = field.getGenericType();
-                    if (genericType instanceof TypeVariableImpl) {
-                        //获取实参(实参里面也可能有泛型)
-                        Type tGenerType = typeHashMap.get(((TypeVariableImpl) genericType).getName());
-                        if (tGenerType instanceof ParameterizedTypeImpl) {
-
-                        } else {
-                            //不再是泛型实参变量
-                            pClass = (Class) tGenerType;
-                        }
-                    } else if (genericType instanceof ParameterizedTypeImpl) {
-                        String typeName = ((ParameterizedTypeImpl) genericType).getActualTypeArguments()[0].toString();
-                        pClass = (Class) typeHashMap.get(typeName);
+                    if (actualTypeMap != null && actualTypeMap.size() > 0) {
+                        String gegerType = ((ParameterizedTypeImpl) field.getGenericType()).getActualTypeArguments()[0].toString();
+                        pClass = actualTypeMap.get(gegerType);
                     }
                     if (pClass == null) {
                         pClass = getParameterizedClass(field);
@@ -189,7 +159,7 @@ public class Class2JsonUtils {
                             String paramterClass = pClass.getSimpleName().toLowerCase();
                             sb.append(appendDescript(withDescript, field.getAnnotation(Descript.class), type, paramterClass));
                             sb.append("\n");
-                            StringBuffer json = generateApiJsonForm(pClass, loop, forJs, withDescript, "");
+                            StringBuffer json = generateApiJsonForm(pClass, loop, forJs, withDescript, "", null);
                             sb.append(json);
                             sb.append("]");
                         }
@@ -197,26 +167,20 @@ public class Class2JsonUtils {
                 } else {
                     String tObjdes = appendDescript(withDescript, field.getAnnotation(Descript.class), type, "").toString();
                     StringBuffer json = null;
-                    Type genericType = field.getGenericType();
-                    if (genericType instanceof TypeVariableImpl) {
-                        //获取实参(实参里面也可能有泛型)
-                        Type tGenerType = typeHashMap.get(((TypeVariableImpl) genericType).getName());
-                        if (tGenerType instanceof ParameterizedTypeImpl) {
-                            json = generateApiJsonForm(tGenerType, loop, forJs, withDescript, tObjdes);
+                    //获取泛参名称
+                    if (actualTypeMap != null && actualTypeMap.size() > 0) {
+                        String generType = field.getGenericType().toString();
+                        //获取实参
+                        Class aClass = actualTypeMap.get(generType);
+                        if (aClass != null) {
+                            tObjdes = appendDescript(withDescript, field.getAnnotation(Descript.class), aClass, "").toString();
+                            json = generateApiJsonForm(aClass, loop, forJs, withDescript, tObjdes, actualTypeMap);
                         } else {
-                            //不再是泛型实参变量
-                            Class aClass = (Class) tGenerType;
-                            if (aClass != null) {
-                                tObjdes = appendDescript(withDescript, field.getAnnotation(Descript.class), aClass, "").toString();
-                                json = generateApiJsonForm(aClass, loop, forJs, withDescript, tObjdes);
-                            } else {
-                                json = generateApiJsonForm(aClass, loop, forJs, withDescript, tObjdes);
-                            }
+                            json = generateApiJsonForm(type, loop, forJs, withDescript, tObjdes, actualTypeMap);
                         }
-                    } else if (genericType instanceof ParameterizedTypeImpl) {
-                        json = generateApiJsonForm(genericType, loop, forJs, withDescript, tObjdes);
                     } else {
-                        json = generateApiJsonForm(type, loop, forJs, withDescript, tObjdes);
+                        json = generateApiJsonForm(type, loop, forJs, withDescript, tObjdes, null);
+
                     }
                     sb.append(json);
 

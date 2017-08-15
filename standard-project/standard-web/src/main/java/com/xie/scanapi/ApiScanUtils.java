@@ -36,7 +36,7 @@ public class ApiScanUtils {
 
     public static void scanPagkage(String packageName, Class<?>[] controllerClzs) throws InstantiationException, IllegalAccessException {
         List<ControllerInfo> controllerInfos = new ArrayList<>();
-        List<Class<?>> classes = ClassScanUtil.getClasses("com.xie");
+        List<Class<?>> classes = ClassScanUtil.getClasses(packageName);
         instances(classes);
         ResolverSupport support = new ResolverSupport(mappingResolverMap);
         if (controllerClzs != null && controllerClzs.length > 0) {

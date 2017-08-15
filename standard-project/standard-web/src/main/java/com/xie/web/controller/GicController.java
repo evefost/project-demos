@@ -23,19 +23,19 @@ public class GicController {
 //        logger.debug("formAdd{}",user);
 //        //user.getSchool().toString();
 //        return ResponseDataVo.success(user);
-//    }
+//    }P
 
     @RequestMapping(value = "formAdds", method = RequestMethod.POST)
-    public ResponseDataVo<Page<SimpleUser>> gicParam(ResponseDataVo<SimpleUser> user) {
+    public ResponseDataVo<Page<SimpleUser>> gicParam(ResponseDataVo<Page<SimpleUser>> user) {
+        logger.debug("formAdd{}",user);
+        //user.getSchool().toString();
+        return null;
+    }
+    @RequestMapping(value = "formAdds222", method = RequestMethod.GET)
+    public ResponseDataVo<SimpleUser> gicParam2(SimpleUser user) {
         logger.debug("formAdd{}",user);
         //user.getSchool().toString();
         return ResponseDataVo.success(user);
     }
-//    @RequestMapping(value = "formAdds222", method = RequestMethod.GET)
-//    public ResponseDataVo<SimpleUser> gicParam2(SimpleUser user) {
-//        logger.debug("formAdd{}",user);
-//        //user.getSchool().toString();
-//        return ResponseDataVo.success(user);
-//    }
 
 }

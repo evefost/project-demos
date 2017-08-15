@@ -1,5 +1,7 @@
 package com.xie.vo;
 
+import com.xie.java.common.annotation.Descript;
+
 /**
  * Created by Administrator on 2017/8/5.
  */

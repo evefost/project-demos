@@ -1,4 +1,4 @@
-package com.xie.vo;
+package com.xie.java.common.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

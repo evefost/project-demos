@@ -1,12 +1,16 @@
 package com.xie.java.common.response;
 
+import com.xie.java.common.annotation.Descript;
+
 /**
  * 接口统一返回格式
  *
  * @param <T>
  */
+@Descript("接口统一返回格式顶层类")
 public class ResponseDataVo<T> {
 
+    @Descript("返回的数据内容")
     private T data;
 
     private Integer code;

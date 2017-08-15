@@ -1,13 +1,12 @@
 package com.xie.scanapi.parse;
 
+import com.xie.java.common.annotation.Descript;
 import com.xie.scanapi.Class2JsonUtils;
 import com.xie.scanapi.mappingResolver.MappingResolver;
 import com.xie.scanapi.mappingResolver.ResolverSupport;
-import com.xie.vo.Descript;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
-import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 import static com.xie.scanapi.parse.ParamtersInfo.OBJ;
@@ -137,14 +136,14 @@ public class ApiInfo implements IInfo {
         }
         sb.append("\n\n");
 
-        //处理泛型参数
+        //开始解释参数处理泛型参数
         Type[] gTypes = method.getGenericParameterTypes();
         if (gTypes != null && gTypes.length > 0) {
             paramtersInfos = new ParamtersInfo[gTypes.length];
             int i = 0;
             ParamtersInfo pInfo = null;
             for (Type type : gTypes) {
-                pInfo = getParamtersInfo(type);
+                pInfo = new ParamtersInfo(resolverSupport,type);
                 paramtersInfos[i] = pInfo;
                 i++;
                 if(pInfo.pType == OBJ){
@@ -169,14 +168,13 @@ public class ApiInfo implements IInfo {
             }
         }
 
+        //返回参数
         Type genericReturnType = method.getGenericReturnType();
         sb.append("\n\n");
         sb.append("返回参数类型 start =======\n");
-        ParamtersInfo pInfo = getParamtersInfo(genericReturnType);
+        ParamtersInfo pInfo = new ParamtersInfo(resolverSupport,genericReturnType);
         sb.append(pInfo.parse());
         sb.append("\n返回参数类型 end =======\n\n");
-        System.out.println(sb.toString());
-
         resoler.printApiDoc(this);
         return sb;
         //megerParams();
@@ -187,18 +185,7 @@ public class ApiInfo implements IInfo {
         return null;
     }
 
-    private ParamtersInfo getParamtersInfo(Type genericReturnType) {
-        ParamtersInfo pInfo;
-        if (genericReturnType instanceof ParameterizedType) {
-            ParameterizedType paramType = (ParameterizedType) genericReturnType;
-            Type[] actualTypeArguments = paramType.getActualTypeArguments();
-            Type rawType = paramType.getRawType();
-            pInfo = new ParamtersInfo(resolverSupport, rawType, actualTypeArguments);
-        } else {
-            pInfo = new ParamtersInfo(resolverSupport, genericReturnType);
-        }
-        return pInfo;
-    }
+
 
     /**
      * 合并参数

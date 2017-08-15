@@ -1,6 +1,7 @@
 package com.xie.vo;
 
 import com.alibaba.fastjson.JSON;
+import com.xie.java.common.annotation.Descript;
 
 /**
  * Created by Administrator on 2017/7/29.

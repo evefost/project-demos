@@ -1,10 +1,11 @@
 package com.xie.vo;
 
-import javax.jws.soap.SOAPBinding;
+import com.xie.java.common.annotation.Descript;
 
 /**
  * Created by xieyang on 17/8/5.
  */
+@Descript
 public class SimpleUser {
 
     private Long id;

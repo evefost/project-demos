@@ -1,7 +1,7 @@
 package com.xie;
 
+import com.xie.java.common.annotation.Descript;
 import com.xie.java.common.response.ResponseDataVo;
-import com.xie.vo.Descript;
 import com.xie.vo.User;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;

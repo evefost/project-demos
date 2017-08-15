@@ -40,7 +40,7 @@ public class ControllerInfo implements IInfo {
 
         StringBuffer sb = new StringBuffer();
         sb.append("\n");
-        sb.append("控制器:"+clz.getSimpleName());
+        sb.append("********控制器:"+clz.getSimpleName()+"**********");
         RequestMapping clzReqMaping = (RequestMapping) clz.getAnnotation(RequestMapping.class);
         if (clzReqMaping != null) {
             rootPaths = clzReqMaping.value();
