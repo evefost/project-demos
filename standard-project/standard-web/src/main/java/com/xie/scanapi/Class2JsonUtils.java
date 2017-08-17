@@ -2,6 +2,7 @@ package com.xie.scanapi;
 
 import com.xie.java.common.annotation.Descript;
 import com.xie.vo.Inner;
+import org.springframework.web.bind.annotation.RequestBody;
 import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
 import sun.reflect.generics.reflectiveObjects.TypeVariableImpl;
 
@@ -239,7 +240,7 @@ public class Class2JsonUtils {
                             //获取实参(实参里面也可能有泛型)
                             Type tGenerType = typeHashMap.get(((TypeVariableImpl) genericType).getName());
                             if(tGenerType == null){
-                                System.out.println("参数变量没有赋值");
+                                System.out.println("参数变量没有赋实例("+clz.getSimpleName()+")");
                                 sb.append("{//参数变量没有赋值,实际数据格式不可知}\n");
                                 continue;
                             }else {

@@ -26,7 +26,7 @@ public class ApiScanUtils {
     public static void main(String[] args) throws Exception {
 
 
-        scanPagkage("com.xie", new Class[]{OtherController.class});
+        scanPagkage("com.xie", new Class[]{GicController.class});
 
     }
 

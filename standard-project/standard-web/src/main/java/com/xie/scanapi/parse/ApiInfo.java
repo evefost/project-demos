@@ -9,8 +9,6 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 
-import static com.xie.scanapi.parse.ParamtersInfo.OBJ;
-
 /**
  * 接口信息
  */
@@ -136,66 +134,128 @@ public class ApiInfo implements IInfo {
         for (String m : supportMethods) {
             sb.append(" - " + m);
         }
-        sb.append("\n\n");
 
-        //开始解释参数处理泛型参数
+        Annotation[][] parameterAnnotations = method.getParameterAnnotations();
+        //开始解释参数处理泛型参数,遍历收集参数
         Type[] gTypes = method.getGenericParameterTypes();
         if (gTypes != null && gTypes.length > 0) {
             paramtersInfos = new ParamtersInfo[gTypes.length];
-            int i = 0;
+            int index = 0;
             ParamtersInfo pInfo = null;
             for (Type type : gTypes) {
-                pInfo = new ParamtersInfo(resolverSupport,type);
-                paramtersInfos[i] = pInfo;
-                i++;
-                if(pInfo.pType == OBJ){
-                    StringBuffer descript = Class2JsonUtils.generateApiParamDescript((Class) type);
-                    descript.append("\n\n");
-                    sb.append("**参数：** \n");
-                    sb.append("\n");
-                    sb.append(descript);
-                }
-                sb.append(pInfo.parse());
+                pInfo = new ParamtersInfo(resolverSupport, type,parameterAnnotations[index]);
+                paramtersInfos[index] = pInfo;
+                index++;
             }
         }
-        //参数名称列表
-
-        //参数注解处理
-        Annotation[][] parameterAnnotations = method.getParameterAnnotations();
-        if (parameterAnnotations != null && parameterAnnotations.length > 0) {
-            for (Annotation[] annotations : parameterAnnotations) {
-                for (Annotation annotation : annotations) {
-                    //System.out.println(annotation);
-                }
-            }
-        }
+        //解释参数处理
+        doParse(sb);
 
         //返回参数
         Type genericReturnType = method.getGenericReturnType();
-        sb.append("\n\n");
-        sb.append("返回参数类型 start =======\n");
-        ParamtersInfo pInfo = new ParamtersInfo(resolverSupport,genericReturnType);
+        sb.append("\n");
+        sb.append("返回参数格式 ");
+        sb.append("\n``` \n");
+        ParamtersInfo pInfo = new ParamtersInfo(resolverSupport, genericReturnType,null);
         sb.append(pInfo.parse());
-        sb.append("\n返回参数类型 end =======\n\n");
+        sb.append("\n``` \n");
         resoler.printApiDoc(this);
         return sb;
-        //megerParams();
     }
-
-
 
 
     /**
      * 合并参数
      */
-    private void megerParams() {
+    private void doParse(StringBuffer sb ) {
         int parseType = 0;
+        int objCount = 0;
         if (paramtersInfos != null && paramtersInfos.length > 0) {
             for (ParamtersInfo pI : paramtersInfos) {
                 parseType = parseType | pI.pType;
+                objCount++;
             }
         }
-        System.out.println("类型:" + parseType);
+        sb.append("\n\n");
+        switch (parseType) {
+            case 0:
+                //无参数
+                sb.append("**接收参数：** ");
+                sb.append("\n无参数");
+                break;
+            case 1:
+                //一个或多个简单怎么数
+                sb.append("|参数名|必选|类型|说明|\n").append("|:----    |:---|:----- |-----   |\n");
+                String[] parameterNames = resolverSupport.getParameterNames(method);
+                for(int i=0;i<paramtersInfos.length;i++){
+                   String name = parameterNames[i];
+                   ParamtersInfo pInfo = paramtersInfos[i];
+                   Class<?> clz = (Class<?>) pInfo.getParamsType();
+                    Descript annotation = clz.getAnnotation(Descript.class);
+                    if (annotation != null) {
+                        boolean require = annotation.required();
+                        sb.append("|").append(name).append("|" + (require ? "是" : "否"));
+                    } else {
+                        sb.append("|").append(name).append("| 未知");
+                    }
+                    sb.append("|").append(clz.getSimpleName().toLowerCase());
+                    if (annotation != null) {
+                        sb.append("|" + annotation.message() + "|\n");
+                    } else {
+                        sb.append("|暂无参数说明|\n");
+                    }
+                }
+                break;
+            case 2:
+                //一个或多对象参数
+
+                if(objCount == 1){
+                    ParamtersInfo pInfo = paramtersInfos[0];
+                    if(pInfo.hashAnnotationRequetBody()){
+                        sb.append("接收参数放在body里上报");
+                        sb.append("\n``` \n");
+                        sb.append(pInfo.parse());
+                        sb.append("\n``` \n");
+                    }else {
+                        StringBuffer descript = Class2JsonUtils.generateApiParamDescript((Class) pInfo.getParamsType());
+                        sb.append("**接收参数格式：** \n");
+                        sb.append("\n");
+                        sb.append(descript);
+                    }
+                }else {
+
+                }
+                break;
+            case 3:
+                //简单参数对象参数的组合
+                break;
+            case 4:
+                //一个或多个泛形
+                if(objCount == 1){
+                    ParamtersInfo pInfo = paramtersInfos[0];
+                    sb.append("接收参数放在body里上报");
+                    sb.append("\n``` \n");
+                    sb.append(pInfo.parse());
+                    sb.append("\n``` \n");
+                }else {
+
+                }
+                break;
+            case 5:
+                //一个或多个简单参数与泛形对象组合
+                break;
+            case 6:
+                //对象与泛参组合
+                break;
+            case 7:
+                //简单，对象，泛型组合
+                break;
+            default:
+                break;
+        }
+
+
+        System.out.println("参数类型:" + parseType);
     }
 
 

@@ -35,7 +35,7 @@ public class ResolverSupport {
      * @param method
      * @return
      */
-    public static String[] getParameterNames(Method method) {
+    public  String[] getParameterNames(Method method) {
         return parameterNameDiscoverer.getParameterNames(method);
     }
 }
