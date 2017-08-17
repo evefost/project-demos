@@ -39,14 +39,17 @@ public class ParamtersInfo implements IInfo {
 
     @Override
     public StringBuffer parse() {
-
         StringBuffer sb = new StringBuffer();
+        if(paramsType instanceof Class){
+            StringBuffer jsonDes = Class2JsonUtils.generateApiParamDescript((Class) paramsType);
+            sb.append(jsonDes);
+
+        }
+        sb.append("\n``` \n");
         StringBuffer rs = Class2JsonUtils.generateApiJsonForm(paramsType, false, true);
         sb.append(rs);
         sb.append("\n``` ");
         return sb;
-
-
     }
 
 
