@@ -10,7 +10,7 @@ import java.util.Set;
  * Created by Administrator on 2017/7/29.
  */
 @Descript("用户类")
-public class User {
+public class User extends BaseSimUser{
 
 
     @Descript(required = true,message = "学校名称")

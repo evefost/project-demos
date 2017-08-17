@@ -1,20 +1,23 @@
 package com.xie.vo;
 
-import com.xie.java.common.annotation.Descript;
-
 /**
  * Created by xieyang on 17/8/5.
  */
-@Descript
-public class SimpleUser {
+public class SimpleUser extends BaseSimUser {
 
     private Long id;
 
     private String name;
 
+    private Inner inner;
 
+    public Inner getInner() {
+        return inner;
+    }
 
-
+    public void setInner(Inner inner) {
+        this.inner = inner;
+    }
 
     public Long getId() {
         return id;
@@ -32,5 +35,16 @@ public class SimpleUser {
         this.name = name;
     }
 
+    public static class Inner{
 
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
 }

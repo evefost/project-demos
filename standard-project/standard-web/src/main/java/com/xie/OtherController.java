@@ -1,7 +1,9 @@
 package com.xie;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.xie.java.common.annotation.Descript;
 import com.xie.java.common.response.ResponseDataVo;
+import com.xie.vo.SimpleUser;
 import com.xie.vo.User;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;
@@ -22,14 +24,14 @@ public class OtherController {
 
     @Descript("这是一个泛型基本数组")
     @RequestMapping(value = "base/list")
-    public ResponseDataVo baseList(List<Long> longList) {
+    public ResponseDataVo<Page<SimpleUser>> baseList(List<Long> longList) {
         logger.debug("formAdd{}",longList);
         //user.getSchool().toString();
         return ResponseDataVo.success(longList);
     }
 
     @Descript("这是一个泛型自定义对象数组")
-    @RequestMapping(value = "base/list")
+    @RequestMapping(value = "base/list2")
     public ResponseDataVo customGic(List<User> userList) {
         logger.debug("formAdd{}",userList);
         //user.getSchool().toString();

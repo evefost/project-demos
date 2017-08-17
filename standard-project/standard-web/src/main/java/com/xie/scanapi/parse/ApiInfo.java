@@ -117,6 +117,8 @@ public class ApiInfo implements IInfo {
     @Override
     public StringBuffer parse() {
 
+        System.out.println("\n接口路径:" + path);
+
         StringBuffer sb = new StringBuffer();
         sb.append("\n");
 
@@ -130,7 +132,7 @@ public class ApiInfo implements IInfo {
         sb.append("\n接口路径:" + path);
         MappingResolver resoler = resolverSupport.getResoler(annotation);
         supportMethods = resoler.getSupportMethods(annotation);
-        sb.append("\n\n***请求方式：** ");
+        sb.append("\n\n***支持的请求方式：** ");
         for (String m : supportMethods) {
             sb.append(" - " + m);
         }
@@ -180,10 +182,6 @@ public class ApiInfo implements IInfo {
         //megerParams();
     }
 
-    @Override
-    public StringBuffer getParemsDescription() {
-        return null;
-    }
 
 
 

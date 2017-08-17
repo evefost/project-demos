@@ -7,6 +7,4 @@ public interface IInfo {
 
     StringBuffer parse();
 
-    StringBuffer getParemsDescription();
-
 }

@@ -99,7 +99,6 @@ public class Class2JsonUtils {
         for (int i = 1; i < loop; i++) {
             sb.append("\t");
         }
-        sb.append("{").append(objDes).append("\n");
         Class<?> clz = null;
         Map<String, Type> typeHashMap = new HashMap<>();
         if (srcType instanceof ParameterizedTypeImpl) {
@@ -112,126 +111,171 @@ public class Class2JsonUtils {
 
         } else {
             clz = (Class<?>) srcType;
+            if(isBaseClass(clz)){
+                return sb;
+            }
         }
-        Class superclass = clz.getSuperclass();
-        Field[] supperFields = new Field[]{};
-        if (superclass != null) {
-            supperFields = superclass.getDeclaredFields();
-        }
+        if(isList(clz)){
+            TypeVariable<? extends Class<?>>[] typeParameters = clz.getTypeParameters();
+            String typeName = typeParameters[0].getName();
+            Type tType = typeHashMap.get(typeName);
+            Class pClass = null;
+            if (tType instanceof TypeVariableImpl) {
+                //获取实参(实参里面也可能有泛型)
 
-        Field[] childFields = clz.getDeclaredFields();
-
-        Field[] fields = new Field[supperFields.length + childFields.length];
-        for (int n = 0; n < fields.length; n++) {
-            if (n < supperFields.length) {
-                fields[n] = supperFields[n];
+            } else if (tType instanceof ParameterizedTypeImpl) {
+                // String typeName = ((ParameterizedTypeImpl) genericType).getActualTypeArguments()[0].toString();
+                // pClass = (Class)tType;
+            }else {
+                pClass = (Class)tType;
+            }
+            sb.append("[");
+            if (pClass == null) {
+                sb.append(" //数组没有泛型参数,没法解释到实际参数型 ]");
             } else {
-                fields[n] = childFields[n - supperFields.length];
+                if (isBaseClass(pClass)) {
+                    sb.append(getDefaultValueByClassType(pClass)).append(',').append(getDefaultValueByClassType(pClass));
+                    sb.append("]");
+                    String paramterClass = pClass.getSimpleName().toLowerCase();
+                    sb.append(appendDescript(withDescript, clz.getAnnotation(Descript.class), clz, paramterClass));
+                } else {
+//                    String paramterClass = pClass.getSimpleName().toLowerCase();
+//                    sb.append(appendDescript(withDescript, field.getAnnotation(Descript.class), type, paramterClass));
+//                    sb.append("\n");
+//                    StringBuffer json = generateApiJsonForm(pClass, loop, forJs, withDescript, "");
+//                    sb.append(json);
+//                    sb.append("]");
+                }
             }
 
-        }
-        int c = 0;
-        for (Field field : fields) {
-            c++;
-            field.setAccessible(true);
-            String name = field.getName();
-            Class<?> type = field.getType();
-            for (int i = 0; i < loop; i++) {
-                sb.append("\t");
+        }else {
+            sb.append("{").append(objDes).append("\n");
+            Class superclass = clz.getSuperclass();
+            Field[] supperFields = new Field[]{};
+            if (superclass != null) {
+                supperFields = superclass.getDeclaredFields();
             }
-            if (forJs) {
-                sb.append(name);
-            } else {
-                sb.append("\"").append(name).append("\"");
+
+            Field[] childFields = clz.getDeclaredFields();
+
+            Field[] fields = new Field[supperFields.length + childFields.length];
+            for (int n = 0; n < fields.length; n++) {
+                if (n < supperFields.length) {
+                    fields[n] = supperFields[n];
+                } else {
+                    fields[n] = childFields[n - supperFields.length];
+                }
             }
-            sb.append(':');
-            if (isBaseClass(type)) {
+            int c = 0;
+            for (Field field : fields) {
+                c++;
+                field.setAccessible(true);
+                String name = field.getName();
+                Class<?> type = field.getType();
+                for (int i = 0; i < loop; i++) {
+                    sb.append("\t");
+                }
                 if (forJs) {
-                    sb.append("undefined");
+                    sb.append(name);
                 } else {
-                    sb.append(getDefaultValueByClassType(type));
+                    sb.append("\"").append(name).append("\"");
                 }
-                if (c < fields.length) {
-                    sb.append(",");
-                }
-                sb.append(appendDescript(withDescript, field.getAnnotation(Descript.class), type, ""));
-                sb.append("\n");
-            } else {
-                if (isList(type)) {
-                    Class pClass = null;
-                    Type genericType = field.getGenericType();
-                    if (genericType instanceof TypeVariableImpl) {
-                        //获取实参(实参里面也可能有泛型)
-                        Type tGenerType = typeHashMap.get(((TypeVariableImpl) genericType).getName());
-                        if (tGenerType instanceof ParameterizedTypeImpl) {
-
-                        } else {
-                            //不再是泛型实参变量
-                            pClass = (Class) tGenerType;
-                        }
-                    } else if (genericType instanceof ParameterizedTypeImpl) {
-                        String typeName = ((ParameterizedTypeImpl) genericType).getActualTypeArguments()[0].toString();
-                        pClass = (Class) typeHashMap.get(typeName);
-                    }
-                    if (pClass == null) {
-                        pClass = getParameterizedClass(field);
-                    }
-                    sb.append("[");
-                    if (pClass == null) {
-                        sb.append(" //数组没有泛型参数,没法解释到实际参数型 ]");
+                sb.append(':');
+                if (isBaseClass(type)) {
+                    if (forJs) {
+                        sb.append("undefined");
                     } else {
-                        if (isBaseClass(pClass)) {
-                            sb.append(getDefaultValueByClassType(pClass)).append(',').append(getDefaultValueByClassType(pClass));
-                            sb.append("]");
-                            String paramterClass = pClass.getSimpleName().toLowerCase();
-                            sb.append(appendDescript(withDescript, field.getAnnotation(Descript.class), type, paramterClass));
-                        } else {
-                            String paramterClass = pClass.getSimpleName().toLowerCase();
-                            sb.append(appendDescript(withDescript, field.getAnnotation(Descript.class), type, paramterClass));
-                            sb.append("\n");
-                            StringBuffer json = generateApiJsonForm(pClass, loop, forJs, withDescript, "");
-                            sb.append(json);
-                            sb.append("]");
-                        }
+                        sb.append(getDefaultValueByClassType(type));
                     }
+                    if (c < fields.length) {
+                        sb.append(",");
+                    }
+                    sb.append(appendDescript(withDescript, field.getAnnotation(Descript.class), type, ""));
+                    sb.append("\n");
                 } else {
-                    String tObjdes = appendDescript(withDescript, field.getAnnotation(Descript.class), type, "").toString();
-                    StringBuffer json = null;
-                    Type genericType = field.getGenericType();
-                    if (genericType instanceof TypeVariableImpl) {
-                        //获取实参(实参里面也可能有泛型)
-                        Type tGenerType = typeHashMap.get(((TypeVariableImpl) genericType).getName());
-                        if (tGenerType instanceof ParameterizedTypeImpl) {
-                            json = generateApiJsonForm(tGenerType, loop, forJs, withDescript, tObjdes);
-                        } else {
-                            //不再是泛型实参变量
-                            Class aClass = (Class) tGenerType;
-                            if (aClass != null) {
-                                tObjdes = appendDescript(withDescript, field.getAnnotation(Descript.class), aClass, "").toString();
-                                json = generateApiJsonForm(aClass, loop, forJs, withDescript, tObjdes);
+                    if (isList(type)) {
+                        Class pClass = null;
+                        Type genericType = field.getGenericType();
+                        if (genericType instanceof TypeVariableImpl) {
+                            //获取实参(实参里面也可能有泛型)
+                            Type tGenerType = typeHashMap.get(((TypeVariableImpl) genericType).getName());
+                            if (tGenerType instanceof ParameterizedTypeImpl) {
+                                //todo
+
                             } else {
-                                json = generateApiJsonForm(aClass, loop, forJs, withDescript, tObjdes);
+                                //不再是泛型实参变量
+                                pClass = (Class) tGenerType;
+                            }
+                        } else if (genericType instanceof ParameterizedTypeImpl) {
+                            String typeName = ((ParameterizedTypeImpl) genericType).getActualTypeArguments()[0].toString();
+                            pClass = (Class) typeHashMap.get(typeName);
+                        }
+                        if (pClass == null) {
+                            pClass = getParameterizedClass(field);
+                        }
+                        sb.append("[");
+                        if (pClass == null) {
+                            sb.append(" //数组没有泛型参数,没法解释到实际参数型 ]");
+                        } else {
+                            if (isBaseClass(pClass)) {
+                                sb.append(getDefaultValueByClassType(pClass)).append(',').append(getDefaultValueByClassType(pClass));
+                                sb.append("]");
+                                String paramterClass = pClass.getSimpleName().toLowerCase();
+                                sb.append(appendDescript(withDescript, field.getAnnotation(Descript.class), type, paramterClass));
+                            } else {
+                                String paramterClass = pClass.getSimpleName().toLowerCase();
+                                sb.append(appendDescript(withDescript, field.getAnnotation(Descript.class), type, paramterClass));
+                                sb.append("\n");
+                                StringBuffer json = generateApiJsonForm(pClass, loop, forJs, withDescript, "");
+                                sb.append(json);
+                                sb.append("]");
                             }
                         }
-                    } else if (genericType instanceof ParameterizedTypeImpl) {
-                        json = generateApiJsonForm(genericType, loop, forJs, withDescript, tObjdes);
                     } else {
-                        json = generateApiJsonForm(type, loop, forJs, withDescript, tObjdes);
+                        String tObjdes = appendDescript(withDescript, field.getAnnotation(Descript.class), type, "").toString();
+                        StringBuffer json = null;
+                        Type genericType = field.getGenericType();
+                        if (genericType instanceof TypeVariableImpl) {
+                            //获取实参(实参里面也可能有泛型)
+                            Type tGenerType = typeHashMap.get(((TypeVariableImpl) genericType).getName());
+                            if(tGenerType == null){
+                                System.out.println("参数变量没有赋值");
+                                sb.append("{//参数变量没有赋值,实际数据格式不可知}\n");
+                                continue;
+                            }else {
+                                if (tGenerType instanceof ParameterizedTypeImpl) {
+                                    json = generateApiJsonForm(tGenerType, loop, forJs, withDescript, tObjdes);
+                                } else {
+                                    //不再是泛型实参变量
+                                    Class aClass = (Class) tGenerType;
+                                    if (aClass != null) {
+                                        tObjdes = appendDescript(withDescript, field.getAnnotation(Descript.class), aClass, "").toString();
+                                        json = generateApiJsonForm(aClass, loop, forJs, withDescript, tObjdes);
+                                    } else {
+                                        json = generateApiJsonForm(aClass, loop, forJs, withDescript, tObjdes);
+                                    }
+                                }
+                            }
+                        } else if (genericType instanceof ParameterizedTypeImpl) {
+                            json = generateApiJsonForm(genericType, loop, forJs, withDescript, tObjdes);
+                        } else {
+                            json = generateApiJsonForm(type, loop, forJs, withDescript, tObjdes);
+                        }
+                        sb.append(json);
+
                     }
-                    sb.append(json);
-
+                    if (c < fields.length) {
+                        sb.append(",");
+                    }
+                    sb.append("\n");
                 }
-                if (c < fields.length) {
-                    sb.append(",");
-                }
-                sb.append("\n");
-
             }
+            for (int i = 1; i < loop; i++) {
+                sb.append("\t");
+            }
+            sb.append("}");
         }
-        for (int i = 1; i < loop; i++) {
-            sb.append("\t");
-        }
-        sb.append("}");
+
         loop--;
         return sb;
 
@@ -305,3 +349,6 @@ public class Class2JsonUtils {
 
 
 }
+
+
+

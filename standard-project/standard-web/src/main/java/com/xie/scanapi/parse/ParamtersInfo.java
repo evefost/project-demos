@@ -49,10 +49,7 @@ public class ParamtersInfo implements IInfo {
 
     }
 
-    @Override
-    public StringBuffer getParemsDescription() {
-        return null;
-    }
+
 
 
 }

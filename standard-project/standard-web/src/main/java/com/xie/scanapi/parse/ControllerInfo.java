@@ -38,9 +38,12 @@ public class ControllerInfo implements IInfo {
     @Override
     public StringBuffer parse() {
 
+        System.out.println("********控制器:"+clz.getSimpleName()+"**********");
         StringBuffer sb = new StringBuffer();
         sb.append("\n");
+        sb.append("\n");
         sb.append("********控制器:"+clz.getSimpleName()+"**********");
+        sb.append("\n");
         RequestMapping clzReqMaping = (RequestMapping) clz.getAnnotation(RequestMapping.class);
         if (clzReqMaping != null) {
             rootPaths = clzReqMaping.value();
@@ -78,8 +81,5 @@ public class ControllerInfo implements IInfo {
         return sb;
     }
 
-    @Override
-    public StringBuffer getParemsDescription() {
-        return null;
-    }
+
 }
