@@ -1,5 +1,6 @@
 package com.xie.scanapi;
 
+import com.xie.OtherController;
 import com.xie.scanapi.mappingResolver.MappingResolver;
 import com.xie.scanapi.mappingResolver.ResolverSupport;
 import com.xie.scanapi.parse.ControllerInfo;
@@ -25,7 +26,7 @@ public class ApiScanUtils {
     public static void main(String[] args) throws Exception {
 
 
-        scanPagkage("com.xie", new Class[]{GicController.class});
+        scanPagkage("com.xie", new Class[]{OtherController.class});
 
     }
 
