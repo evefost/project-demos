@@ -1,7 +1,7 @@
 package com.xie.scanapi;
 
-import com.xie.java.common.annotation.Descript;
-import com.xie.vo.Inner;
+//import com.xie.java.common.annotation.Annotation;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
 import sun.reflect.generics.reflectiveObjects.TypeVariableImpl;
@@ -19,6 +19,14 @@ import static com.xie.scanapi.ClassHelper.*;
  * Created by xieyang on 17/7/31.
  */
 public class Class2JsonUtils {
+
+    private static final String VALUE = "value";
+
+    private static final String REQUIRED = "required";
+
+    private static final String MESSAGE = "message";
+
+    private static Class annotationClz;
 
 
     public static void main(String[] args) throws Exception {
@@ -52,11 +60,11 @@ public class Class2JsonUtils {
 //        students.add(student2);
 //        s.setStudents(students);
 
-        //Descript annotation = User.class.getAnnotation(Descript.class);
+        //Annotation annotation = User.class.getAnnotation(annotationClz);
 
 
-        StringBuffer sb = generateApiJsonForm(Inner.class, true, true);
-        System.out.println(sb);
+//        StringBuffer sb = generateApiJsonForm(Inner.class, true, true);
+//        System.out.println(sb);
 //        StringBuffer stringBuffer = generateApiParamDescript(User.class);
 //        System.out.println(stringBuffer.toString());
 
@@ -74,27 +82,32 @@ public class Class2JsonUtils {
 
     }
 
+    public static StringBuffer generateApiJsonForm(Type type, Class descript) {
+        StringBuffer sb = generateApiJsonForm(type, descript, false, true);
+        return sb;
+    }
 
-    public static StringBuffer generateApiJsonForm(Type type, boolean forJs, boolean withDescript) {
+    public static StringBuffer generateApiJsonForm(Type type, Class descript, boolean forJs, boolean withDescript) {
+        annotationClz = descript;
         String classDes = "";
         if (type instanceof ParameterizedTypeImpl) {
             Class<?> rawType = ((ParameterizedTypeImpl) type).getRawType();
-            Descript annotation = rawType.getAnnotation(Descript.class);
+            Annotation annotation = rawType.getAnnotation(annotationClz);
             if (annotation != null) {
                 classDes = appendDescript(withDescript, annotation, rawType, "").toString();
             }
         } else {
             Class<?> clz = (Class) type;
-            Descript annotation = clz.getAnnotation(Descript.class);
+            Annotation annotation = clz.getAnnotation(annotationClz);
             if (annotation != null) {
                 classDes = appendDescript(withDescript, annotation, clz, "").toString();
             }
         }
-        StringBuffer sb = generateApiJsonForm(type, 0, forJs, withDescript, classDes);
+        StringBuffer sb = dogenerateJsonFormat(type, 0, forJs, withDescript, classDes);
         return sb;
     }
 
-    private static StringBuffer generateApiJsonForm(Type srcType, int loop, boolean forJs, boolean withDescript, String objDes) {
+    private static StringBuffer dogenerateJsonFormat(Type srcType, int loop, boolean forJs, boolean withDescript, String objDes) {
 
         loop++;
         StringBuffer sb = new StringBuffer();
@@ -139,17 +152,17 @@ public class Class2JsonUtils {
                     sb.append(getDefaultValueByClassType(pClass)).append(',').append(getDefaultValueByClassType(pClass));
                     sb.append("]");
                     String paramterClass = pClass.getSimpleName().toLowerCase();
-                    sb.append(appendDescript(withDescript, clz.getAnnotation(Descript.class), clz, paramterClass));
+                    sb.append(appendDescript(withDescript, clz.getAnnotation(annotationClz), clz, paramterClass));
                 } else {
                     String paramterClass = pClass.getSimpleName().toLowerCase();
-                    sb.append(appendDescript(withDescript, clz.getAnnotation(Descript.class), pClass, paramterClass));
+                    sb.append(appendDescript(withDescript, clz.getAnnotation(annotationClz), pClass, paramterClass));
                     sb.append("\n");
-                    Annotation annotation = pClass.getAnnotation(Descript.class);
+                    Annotation annotation = pClass.getAnnotation(annotationClz);
                     objDes = "类型" + paramterClass;
                     if (annotation != null) {
-                        objDes = (isEmpty(((Descript) annotation).value()) ? ((Descript) annotation).message() : ((Descript) annotation).value()) + objDes;
+                        objDes = (isEmpty((String) getAnnotationMethodReturn(annotation, VALUE)) ? (String) getAnnotationMethodReturn(annotation, MESSAGE) : (String) getAnnotationMethodReturn(annotation, VALUE)) + objDes;
                     }
-                    StringBuffer json = generateApiJsonForm(pClass, loop, forJs, withDescript, " // " + objDes);
+                    StringBuffer json = dogenerateJsonFormat(pClass, loop, forJs, withDescript, " // " + objDes);
                     sb.append(json);
                     sb.append("\n]");
                 }
@@ -197,7 +210,7 @@ public class Class2JsonUtils {
                     if (c < fields.length) {
                         sb.append(",");
                     }
-                    sb.append(appendDescript(withDescript, field.getAnnotation(Descript.class), type, ""));
+                    sb.append(appendDescript(withDescript, field.getAnnotation(annotationClz), type, ""));
                     sb.append("\n");
                 } else {
                     if (isList(type)) {
@@ -228,18 +241,18 @@ public class Class2JsonUtils {
                                 sb.append(getDefaultValueByClassType(pClass)).append(',').append(getDefaultValueByClassType(pClass));
                                 sb.append("]");
                                 String paramterClass = pClass.getSimpleName().toLowerCase();
-                                sb.append(appendDescript(withDescript, field.getAnnotation(Descript.class), type, paramterClass));
+                                sb.append(appendDescript(withDescript, field.getAnnotation(annotationClz), type, paramterClass));
                             } else {
                                 String paramterClass = pClass.getSimpleName().toLowerCase();
-                                sb.append(appendDescript(withDescript, field.getAnnotation(Descript.class), type, paramterClass));
+                                sb.append(appendDescript(withDescript, field.getAnnotation(annotationClz), type, paramterClass));
                                 sb.append("\n");
-                                StringBuffer json = generateApiJsonForm(pClass, loop, forJs, withDescript, "");
+                                StringBuffer json = dogenerateJsonFormat(pClass, loop, forJs, withDescript, "");
                                 sb.append(json);
                                 sb.append("]");
                             }
                         }
                     } else {
-                        String tObjdes = appendDescript(withDescript, field.getAnnotation(Descript.class), type, "").toString();
+                        String tObjdes = appendDescript(withDescript, field.getAnnotation(annotationClz), type, "").toString();
                         StringBuffer json = null;
                         Type genericType = field.getGenericType();
                         if (genericType instanceof TypeVariableImpl) {
@@ -251,22 +264,22 @@ public class Class2JsonUtils {
                                 continue;
                             } else {
                                 if (tGenerType instanceof ParameterizedTypeImpl) {
-                                    json = generateApiJsonForm(tGenerType, loop, forJs, withDescript, tObjdes);
+                                    json = dogenerateJsonFormat(tGenerType, loop, forJs, withDescript, tObjdes);
                                 } else {
                                     //不再是泛型实参变量
                                     Class aClass = (Class) tGenerType;
                                     if (aClass != null) {
-                                        tObjdes = appendDescript(withDescript, field.getAnnotation(Descript.class), aClass, "").toString();
-                                        json = generateApiJsonForm(aClass, loop, forJs, withDescript, tObjdes);
+                                        tObjdes = appendDescript(withDescript, field.getAnnotation(annotationClz), aClass, "").toString();
+                                        json = dogenerateJsonFormat(aClass, loop, forJs, withDescript, tObjdes);
                                     } else {
-                                        json = generateApiJsonForm(aClass, loop, forJs, withDescript, tObjdes);
+                                        json = dogenerateJsonFormat(aClass, loop, forJs, withDescript, tObjdes);
                                     }
                                 }
                             }
                         } else if (genericType instanceof ParameterizedTypeImpl) {
-                            json = generateApiJsonForm(genericType, loop, forJs, withDescript, tObjdes);
+                            json = dogenerateJsonFormat(genericType, loop, forJs, withDescript, tObjdes);
                         } else {
-                            json = generateApiJsonForm(type, loop, forJs, withDescript, tObjdes);
+                            json = dogenerateJsonFormat(type, loop, forJs, withDescript, tObjdes);
                         }
                         sb.append(json);
 
@@ -288,14 +301,14 @@ public class Class2JsonUtils {
 
     }
 
-    private static StringBuffer appendDescript(boolean withDescript, Descript annotation, Class type, String paramterClass) {
+    private static StringBuffer appendDescript(boolean withDescript, Annotation annotation, Class type, String paramterClass) {
         StringBuffer sb = new StringBuffer();
         if (!withDescript) {
             return sb;
         }
         sb.append(" //");
         if (annotation != null) {
-            String message = isEmpty(annotation.value()) ? annotation.message() : annotation.value();
+            String message = isEmpty((String) getAnnotationMethodReturn(annotation, VALUE)) ? (String) getAnnotationMethodReturn(annotation, MESSAGE) : (String) getAnnotationMethodReturn(annotation, VALUE);
             sb.append(message);
         }
         sb.append(" 类型:").append(type.getSimpleName().toLowerCase());
@@ -303,7 +316,7 @@ public class Class2JsonUtils {
             sb.append("<" + paramterClass + ">");
         }
         if (annotation != null) {
-            boolean require = annotation.required();
+            boolean require = (boolean) getAnnotationMethodReturn(annotation, REQUIRED);
             sb.append(" 必选(" + (require ? "是)" : "否)"));
         } else {
             sb.append(" 必选(未知)");
@@ -313,7 +326,7 @@ public class Class2JsonUtils {
     }
 
 
-    private static boolean isEmpty(String str) {
+    public static boolean isEmpty(String str) {
         if (str == null || str.trim().length() == 0 || "".equals(str)) {
             return true;
         }
@@ -327,17 +340,19 @@ public class Class2JsonUtils {
 //            |roleId |否  |long | 角色id    |
 //            |positionId |否  |long | 职位id    |
 //            |departId |否 |long | 部门id    |
-    public static StringBuffer generateApiParamDescript(Class clz) {
+    public static StringBuffer generateApiParamDescript(Class clz, Class annoClz) {
+
         boolean isbody = clz.isAnnotationPresent(RequestBody.class);
         StringBuffer sb = new StringBuffer();
         sb.append("|参数名|必选|类型|说明|\n").append("|:----    |:---|:----- |-----   |\n");
-        parseFieldDescript(clz, sb, isbody);
+        parseFieldsDescript(clz, annotationClz, sb, isbody);
         return sb;
 
     }
 
 
-    public static void parseFieldDescript(Class clz, StringBuffer sb, boolean isbody) {
+    public static void parseFieldsDescript(Class clz, Class annoClz, StringBuffer sb, boolean isbody) {
+
         Class superclass = clz.getSuperclass();
         Field[] supperFields = new Field[]{};
         if (superclass != null) {
@@ -353,28 +368,36 @@ public class Class2JsonUtils {
             }
         }
         for (Field field : fields) {
-            field.setAccessible(true);
-            Class<?> type = field.getType();
-            String name = field.getName();
-            Descript annotation = field.getAnnotation(Descript.class);
-            String warn = "|\n";
-            if (!isBaseClass(type) && !isbody) {
-                warn = "(注意，非基本数据类型，form或get可能无法接收整个参数,尝试用post body方式)|\n";
-            }
-            if (annotation != null) {
-                boolean require = annotation.required();
-                sb.append("|").append(name).append("|" + (require ? "是" : "否"));
-            } else {
-                sb.append("|").append(name).append("| 未知");
-            }
-            sb.append("|").append(type.getSimpleName().toLowerCase());
-            if (annotation != null) {
-                sb.append("|" + annotation.message());
-            } else {
-                sb.append("|暂无参数说明|");
-            }
-            sb.append(warn);
+            parseFieldDescript(field,annoClz,sb,isbody);
         }
+
+    }
+
+    public static void parseFieldDescript(Field field, Class annotationClz, StringBuffer sb, boolean isbody) {
+        field.setAccessible(true);
+        Class<?> type = field.getType();
+        String name = field.getName();
+        Annotation annotation = field.getAnnotation(annotationClz);
+        String warn = "|\n";
+        if (!isBaseClass(type) && !isbody) {
+            warn = "(注意，非基本数据类型，form或get可能无法接收整个参数,尝试用post body方式)|\n";
+        }
+        if (annotation != null) {
+            boolean require = (boolean) getAnnotationMethodReturn(annotation, REQUIRED);
+            sb.append("|").append(name).append("|" + (require ? "是" : "否"));
+        } else {
+            sb.append("|").append(name).append("| 未知");
+        }
+        sb.append("|").append(type.getSimpleName().toLowerCase());
+        if (annotation != null) {
+            String message = isEmpty((String) getAnnotationMethodReturn(annotation, VALUE)) ? (String) getAnnotationMethodReturn(annotation, MESSAGE) : (String) getAnnotationMethodReturn(annotation, VALUE);
+            sb.append("|" + message);
+
+        } else {
+            sb.append("|暂无参数说明|");
+        }
+        sb.append(warn);
+
 
     }
 

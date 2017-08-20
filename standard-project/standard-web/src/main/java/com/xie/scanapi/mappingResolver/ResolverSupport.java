@@ -16,8 +16,11 @@ public class ResolverSupport {
 
     private Map<String, MappingResolver> mappingResolverMap;
 
-    public ResolverSupport(Map<String, MappingResolver> mappingResolverMap) {
+    private Class descriptAnno;
+
+    public ResolverSupport(Map<String, MappingResolver> mappingResolverMap,Class descriptAnno) {
         this.mappingResolverMap = mappingResolverMap;
+        this.descriptAnno = descriptAnno;
     }
 
     public MappingResolver getResoler(Annotation annotation) {
@@ -37,5 +40,9 @@ public class ResolverSupport {
      */
     public  String[] getParameterNames(Method method) {
         return parameterNameDiscoverer.getParameterNames(method);
+    }
+
+    public Class getDescriptAnno() {
+        return descriptAnno;
     }
 }

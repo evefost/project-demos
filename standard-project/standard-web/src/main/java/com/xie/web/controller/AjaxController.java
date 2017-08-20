@@ -73,22 +73,22 @@ public class AjaxController {
         logger.debug("getRequest{}",user);
         return ResponseDataVo.success(user);
     }
-//
-//    @RequestMapping(value = "submitINfo3")
-//    public ResponseDataVo getRequest3( SimpleUser user,String username) {
-//        logger.debug("getRequest{}",user);
-//        return ResponseDataVo.success(user);
-//    }
-//
-//    @RequestMapping(value = "submitINfo5",method = {RequestMethod.POST})
-//    public ResponseDataVo getRequest5( @RequestBody SimpleUser user) {
-//        logger.debug("getRequest{}",user);
-//        return ResponseDataVo.success(user);
-//    }
-//
-//    @RequestMapping(value = "submitINfo4")
-//    public ResponseDataVo getRequest4(Long id, String name,String username) {
-//        logger.debug("getRequest{}",id);
-//        return ResponseDataVo.success(id);
-//    }
+
+    @RequestMapping(value = "submitINfo3")
+    public ResponseDataVo getRequest3( SimpleUser user,String username) {
+        logger.debug("getRequest{}",user);
+        return ResponseDataVo.success(user);
+    }
+
+    @RequestMapping(value = "submitINfo5",method = {RequestMethod.POST})
+    public ResponseDataVo<SimpleUser> getRequest5( @RequestBody SimpleUser user) {
+        logger.debug("getRequest{}",user);
+        return ResponseDataVo.success(user);
+    }
+
+    @RequestMapping(value = "submitINfo4")
+    public ResponseDataVo getRequest4(Long id, String name,String username) {
+        logger.debug("getRequest{}",id);
+        return ResponseDataVo.success(id);
+    }
 }

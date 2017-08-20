@@ -4,13 +4,12 @@ import com.xie.scanapi.ApiScanUtils;
 import com.xie.scanapi.Class2JsonUtils;
 import com.xie.scanapi.mappingResolver.ResolverSupport;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 
+import static com.xie.scanapi.ApiScanUtils.annotationClz;
 import static com.xie.scanapi.ClassHelper.isBaseClass;
 
 /**
@@ -47,6 +46,8 @@ public class ParamtersInfo implements IInfo {
     private Type paramsType;
 
     private Class rawClz;
+
+    private Class descriptAnno;
 
 
     private Annotation[] paramAnnotations;
@@ -97,7 +98,7 @@ public class ParamtersInfo implements IInfo {
     @Override
     public StringBuffer parse() {
         StringBuffer sb = new StringBuffer();
-        StringBuffer rs = Class2JsonUtils.generateApiJsonForm(paramsType, ApiScanUtils.forJs, ApiScanUtils.withDes);
+        StringBuffer rs = Class2JsonUtils.generateApiJsonForm(paramsType,annotationClz, ApiScanUtils.forJs, ApiScanUtils.withDes);
         sb.append(rs);
         return sb;
     }

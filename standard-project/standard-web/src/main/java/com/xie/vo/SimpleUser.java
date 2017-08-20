@@ -1,10 +1,14 @@
 package com.xie.vo;
 
+import com.xie.java.common.annotation.Descript;
+import com.xie.java.common.annotation.Descript2;
+
 import java.io.Serializable;
 
 /**
  * Created by xieyang on 17/8/5.
  */
+@Descript2(required = true,value = "这时描述")
 public class SimpleUser implements Serializable {
 
     private Long id;

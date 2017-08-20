@@ -1,8 +1,7 @@
 package com.xie.scanapi;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.*;
 
 /**
  * Created by xieyang on 17/8/4.
@@ -105,5 +104,34 @@ public class ClassHelper {
 
         }
         return null;
+    }
+
+
+    public static Method getMethod(Class clz,String methodName){
+        Method[] declaredMethods = clz.getDeclaredMethods();
+        for(Method method:declaredMethods){
+            if(methodName.equals(method.getName())){
+                return method;
+            }
+        }
+        return null;
+
+    }
+
+    public static Object getAnnotationMethodReturn(Annotation annotation, String methodName) {
+        Class<? extends Annotation> targetDescriptClass = annotation.getClass();
+        Method method = getMethod(targetDescriptClass, methodName);
+        if(method != null){
+            method.setAccessible(true);
+            try {
+                return method.invoke(annotation, null);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+
     }
 }

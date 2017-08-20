@@ -1,7 +1,6 @@
 package com.xie.scanapi.parse;
 
 import com.xie.java.common.annotation.Descript;
-import com.xie.scanapi.Class2JsonUtils;
 import com.xie.scanapi.mappingResolver.MappingResolver;
 import com.xie.scanapi.mappingResolver.ResolverSupport;
 import com.xie.scanapi.paramter.descript.DescriptSupport;
@@ -12,11 +11,7 @@ import java.lang.reflect.Type;
 import java.util.Map;
 import java.util.Set;
 
-import static com.xie.scanapi.ApiScanUtils.forJs;
 import static com.xie.scanapi.ApiScanUtils.paramterSupports;
-import static com.xie.scanapi.parse.ParamtersInfo.BASE;
-import static com.xie.scanapi.parse.ParamtersInfo.GIC_OBJ;
-import static com.xie.scanapi.parse.ParamtersInfo.OBJ;
 
 /**
  * 接口信息

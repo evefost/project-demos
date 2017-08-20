@@ -1,14 +1,19 @@
 package com.xie.scanapi;
 
+import com.xie.java.common.annotation.Descript;
+import com.xie.java.common.annotation.Descript2;
 import com.xie.scanapi.mappingResolver.MappingResolver;
 import com.xie.scanapi.mappingResolver.ResolverSupport;
 import com.xie.scanapi.paramter.descript.DescriptSupport;
 import com.xie.scanapi.parse.ControllerInfo;
+import com.xie.vo.SimpleUser;
 import com.xie.web.controller.AjaxController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,35 +25,46 @@ import java.util.Map;
 public class ApiScanUtils {
 
     public static boolean forJs = false;
-    public  static boolean withDes = true;
+    public static boolean withDes = true;
+
+    public   static Class annotationClz;
 
     private static Map<String, MappingResolver> mappingResolverMap = new HashMap<>();
 
     public static Map<String, DescriptSupport> paramterSupports = new HashMap<>();
 
     public static void main(String[] args) throws Exception {
+//
+        StringBuffer stringBuffer = Class2JsonUtils.generateApiJsonForm(SimpleUser.class,Descript2.class);
+        System.out.println(stringBuffer);
 
 
-       // scanPagkageArr("com.xie", null);
-        scanPagkage("com.xie", AjaxController.class);
+//        Annotation annotation = SimpleUser.class.getAnnotation(annotationClz);
+//        Object value = getAnnotationMethodReturn(annotation, "required");
+//
+//        System.out.println(value);
+
+        // scanPagkageArr("com.xie", null);
+         scanPagkage("com.xie", AjaxController.class,Descript2.class);
         //scanPagkage("com.xie");
 
     }
 
 
-    public static void scanPagkage(String packageName, Class controllerClzs) throws InstantiationException, IllegalAccessException {
+    public static void scanPagkage(String packageName, Class controllerClzs,Class annoClz) throws InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         Class[] classes = new Class[]{controllerClzs};
-        scanPagkageArr(packageName, classes);
+        scanPagkageArr(packageName, classes,annoClz);
 
     }
 
 
-    public static void scanPagkageArr(String packageName, Class<?>[] controllerClzs) throws InstantiationException, IllegalAccessException {
+    public static void scanPagkageArr(String packageName, Class<?>[] controllerClzs,Class annoClz) throws InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+        annotationClz = annoClz;
         List<ControllerInfo> controllerInfos = new ArrayList<>();
         List<Class<?>> classes = ClassScanUtil.getClasses(packageName);
         loadMappingResolers(classes);
         loadParamterSupports(classes);
-        ResolverSupport support = new ResolverSupport(mappingResolverMap);
+        ResolverSupport support = new ResolverSupport(mappingResolverMap,annoClz);
         if (controllerClzs != null && controllerClzs.length > 0) {
             for (Class clz : controllerClzs) {
                 findControllers(controllerInfos, support, clz);
@@ -88,13 +104,15 @@ public class ApiScanUtils {
 
     }
 
-    private static void loadParamterSupports(List<Class<?>> classes) throws IllegalAccessException, InstantiationException {
+    private static void loadParamterSupports(List<Class<?>> classes) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         for (Class clz : classes) {
             Class[] interfaces = clz.getInterfaces();
             if (interfaces != null && interfaces.length > 0) {
                 for (Class inte : interfaces) {
                     if (inte.isAssignableFrom(DescriptSupport.class)) {
-                        paramterSupports.put(clz.getSimpleName(), (DescriptSupport) clz.newInstance());
+                        Constructor constructor = clz.getConstructor(Class.class);
+                        Object instance = constructor.newInstance(annotationClz);
+                        paramterSupports.put(clz.getSimpleName(), (DescriptSupport) instance);
                     }
                 }
             }

@@ -5,9 +5,15 @@ import com.xie.scanapi.parse.ParamtersInfo;
 /**
  * Created by xieyang on 17/8/20.
  */
-public interface DescriptSupport {
+public abstract class DescriptSupport {
 
-    boolean support(ParamtersInfo pInfo);
+    protected Class descriptAnno;
 
-    StringBuffer getDescript(ParamtersInfo pInfo, String[] parameterNames,int index);
+    public DescriptSupport(Class descriptAnno) {
+        this.descriptAnno = descriptAnno;
+    }
+
+    public abstract boolean support(ParamtersInfo pInfo);
+
+    public abstract StringBuffer getDescript(ParamtersInfo pInfo, String[] parameterNames, int index);
 }
