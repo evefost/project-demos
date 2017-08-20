@@ -84,11 +84,23 @@
         //params.addition="abcd";
         var params = {
             name:"xieyang",
-            id:123
-
+            id:123,
+            username:"abck",
+            inner:{
+                innerName:"nnnnnn"
+            }
 
         }
-        NetUtis.doPostBody(api, params);
+        var arr =[];
+        for(var i=0;i<3;i++){
+            var p ={orderCode:i}
+            arr.push(p);
+        }
+        NetUtis.doSimplePostForm("/api/ajax/list",arr);
+        //NetUtis.doPostBody(api, params);
+        //NetUtis.doSimpleGet("/api/ajax/submitINfo2",params);
+        //NetUtis.doSimplePostBody("/api/ajax/submitINfo5",params);
+        //NetUtis.doSimplePostBody("/api/ajax/submitINfo3",params);
 
     });
 

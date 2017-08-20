@@ -92,6 +92,15 @@ if (!NetUtis) {
             api.contentType = MediType_JSON;
             this.doSend(api, params, callback);
         },
+        doSimpleGet: function (url, params, callback) {
+            var api = {
+                url:url,
+                method:"GET",
+                contentType: MediType_JSON
+            };
+
+            this.doSend(api, params, callback);
+        },
         /**
          * post方法 form表单提交数据(如果不超过层，后台body体可以解释到数)，
          * @param api 对象
@@ -101,6 +110,15 @@ if (!NetUtis) {
         doPostForm: function (api, params, callback) {
             api.method = "POST";
             api.contentType = MediType_FORM_URLENCODE;
+            this.doSend(api, params, callback);
+        },
+        doSimplePostForm: function (url, params, callback) {
+            var api = {
+                url:url,
+                method:"POST",
+                contentType: MediType_FORM_URLENCODE
+            };
+
             this.doSend(api, params, callback);
         },
         /**
@@ -113,6 +131,16 @@ if (!NetUtis) {
             var tparam = JSON.stringify(params);
             api.method = "POST";
             api.contentType = MediType_JSON;
+            this.doSend(api, tparam, callback);
+        },
+        doSimplePostBody: function (url, params, callback) {
+            var tparam = JSON.stringify(params);
+            var api = {
+                url:url,
+                method:"POST",
+                contentType:MediType_JSON
+            };
+
             this.doSend(api, tparam, callback);
         },
         doSend: function (api, params, callback) {
@@ -128,6 +156,7 @@ if (!NetUtis) {
                     _this.doAfterRequest(data, callback);
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    debugger
                     alert("请求失败:" + XMLHttpRequest.status)
                     console.error("请求信息失败 status:" + XMLHttpRequest.status)
                 }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
 import sun.reflect.generics.reflectiveObjects.TypeVariableImpl;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
@@ -112,11 +113,11 @@ public class Class2JsonUtils {
 
         } else {
             clz = (Class<?>) srcType;
-            if(isBaseClass(clz)){
+            if (isBaseClass(clz)) {
                 return sb;
             }
         }
-        if(isList(clz)){
+        if (isList(clz)) {
             TypeVariable<? extends Class<?>>[] typeParameters = clz.getTypeParameters();
             String typeName = typeParameters[0].getName();
             Type tType = typeHashMap.get(typeName);
@@ -127,12 +128,12 @@ public class Class2JsonUtils {
             } else if (tType instanceof ParameterizedTypeImpl) {
                 // String typeName = ((ParameterizedTypeImpl) genericType).getActualTypeArguments()[0].toString();
                 // pClass = (Class)tType;
-            }else {
-                pClass = (Class)tType;
+            } else {
+                pClass = (Class) tType;
             }
             sb.append("[");
             if (pClass == null) {
-                sb.append(" //数组没有泛型参数,没法解释到实际参数型 ]");
+                sb.append(" //数组没有泛型参数,没法解释到实际参数型 ],");
             } else {
                 if (isBaseClass(pClass)) {
                     sb.append(getDefaultValueByClassType(pClass)).append(',').append(getDefaultValueByClassType(pClass));
@@ -140,17 +141,22 @@ public class Class2JsonUtils {
                     String paramterClass = pClass.getSimpleName().toLowerCase();
                     sb.append(appendDescript(withDescript, clz.getAnnotation(Descript.class), clz, paramterClass));
                 } else {
-//                    String paramterClass = pClass.getSimpleName().toLowerCase();
-//                    sb.append(appendDescript(withDescript, field.getAnnotation(Descript.class), type, paramterClass));
-//                    sb.append("\n");
-//                    StringBuffer json = generateApiJsonForm(pClass, loop, forJs, withDescript, "");
-//                    sb.append(json);
-//                    sb.append("]");
+                    String paramterClass = pClass.getSimpleName().toLowerCase();
+                    sb.append(appendDescript(withDescript, clz.getAnnotation(Descript.class), pClass, paramterClass));
+                    sb.append("\n");
+                    Annotation annotation = pClass.getAnnotation(Descript.class);
+                    objDes = "类型" + paramterClass;
+                    if (annotation != null) {
+                        objDes = (isEmpty(((Descript) annotation).value()) ? ((Descript) annotation).message() : ((Descript) annotation).value()) + objDes;
+                    }
+                    StringBuffer json = generateApiJsonForm(pClass, loop, forJs, withDescript, " // " + objDes);
+                    sb.append(json);
+                    sb.append("\n]");
                 }
             }
 
-        }else {
-            sb.append("{").append(objDes).append("\n");
+        } else {
+            sb.append("{").append(withDescript ? objDes : "").append("\n");
             Class superclass = clz.getSuperclass();
             Field[] supperFields = new Field[]{};
             if (superclass != null) {
@@ -216,7 +222,7 @@ public class Class2JsonUtils {
                         }
                         sb.append("[");
                         if (pClass == null) {
-                            sb.append(" //数组没有泛型参数,没法解释到实际参数型 ]");
+                            sb.append(" //数组没有泛型参数,没法解释到实际参数型 ],");
                         } else {
                             if (isBaseClass(pClass)) {
                                 sb.append(getDefaultValueByClassType(pClass)).append(',').append(getDefaultValueByClassType(pClass));
@@ -239,11 +245,11 @@ public class Class2JsonUtils {
                         if (genericType instanceof TypeVariableImpl) {
                             //获取实参(实参里面也可能有泛型)
                             Type tGenerType = typeHashMap.get(((TypeVariableImpl) genericType).getName());
-                            if(tGenerType == null){
-                                System.out.println("参数变量没有赋实例("+clz.getSimpleName()+")");
-                                sb.append("{//参数变量没有赋值,实际数据格式不可知}\n");
+                            if (tGenerType == null) {
+                                System.out.println("参数变量没有赋实例(" + clz.getSimpleName() + ")");
+                                sb.append("{" + (withDescript ? " // 参数变量没有赋值,实际数据格式不可知" : "") + "},\n");
                                 continue;
-                            }else {
+                            } else {
                                 if (tGenerType instanceof ParameterizedTypeImpl) {
                                     json = generateApiJsonForm(tGenerType, loop, forJs, withDescript, tObjdes);
                                 } else {
@@ -322,15 +328,39 @@ public class Class2JsonUtils {
 //            |positionId |否  |long | 职位id    |
 //            |departId |否 |long | 部门id    |
     public static StringBuffer generateApiParamDescript(Class clz) {
-
+        boolean isbody = clz.isAnnotationPresent(RequestBody.class);
         StringBuffer sb = new StringBuffer();
         sb.append("|参数名|必选|类型|说明|\n").append("|:----    |:---|:----- |-----   |\n");
-        Field[] fields = clz.getDeclaredFields();
+        parseFieldDescript(clz, sb, isbody);
+        return sb;
+
+    }
+
+
+    public static void parseFieldDescript(Class clz, StringBuffer sb, boolean isbody) {
+        Class superclass = clz.getSuperclass();
+        Field[] supperFields = new Field[]{};
+        if (superclass != null) {
+            supperFields = superclass.getDeclaredFields();
+        }
+        Field[] childFields = clz.getDeclaredFields();
+        Field[] fields = new Field[supperFields.length + childFields.length];
+        for (int n = 0; n < fields.length; n++) {
+            if (n < supperFields.length) {
+                fields[n] = supperFields[n];
+            } else {
+                fields[n] = childFields[n - supperFields.length];
+            }
+        }
         for (Field field : fields) {
             field.setAccessible(true);
             Class<?> type = field.getType();
             String name = field.getName();
             Descript annotation = field.getAnnotation(Descript.class);
+            String warn = "|\n";
+            if (!isBaseClass(type) && !isbody) {
+                warn = "(注意，非基本数据类型，form或get可能无法接收整个参数,尝试用post body方式)|\n";
+            }
             if (annotation != null) {
                 boolean require = annotation.required();
                 sb.append("|").append(name).append("|" + (require ? "是" : "否"));
@@ -339,12 +369,12 @@ public class Class2JsonUtils {
             }
             sb.append("|").append(type.getSimpleName().toLowerCase());
             if (annotation != null) {
-                sb.append("|" + annotation.message() + "|\n");
+                sb.append("|" + annotation.message());
             } else {
-                sb.append("|暂无参数说明|\n");
+                sb.append("|暂无参数说明|");
             }
+            sb.append(warn);
         }
-        return sb;
 
     }
 

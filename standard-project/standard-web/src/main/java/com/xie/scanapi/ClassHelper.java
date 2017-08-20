@@ -20,6 +20,9 @@ public class ClassHelper {
             if (clz.getSimpleName().equals("String")) {
                 return true;
             }
+            if (clz.getSimpleName().equals("date")) {
+                return true;
+            }
             return ((Class) clz.getField("TYPE").get(null)).isPrimitive();
         } catch (Exception e) {
             return false;

@@ -4,10 +4,19 @@ import com.xie.java.common.annotation.Descript;
 import com.xie.scanapi.Class2JsonUtils;
 import com.xie.scanapi.mappingResolver.MappingResolver;
 import com.xie.scanapi.mappingResolver.ResolverSupport;
+import com.xie.scanapi.paramter.descript.DescriptSupport;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
+import java.util.Map;
+import java.util.Set;
+
+import static com.xie.scanapi.ApiScanUtils.forJs;
+import static com.xie.scanapi.ApiScanUtils.paramterSupports;
+import static com.xie.scanapi.parse.ParamtersInfo.BASE;
+import static com.xie.scanapi.parse.ParamtersInfo.GIC_OBJ;
+import static com.xie.scanapi.parse.ParamtersInfo.OBJ;
 
 /**
  * 接口信息
@@ -177,57 +186,35 @@ public class ApiInfo implements IInfo {
             }
         }
         sb.append("\n\n");
+        String[] parameterNames = resolverSupport.getParameterNames(method);
         switch (parseType) {
             case 0:
                 //无参数
                 sb.append("**接收参数：** ");
                 sb.append("\n无参数");
                 break;
-            case 1:
-                //一个或多个简单怎么数
+            case 1: //一个或多个简单怎么数
+            case 3: //简单参数对象参数的组合（只支持单层）
                 sb.append("|参数名|必选|类型|说明|\n").append("|:----    |:---|:----- |-----   |\n");
-                String[] parameterNames = resolverSupport.getParameterNames(method);
-                for(int i=0;i<paramtersInfos.length;i++){
-                   String name = parameterNames[i];
-                   ParamtersInfo pInfo = paramtersInfos[i];
-                   Class<?> clz = (Class<?>) pInfo.getParamsType();
-                    Descript annotation = clz.getAnnotation(Descript.class);
-                    if (annotation != null) {
-                        boolean require = annotation.required();
-                        sb.append("|").append(name).append("|" + (require ? "是" : "否"));
-                    } else {
-                        sb.append("|").append(name).append("| 未知");
-                    }
-                    sb.append("|").append(clz.getSimpleName().toLowerCase());
-                    if (annotation != null) {
-                        sb.append("|" + annotation.message() + "|\n");
-                    } else {
-                        sb.append("|暂无参数说明|\n");
-                    }
-                }
+                doParseDescript(sb, parameterNames);
                 break;
-            case 2:
-                //一个或多对象参数
-
-                if(objCount == 1){
-                    ParamtersInfo pInfo = paramtersInfos[0];
-                    if(pInfo.hashAnnotationRequetBody()){
+            case 2://一个或多对象参数
+                boolean hasRequestBody = false;
+                for(int i=0;i<paramtersInfos.length;i++){
+                    if(paramtersInfos[i].hashAnnotationRequetBody()){
+                        ParamtersInfo pInfo = paramtersInfos[0];
+                        hasRequestBody = true;
                         sb.append("接收参数放在body里上报");
                         sb.append("\n``` \n");
                         sb.append(pInfo.parse());
                         sb.append("\n``` \n");
-                    }else {
-                        StringBuffer descript = Class2JsonUtils.generateApiParamDescript((Class) pInfo.getParamsType());
-                        sb.append("**接收参数格式：** \n");
-                        sb.append("\n");
-                        sb.append(descript);
+                        break;
                     }
-                }else {
-
                 }
-                break;
-            case 3:
-                //简单参数对象参数的组合
+                if(!hasRequestBody){
+                    sb.append("|参数名|必选|类型|说明|\n").append("|:----    |:---|:----- |-----   |\n");
+                    doParseDescript(sb, parameterNames);
+                }
                 break;
             case 4:
                 //一个或多个泛形
@@ -242,13 +229,13 @@ public class ApiInfo implements IInfo {
                 }
                 break;
             case 5:
-                //一个或多个简单参数与泛形对象组合
+                //一个或多个简单参数与泛形对象组合(参数可能无法解释)
                 break;
             case 6:
-                //对象与泛参组合
+                //对象与泛参组合(参数可能无法解释)
                 break;
             case 7:
-                //简单，对象，泛型组合
+                //简单，对象，泛型组合(参数可能无法解释)
                 break;
             default:
                 break;
@@ -256,6 +243,20 @@ public class ApiInfo implements IInfo {
 
 
         System.out.println("参数类型:" + parseType);
+    }
+
+    private void doParseDescript(StringBuffer sb, String[] parameterNames) {
+        for(int i=0;i<paramtersInfos.length;i++){
+            Set<Map.Entry<String, DescriptSupport>> entries = paramterSupports.entrySet();
+            for(Map.Entry<String, DescriptSupport> entry:entries){
+                DescriptSupport support = entry.getValue();
+                if(support.support(paramtersInfos[i])){
+                    sb.append(support.getDescript(paramtersInfos[i],parameterNames,i));
+                    continue;
+                }
+
+            }
+        }
     }
 
 

@@ -1,23 +1,13 @@
 package com.xie.vo;
 
+import java.io.Serializable;
+
 /**
  * Created by xieyang on 17/8/5.
  */
-public class SimpleUser extends BaseSimUser {
+public class SimpleUser implements Serializable {
 
     private Long id;
-
-    private String name;
-
-    private Inner inner;
-
-    public Inner getInner() {
-        return inner;
-    }
-
-    public void setInner(Inner inner) {
-        this.inner = inner;
-    }
 
     public Long getId() {
         return id;
@@ -35,16 +25,32 @@ public class SimpleUser extends BaseSimUser {
         this.name = name;
     }
 
+    private String name;
+
+    private Inner inner;
+
+    public Inner getInner() {
+        return inner;
+    }
+
+    public void setInner(Inner inner) {
+        this.inner = inner;
+    }
+
     public static class Inner{
 
-        private String name;
+       private  String innerName;
 
-        public String getName() {
-            return name;
+        public String getInnerName() {
+            return innerName;
         }
 
-        public void setName(String name) {
-            this.name = name;
+        public void setInnerName(String innerName) {
+            this.innerName = innerName;
         }
     }
+
+
 }
+
+

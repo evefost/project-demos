@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Created by Administrator on 2017/7/29.
  */
 @Api(description = "ajax提交测试")
-@Controller
+//@Controller
 @RequestMapping("other2")
 public class OtherController2 {
     private  final Logger logger = LoggerFactory.getLogger(getClass());

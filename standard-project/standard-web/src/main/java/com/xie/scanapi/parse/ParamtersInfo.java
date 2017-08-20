@@ -1,5 +1,6 @@
 package com.xie.scanapi.parse;
 
+import com.xie.scanapi.ApiScanUtils;
 import com.xie.scanapi.Class2JsonUtils;
 import com.xie.scanapi.mappingResolver.ResolverSupport;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -86,7 +87,6 @@ public class ParamtersInfo implements IInfo {
         }
         for(Annotation annotation:paramAnnotations){
             if(annotation instanceof RequestBody){
-
                 return true;
             }
         }
@@ -97,7 +97,7 @@ public class ParamtersInfo implements IInfo {
     @Override
     public StringBuffer parse() {
         StringBuffer sb = new StringBuffer();
-        StringBuffer rs = Class2JsonUtils.generateApiJsonForm(paramsType, false, true);
+        StringBuffer rs = Class2JsonUtils.generateApiJsonForm(paramsType, ApiScanUtils.forJs, ApiScanUtils.withDes);
         sb.append(rs);
         return sb;
     }
