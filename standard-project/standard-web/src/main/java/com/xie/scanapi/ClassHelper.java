@@ -118,9 +118,9 @@ public class ClassHelper {
 
     }
 
-    public static Object getAnnotationMethodReturn(Annotation annotation, String methodName) {
+    public static Object getAnnotationMethodReturn(Annotation annotation, Object methodName) {
         Class<? extends Annotation> targetDescriptClass = annotation.getClass();
-        Method method = getMethod(targetDescriptClass, methodName);
+        Method method = getMethod(targetDescriptClass, methodName.toString());
         if(method != null){
             method.setAccessible(true);
             try {
@@ -134,4 +134,6 @@ public class ClassHelper {
         return null;
 
     }
+
+
 }

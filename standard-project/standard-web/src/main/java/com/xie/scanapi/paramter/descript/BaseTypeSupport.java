@@ -6,6 +6,8 @@ import com.xie.scanapi.parse.ParamtersInfo;
 import java.lang.annotation.Annotation;
 
 import static com.xie.scanapi.ClassHelper.getAnnotationMethodReturn;
+import static com.xie.scanapi.constant.DescriptMethodEnum.MESSAGE;
+import static com.xie.scanapi.constant.DescriptMethodEnum.VALUE;
 
 /**
  * Created by xieyang on 17/8/20.
@@ -36,7 +38,7 @@ public class BaseTypeSupport extends DescriptSupport{
         }
         sb.append("|").append(clz.getSimpleName().toLowerCase());
         if (annotation != null) {
-            String message = Class2JsonUtils.isEmpty((String) getAnnotationMethodReturn(annotation, "value")) ? (String) getAnnotationMethodReturn(annotation, "message") : (String) getAnnotationMethodReturn(annotation, "value");
+            String message = Class2JsonUtils.isEmpty((String) getAnnotationMethodReturn(annotation, VALUE)) ? (String) getAnnotationMethodReturn(annotation, MESSAGE) : (String) getAnnotationMethodReturn(annotation, VALUE);
             sb.append("|" + message+ "|\n");
         } else {
             sb.append("|暂无参数说明|\n");

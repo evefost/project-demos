@@ -2,6 +2,7 @@ package com.xie.scanapi;
 
 import com.xie.java.common.annotation.Descript;
 import com.xie.java.common.annotation.Descript2;
+import com.xie.scanapi.constant.DescriptMethodEnum;
 import com.xie.scanapi.mappingResolver.MappingResolver;
 import com.xie.scanapi.mappingResolver.ResolverSupport;
 import com.xie.scanapi.paramter.descript.DescriptSupport;
@@ -35,6 +36,8 @@ public class ApiScanUtils {
 
     public static void main(String[] args) throws Exception {
 //
+        String name = DescriptMethodEnum.VALUE.name();
+
         StringBuffer stringBuffer = Class2JsonUtils.generateApiJsonForm(SimpleUser.class,Descript2.class);
         System.out.println(stringBuffer);
 
@@ -45,7 +48,7 @@ public class ApiScanUtils {
 //        System.out.println(value);
 
         // scanPagkageArr("com.xie", null);
-         scanPagkage("com.xie", AjaxController.class,Descript2.class);
+         scanPagkage("com.xie", AjaxController.class,Descript.class);
         //scanPagkage("com.xie");
 
     }

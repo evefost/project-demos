@@ -14,17 +14,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.xie.scanapi.ClassHelper.*;
+import static com.xie.scanapi.constant.DescriptMethodEnum.MESSAGE;
+import static com.xie.scanapi.constant.DescriptMethodEnum.REQUIRED;
+import static com.xie.scanapi.constant.DescriptMethodEnum.VALUE;
 
 /**
  * Created by xieyang on 17/7/31.
  */
 public class Class2JsonUtils {
 
-    private static final String VALUE = "value";
-
-    private static final String REQUIRED = "required";
-
-    private static final String MESSAGE = "message";
+//    private static final String VALUE = "value";
+//
+//    private static final String REQUIRED = "required";
+//
+//    private static final String MESSAGE = "message";
 
     private static Class annotationClz;
 
@@ -373,7 +376,7 @@ public class Class2JsonUtils {
 
     }
 
-    public static void parseFieldDescript(Field field, Class annotationClz, StringBuffer sb, boolean isbody) {
+    private static void parseFieldDescript(Field field, Class annotationClz, StringBuffer sb, boolean isbody) {
         field.setAccessible(true);
         Class<?> type = field.getType();
         String name = field.getName();
