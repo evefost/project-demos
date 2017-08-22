@@ -14,9 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.xie.scanapi.ClassHelper.*;
-import static com.xie.scanapi.constant.DescriptMethodEnum.MESSAGE;
-import static com.xie.scanapi.constant.DescriptMethodEnum.REQUIRED;
-import static com.xie.scanapi.constant.DescriptMethodEnum.VALUE;
+import static com.xie.scanapi.constant.DescriptMethodEnum.*;
 
 /**
  * Created by xieyang on 17/7/31.
@@ -205,15 +203,21 @@ public class Class2JsonUtils {
                 }
                 sb.append(':');
                 if (isBaseClass(type)) {
+                    Annotation annotation = field.getAnnotation(annotationClz);
                     if (forJs) {
-                        sb.append("undefined");
+                        if (annotation != null) {
+                            boolean require = (boolean) getAnnotationMethodReturn(annotation, REQUIRED);
+                            sb.append(require ? "'required'" : "undefined");
+                        } else {
+                            sb.append("undefined");
+                        }
                     } else {
                         sb.append(getDefaultValueByClassType(type));
                     }
                     if (c < fields.length) {
                         sb.append(",");
                     }
-                    sb.append(appendDescript(withDescript, field.getAnnotation(annotationClz), type, ""));
+                    sb.append(appendDescript(withDescript, annotation, type, ""));
                     sb.append("\n");
                 } else {
                     if (isList(type)) {
@@ -322,7 +326,7 @@ public class Class2JsonUtils {
             boolean require = (boolean) getAnnotationMethodReturn(annotation, REQUIRED);
             sb.append(" 必选(" + (require ? "是)" : "否)"));
         } else {
-            sb.append(" 必选(未知)");
+            sb.append(" 必选(否)");
         }
         return sb;
 
@@ -371,7 +375,7 @@ public class Class2JsonUtils {
             }
         }
         for (Field field : fields) {
-            parseFieldDescript(field,annoClz,sb,isbody);
+            parseFieldDescript(field, annoClz, sb, isbody);
         }
 
     }
@@ -389,7 +393,7 @@ public class Class2JsonUtils {
             boolean require = (boolean) getAnnotationMethodReturn(annotation, REQUIRED);
             sb.append("|").append(name).append("|" + (require ? "是" : "否"));
         } else {
-            sb.append("|").append(name).append("| 未知");
+            sb.append("|").append(name).append("| 否");
         }
         sb.append("|").append(type.getSimpleName().toLowerCase());
         if (annotation != null) {

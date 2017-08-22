@@ -7,7 +7,7 @@ import static com.xie.scanapi.Class2JsonUtils.parseFieldsDescript;
 /**
  * Created by xieyang on 17/8/20.
  */
-public class ObjectTypeSupport extends DescriptSupport{
+public class ObjectTypeSupport extends DescriptSupport implements IDescriptSupport {
 
 
     public ObjectTypeSupport(Class descriptAnno) {

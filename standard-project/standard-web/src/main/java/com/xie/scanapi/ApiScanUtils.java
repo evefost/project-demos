@@ -6,7 +6,9 @@ import com.xie.scanapi.constant.DescriptMethodEnum;
 import com.xie.scanapi.mappingResolver.MappingResolver;
 import com.xie.scanapi.mappingResolver.ResolverSupport;
 import com.xie.scanapi.paramter.descript.DescriptSupport;
+import com.xie.scanapi.paramter.descript.IDescriptSupport;
 import com.xie.scanapi.parse.ControllerInfo;
+import com.xie.vo.Params1;
 import com.xie.vo.SimpleUser;
 import com.xie.web.controller.AjaxController;
 import org.springframework.stereotype.Controller;
@@ -25,20 +27,20 @@ import java.util.Map;
  */
 public class ApiScanUtils {
 
-    public static boolean forJs = false;
+    public static boolean forJs = true;
     public static boolean withDes = true;
 
     public   static Class annotationClz;
 
     private static Map<String, MappingResolver> mappingResolverMap = new HashMap<>();
 
-    public static Map<String, DescriptSupport> paramterSupports = new HashMap<>();
+    public static Map<String, IDescriptSupport> paramterSupports = new HashMap<>();
 
     public static void main(String[] args) throws Exception {
 //
         String name = DescriptMethodEnum.VALUE.name();
 
-        StringBuffer stringBuffer = Class2JsonUtils.generateApiJsonForm(SimpleUser.class,Descript2.class);
+        StringBuffer stringBuffer = Class2JsonUtils.generateApiJsonForm(Params1.class,Descript.class,true,true);
         System.out.println(stringBuffer);
 
 
@@ -48,7 +50,7 @@ public class ApiScanUtils {
 //        System.out.println(value);
 
         // scanPagkageArr("com.xie", null);
-         scanPagkage("com.xie", AjaxController.class,Descript.class);
+         //scanPagkage("com.xie", AjaxController.class,Descript.class);
         //scanPagkage("com.xie");
 
     }
@@ -112,10 +114,10 @@ public class ApiScanUtils {
             Class[] interfaces = clz.getInterfaces();
             if (interfaces != null && interfaces.length > 0) {
                 for (Class inte : interfaces) {
-                    if (inte.isAssignableFrom(DescriptSupport.class)) {
+                    if (inte.isAssignableFrom(IDescriptSupport.class)) {
                         Constructor constructor = clz.getConstructor(Class.class);
                         Object instance = constructor.newInstance(annotationClz);
-                        paramterSupports.put(clz.getSimpleName(), (DescriptSupport) instance);
+                        paramterSupports.put(clz.getSimpleName(), (IDescriptSupport) instance);
                     }
                 }
             }

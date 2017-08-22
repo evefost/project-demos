@@ -4,6 +4,7 @@ import com.xie.java.common.annotation.Descript;
 import com.xie.scanapi.mappingResolver.MappingResolver;
 import com.xie.scanapi.mappingResolver.ResolverSupport;
 import com.xie.scanapi.paramter.descript.DescriptSupport;
+import com.xie.scanapi.paramter.descript.IDescriptSupport;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -241,10 +242,11 @@ public class ApiInfo implements IInfo {
     }
 
     private void doParseDescript(StringBuffer sb, String[] parameterNames) {
+
         for(int i=0;i<paramtersInfos.length;i++){
-            Set<Map.Entry<String, DescriptSupport>> entries = paramterSupports.entrySet();
-            for(Map.Entry<String, DescriptSupport> entry:entries){
-                DescriptSupport support = entry.getValue();
+            Set<Map.Entry<String, IDescriptSupport>> entries = paramterSupports.entrySet();
+            for(Map.Entry<String, IDescriptSupport> entry:entries){
+                IDescriptSupport support = entry.getValue();
                 if(support.support(paramtersInfos[i])){
                     sb.append(support.getDescript(paramtersInfos[i],parameterNames,i));
                     continue;

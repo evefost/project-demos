@@ -12,7 +12,7 @@ import static com.xie.scanapi.constant.DescriptMethodEnum.VALUE;
 /**
  * Created by xieyang on 17/8/20.
  */
-public class BaseTypeSupport extends DescriptSupport{
+public class BaseTypeSupport extends DescriptSupport  implements IDescriptSupport {
 
     public BaseTypeSupport(Class descriptAnno) {
         super(descriptAnno);

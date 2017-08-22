@@ -1,16 +1,15 @@
 package com.xie.web.controller;
 
 import com.xie.java.common.response.ResponseDataVo;
-import com.xie.java.entity.Tb1;
-import com.xie.vo.ListOrderDistribute;
-import com.xie.vo.OrderDistribute;
+import com.xie.vo.Params1;
 import com.xie.vo.SimpleUser;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 /**
@@ -21,7 +20,7 @@ import java.util.List;
 @RequestMapping("/api/ajax")
 public class AjaxController {
 
-    private  final Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
 //    @RequestMapping(value = "list", method = RequestMethod.POST)
 //    public ResponseDataVo list( List<OrderDistribute> list) {
@@ -43,7 +42,7 @@ public class AjaxController {
 //        return ResponseDataVo.success(user);
 //    }
 
-//    @RequestMapping(value = "formAdd2", method = RequestMethod.POST)
+    //    @RequestMapping(value = "formAdd2", method = RequestMethod.POST)
 //    public ResponseDataVo<SimpleUser> add(SimpleUser user, String testname) {
 //        logger.debug("formAdd{}",user);
 //        //user.getSchool().toString();
@@ -69,26 +68,38 @@ public class AjaxController {
 //    }
 //
     @RequestMapping(value = "submitINfo2")
-    public ResponseDataVo getRequest(@RequestBody SimpleUser user,String username) {
-        logger.debug("getRequest{}",user);
+    public ResponseDataVo getRequest(@RequestBody SimpleUser user, String username) {
+        logger.debug("getRequest{}", user);
         return ResponseDataVo.success(user);
     }
+//
+//    @RequestMapping(value = "submitINfo3")
+//    public ResponseDataVo getRequest3( SimpleUser user,String username) {
+//        logger.debug("getRequest{}",user);
+//        return ResponseDataVo.success(user);
+//    }
+//
+//    @RequestMapping(value = "submitINfo5",method = {RequestMethod.POST})
+//    public ResponseDataVo<SimpleUser> getRequest5( @RequestBody SimpleUser user) {
+//        logger.debug("getRequest{}",user);
+//        return ResponseDataVo.success(user);
+//    }
 
-    @RequestMapping(value = "submitINfo3")
-    public ResponseDataVo getRequest3( SimpleUser user,String username) {
-        logger.debug("getRequest{}",user);
-        return ResponseDataVo.success(user);
+//    @RequestMapping(value = "submitINfo4")
+//    public ResponseDataVo getRequest4(Long id, String name,String username) {
+//        logger.debug("getRequest{}",id);
+//        return ResponseDataVo.success(id);
+//    }
+
+    @RequestMapping(value = "submitINfo6")
+    public ResponseDataVo getRequest4(Params1 params1) {
+        logger.debug("getRequest{}", params1);
+        return ResponseDataVo.success(params1);
     }
 
-    @RequestMapping(value = "submitINfo5",method = {RequestMethod.POST})
-    public ResponseDataVo<SimpleUser> getRequest5( @RequestBody SimpleUser user) {
-        logger.debug("getRequest{}",user);
-        return ResponseDataVo.success(user);
-    }
-
-    @RequestMapping(value = "submitINfo4")
-    public ResponseDataVo getRequest4(Long id, String name,String username) {
-        logger.debug("getRequest{}",id);
-        return ResponseDataVo.success(id);
+    @RequestMapping(value = "submitINfo6")
+    public ResponseDataVo getRequest4(@RequestBody List<Params1> params1) {
+        logger.debug("getRequest{}", params1);
+        return ResponseDataVo.success(params1);
     }
 }

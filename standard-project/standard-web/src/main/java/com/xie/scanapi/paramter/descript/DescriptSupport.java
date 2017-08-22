@@ -13,7 +13,5 @@ public abstract class DescriptSupport {
         this.descriptAnno = descriptAnno;
     }
 
-    public abstract boolean support(ParamtersInfo pInfo);
 
-    public abstract StringBuffer getDescript(ParamtersInfo pInfo, String[] parameterNames, int index);
 }

@@ -55,12 +55,12 @@
 
     <div class="data-item2">
         <form>
-            <div class="params" style="display: none" data-name2="id" value="234" >aaaaa</div>
-            <input type="text" class="params"  data-name2="name" data-value2="老王"/>
+            <div class="params" style="display: none" data-name2="id" value="234">aaaaa</div>
+            <input type="text" class="params" data-name2="name" data-value2="老王"/>
             <input type="text" class="params" value="12" data-name2="age" data-value2="118"/>
             <input type="text" class="params" value="schoole2" data-name2="school" data-value2="深圳老王中学"/>
             <input type="text" class="params" value="teacher.name2" data-name2="teacher.name" data-value2="老王的老师"/>
-            <textarea class="params" value="dddddddsdfsdfsfwe" data-name2="text"  >textaread</textarea>
+            <textarea class="params" value="dddddddsdfsdfsfwe" data-name2="text">textaread</textarea>
             <input type="button" class="btn" value="点击"/>
         </form>
     </div>
@@ -80,24 +80,32 @@
         //var api = Api.ajaxDemo.formAdd;
         //var api = Api.ajaxDemo.postBody;
         var api = Api.ajaxDemo.formAdd;
-        //var params = findParamByModel(tagInfo,api.paramModel);
-        //params.addition="abcd";
-        var params = {
-            name:"xieyang",
-            id:123,
-            username:"abck",
-            inner:{
-                innerName:"nnnnnn"
-            }
+        var simpleMode = { //测试参数1 类型:params1 必选(否)
+            id: 'required', //id 类型:long 必选(是)
+            name: 'required', //姓名 类型:string 必选(是)
+            age: undefined, //测试参数1 类型:int 必选(否)
+            level: undefined // 类型:int 必选(否)
+        }
+        var params = scanParamByModel(tagInfo, simpleMode);
+        console.log(params);
 
-        }
-        var arr =[];
-        for(var i=0;i<3;i++){
-            var p ={orderCode:i}
-            arr.push(p);
-        }
-        NetUtis.doSimplePostForm("/api/ajax/list",arr);
-        //NetUtis.doPostBody(api, params);
+        //params.addition="abcd";
+//        var params = {
+//            name:"xieyang",
+//            id:123,
+//            username:"abck",
+//            inner:{
+//                innerName:"nnnnnn"
+//            }
+//
+//        }
+//        var arr =[];
+//        for(var i=0;i<3;i++){
+//            var p ={orderCode:i}
+//            arr.push(p);
+//        }
+//        NetUtis.doSimplePostForm("/api/ajax/list",arr);
+//        //NetUtis.doPostBody(api, params);
         //NetUtis.doSimpleGet("/api/ajax/submitINfo2",params);
         //NetUtis.doSimplePostBody("/api/ajax/submitINfo5",params);
         //NetUtis.doSimplePostBody("/api/ajax/submitINfo3",params);

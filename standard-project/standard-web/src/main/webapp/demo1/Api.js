@@ -16,9 +16,9 @@ if (!Api) {
                 contentType: MediType_FORM_URLENCODE,
                 descript: "post form demo接口",
                 paramModel: {
-                    id:undefined, // 类型:long 必选(未知)
-                    name:undefined, // 类型:string 必选(未知)
-                    testname:undefined
+                    id: undefined, // 类型:long 必选(未知)
+                    name: undefined, // 类型:string 必选(未知)
+                    testname: undefined
                 },
             },
             // json body 提交提交例子
@@ -28,8 +28,8 @@ if (!Api) {
                 contentType: MediType_JSON,
                 descript: "post body 提交json demo接口",
                 paramModel: {
-                    id:undefined, // 类型:long 必选(未知)
-                    name:undefined // 类型:string 必选(未知)
+                    id: undefined, // 类型:long 必选(未知)
+                    name: undefined // 类型:string 必选(未知)
                 },
 
             },
@@ -53,6 +53,7 @@ if (!Api) {
 
             }
         },
+
     }
 }
 
@@ -94,8 +95,8 @@ if (!NetUtis) {
         },
         doSimpleGet: function (url, params, callback) {
             var api = {
-                url:url,
-                method:"GET",
+                url: url,
+                method: "GET",
                 contentType: MediType_JSON
             };
 
@@ -114,8 +115,8 @@ if (!NetUtis) {
         },
         doSimplePostForm: function (url, params, callback) {
             var api = {
-                url:url,
-                method:"POST",
+                url: url,
+                method: "POST",
                 contentType: MediType_FORM_URLENCODE
             };
 
@@ -136,9 +137,9 @@ if (!NetUtis) {
         doSimplePostBody: function (url, params, callback) {
             var tparam = JSON.stringify(params);
             var api = {
-                url:url,
-                method:"POST",
-                contentType:MediType_JSON
+                url: url,
+                method: "POST",
+                contentType: MediType_JSON
             };
 
             this.doSend(api, tparam, callback);
@@ -203,7 +204,7 @@ if (!NetUtis) {
  * @param valueName 要提交的参数值(value)
  * @constructor
  */
-function TagInfo(container, tagName, dataName, valueName) {
+function TagInfo(container, tagName, dataName, valueName, rowTagName) {
     //容器名称
     this.container = container;
     //目录标签：标签名，类名或id 都可以
@@ -212,6 +213,8 @@ function TagInfo(container, tagName, dataName, valueName) {
     this.dataName = dataName;
     //自定义属数据参数的值的名称
     this.valueName = valueName;
+    //如果是列表(多行值)
+    this.rowTagName = rowTagName;
 }
 
 /**
@@ -219,47 +222,68 @@ function TagInfo(container, tagName, dataName, valueName) {
  * @param tagInfo 参数元信息
  * @param paramModel
  */
-function findParamByModel(tagInfo, paramModel) {
+function scanParamByModel(tagInfo, paramModel) {
+    debugger
+    if (tagInfo.rowTagName) {
+        var arrParams = [];
+        var rows = $(tagInfo.container).find(tagInfo.rowTagName);
+        for (var i = 0; i < rows.length; i++) {
+            var rowTagInfo = new TagInfo();
+            rowTagInfo.container = rows[i];
+            rowTagInfo.tagName = tagInfo.tagName;
+            rowTagInfo.dataName = tagInfo.dataName;
+            rowTagInfo.valueName = tagInfo.valueName;
+            rowTagInfo.rowTagName = undefined;
+            var params = scanParamByModel(rowTagInfo, paramModel);
+            arrParams.push(params);
+        }
+        return arrParams;
+    }
     //复制参数model
     var params = cloneObj(paramModel);
     var els = $(tagInfo.container).find(tagInfo.tagName);
-    var hashGetParams = false;
-    for (var i = 0; i < els.length; i++) {
-        var dataName = $(els[i]).attr(tagInfo.dataName);
-        if (dataName == undefined) {
-            console.warn("注意！有一个[" + els[i].tagName + "]元素中没有定义名称为[" + tagInfo.dataName + "]属性请，请核对是否漏掉的参数名");
-            continue;
-        }
-        var value;
-        if (tagInfo.valueName == "value" && (els[i].tagName == "INPUT" || els[i].tagName == "TEXTAREA" )) {
-            value = $(els[i]).val();
-        } else {
-            value = $(els[i]).attr(tagInfo.valueName);
-        }
-        if (value == undefined) {
-            console.warn("注意！有一个[ " + els[i].tagName + " ]元素中没有定义:" + tagInfo.valueName + "属性，请核对是参数名为[" + dataName + "]的参数是否需要赋值");
-            continue;
-        }
-        for (key in params) {
+    for (key in params) {
+        var fieldValue = params[key];
+        for (var i = 0; i < els.length; i++) {
+            var dataName = $(els[i]).attr(tagInfo.dataName);
+            if (dataName == undefined) {
+                //console.warn("注意！有一个[" + els[i].tagName + "]元素中没有定义名称为[" + tagInfo.dataName + "]属性请，请核对是否漏掉的参数名");
+                continue;
+            }
+            var value;
+            if (tagInfo.valueName == "value" && (els[i].tagName == "INPUT" || els[i].tagName == "TEXTAREA" )) {
+                value = $(els[i]).val();
+            } else {
+                value = $(els[i]).attr(tagInfo.valueName);
+            }
+            if (value == undefined) {
+                console.warn("注意！有一个[ " + els[i].tagName + " ]元素中没有定义:" + tagInfo.valueName + "属性，请核对是参数名为[" + dataName + "]的参数是否需要赋值");
+                continue;
+            }
             if (key == dataName) {
-                params[key] = value;
-                hashGetParams = true;
+                if (fieldValue == 'required') {
+                    if (value) {
+                        params[key] = value;
+                    }
+                } else {
+                    params[key] = value;
+                    if (!value) {
+                        console.warn("可选参数(" + key + ")无值")
+                    }
+                }
             }
         }
 
     }
-    if (!hashGetParams) {
-        console.warn("一个参数值也没获取到请检查参数名是否与接口匹配:" + JSON.stringify(paramModel));
-    }
-    var undfinedPs = "";
+
     for (key in params) {
-        if (params[key] == undefined) {
-            undfinedPs += key + ",";
+        if (params[key] == 'required') {
+            console.warn("必选参数(" + key + ")无值:")
+        } else if (params[key] == undefined) {
+            console.warn("可选参数(" + key + ")无值")
         }
     }
-    if (undfinedPs) {
-        console.warn("注意model中定义的参数: " + undfinedPs + "没有值，请检查是否为必传参数");
-    }
+
     console.log("获取到的参数:" + JSON.stringify(params));
     return params;
 }

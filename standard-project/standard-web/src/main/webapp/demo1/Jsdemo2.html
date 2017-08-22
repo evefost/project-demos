@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>layui在线调试</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <style>
+        body {
+            margin: 10px;
+        }
+
+        .btn {
+            width: 90px;
+            height: 30px;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<blockquote class="layui-elem-quote">
+    温馨提示：如果最左侧的导航的高度超出了你的屏幕，你可以将鼠标移入导航区域，然后滑动鼠标滚轮即可
+</blockquote>
+
+<div class="layui-tab layui-tab-card" lay-filter="demo" style="height: 300px;">
+    <ul class="layui-tab-title">
+        <li class="layui-this">演示说明</li>
+        <li>标题一</li>
+        <li>标题二</li>
+        <li>标题三</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            在这里，你将以最直观的形式体验Layui！在编辑器中可以执行layui相关的一切代码。
+            <br>你也可以点击左侧导航针对性地试验我们提供的示例。
+        </div>
+        <div class="layui-tab-item">内容1</div>
+        <div class="layui-tab-item">内容2</div>
+        <div class="layui-tab-item">内容3</div>
+    </div>
+    <div id="arrayContainer">
+        <div class="data-item1 row">
+            <input type="number" placeholder="id" data-name="id" data-value="xieyang"/>
+            <input type="number" placeholder="age" data-name="age" data-value="18"/>
+            <input type="text" placeholder="name" data-name="name" data-value="深圳中学"/>
+            <input type="button" class="btn" value="点击"/>
+
+        </div>
+
+        <div class="data-item1 row">
+            <input type="number" placeholder="id" data-name="id" data-value="xieyang"/>
+            <input type="number" placeholder="age" data-name="age" data-value="18"/>
+            <input type="text" placeholder="name" data-name="name" data-value="深圳中学"/>
+            <input type="button" class="btn" value="点击"/>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="pageDemo"></div>
+
+
+<script src="./layui/layui.js"></script>
+<script src="Api.js"></script>
+<script src="jquery.1.12.4.min.js"></script>
+<script>
+
+    $(".btn").click(function () {
+        var container = $("#arrayContainer");
+        var tagInfo = new TagInfo(container, "input", "data-name", "value", ".row");
+        var simpleMode = { //测试参数1 类型:params1 必选(否)
+            id: 'required', //id 类型:long 必选(是)
+            name: 'required', //姓名 类型:string 必选(是)
+            age: undefined, //测试参数1 类型:int 必选(否)
+            level: undefined, // 类型:int 必选(否)
+//            testObj: {
+//                clo: "ssss",
+//                size: 56
+//            },
+//            arr: [1, 2, 3]
+
+        }
+
+//        var arr =[];
+//        if(arr.length>=0){
+//          console.log("arr是数组")
+//        }
+//
+//        if(simpleMode.length == undefined){
+//            for(key in simpleMode){
+//                var value = simpleMode[key];
+//                console.log(key+"="+value);
+//                if(value instanceof  Object){
+//                    if(simpleMode[key].length==undefined){
+//                        console.log("是对象类型");
+//                    }else {
+//                        console.log("是数组类型");
+//                    }
+//
+//                }else {
+//                    console.log("基本类型");
+//                    if(value == 'required'){
+//                        console.log("必选(是)");
+//                    }else {
+//                        console.log("必选(否)");
+//                    }
+//                }
+//
+//            }
+//        }else {
+//            console.log("sim是数组")
+//        }
+
+
+        var params = scanParamByModel(tagInfo, simpleMode);
+        console.log(params);
+        //NetUtis.doSimplePostForm("/api/ajax/submitINfo6",params);
+
+
+
+    });
+
+</script>
+</body>
+</html>        
+        
